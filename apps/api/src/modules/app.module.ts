@@ -1,6 +1,9 @@
 import { MiddlewareConsumer, Module, NestModule } from "@nestjs/common";
 import { ConfigModule } from "@nestjs/config";
+import { APP_GUARD } from "@nestjs/core";
+import { JwtModule } from "@nestjs/jwt";
 
+import { JwtAuthGuard } from "../common/guards/jwt-auth.guard";
 import { LoggerMiddleware } from "../common/middlewares/logger.middleware";
 import { validateEnvs } from "../common/validators/env.validation";
 import { AdminModule } from "./admin/admin.module";
@@ -22,11 +25,22 @@ import { TestTableModule } from "./test-table/test-table.module";
       validate: validateEnvs,
       envFilePath: "../../.env",
     }),
+    JwtModule.register({
+      global: true,
+      secret: process.env.JWT_SECRET || "your-secret-key",
+      signOptions: { expiresIn: "24h" },
+    }),
     EmailModule.forRootAsync(),
     EncryptionModule,
     HealthModule,
     SimulationModule,
     TestTableModule,
+  ],
+  providers: [
+    {
+      provide: APP_GUARD,
+      useClass: JwtAuthGuard,
+    },
   ],
 })
 export class AppModule implements NestModule {

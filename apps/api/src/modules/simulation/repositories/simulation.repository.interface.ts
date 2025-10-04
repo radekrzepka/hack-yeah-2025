@@ -13,4 +13,5 @@ export interface ISimulationRepository {
     simulationResult: SimulationResultInsert,
   ): Promise<SimulationResultSelect | null>;
   findResultById(id: string): Promise<SimulationResultSelect | null>;
+  findAllResults(): Promise<Array<SimulationResultSelect>>;
 }

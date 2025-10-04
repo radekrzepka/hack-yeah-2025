@@ -43,4 +43,9 @@ export class SimulationRepository implements ISimulationRepository {
       .where(eq(simulationResults.id, id));
     return result || null;
   }
+
+  async findAllResults(): Promise<Array<SimulationResultSelect>> {
+    const results = await this.db.client.select().from(simulationResults);
+    return results;
+  }
 }
