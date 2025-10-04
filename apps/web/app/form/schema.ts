@@ -81,15 +81,14 @@ export const pensionFormSchema = z
       })
       .default(false),
 
-    // Dodatkowe preferencje
+    // Docelowa wysokość emerytury (obowiązkowe)
     targetPension: z
-      .union([
-        z.number().min(0, "Docelowa emerytura nie może być ujemna"),
-        z.literal(""),
-        z.undefined(),
-      ])
-      .optional()
-      .transform((val) => (val === "" ? undefined : val)),
+      .number({
+        required_error: "Docelowa wysokość emerytury jest wymagana",
+        invalid_type_error: "Docelowa wysokość emerytury musi być liczbą",
+      })
+      .min(0, "Docelowa emerytura nie może być ujemna")
+      .max(100000, "Docelowa emerytura jest zbyt wysoka"),
 
     includeWageGrowth: z
       .boolean({
