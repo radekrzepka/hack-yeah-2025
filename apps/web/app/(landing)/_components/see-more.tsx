@@ -10,8 +10,8 @@ import {
 function SeeMoreCard({
   title,
   content,
-  imgPath,
-  imgAlt,
+  // imgPath,
+  // imgAlt,
 }: {
   title: string;
   content: string;
@@ -25,7 +25,7 @@ function SeeMoreCard({
       </CardHeader>
       <CardContent>
         <TypographyP>{content}</TypographyP>
-        <img src={imgPath} alt={imgAlt} />
+        {/* <img src={imgPath} alt={imgAlt} /> */}
       </CardContent>
     </Card>
   );
@@ -38,8 +38,8 @@ export function SeeMore() {
       <SeeMoreCard
         title={"test"}
         content={"lorem12"}
-        imgPath={"./"}
-        imgAlt={";);)"}
+        // imgPath={"./"}
+        // imgAlt={";);)"}
       />
       <SeeMoreCard
         title={"test"}
