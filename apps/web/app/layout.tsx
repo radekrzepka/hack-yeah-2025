@@ -38,7 +38,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pl">
+    <html lang="pl" suppressHydrationWarning>
       <body className={`${inter.className} flex min-h-screen flex-col`}>
         <ThemeProvider
           attribute="class"
