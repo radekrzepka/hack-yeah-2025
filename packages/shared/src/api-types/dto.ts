@@ -10,6 +10,27 @@
  * ---------------------------------------------------------------
  */
 
+export interface LoginRequestDto {
+  /**
+   * Admin login
+   * @example "admin"
+   */
+  login: string;
+  /**
+   * Admin password
+   * @example "123"
+   */
+  password: string;
+}
+
+export interface LoginResponseDto {
+  /**
+   * JWT token for authentication
+   * @example "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+   */
+  token: string;
+}
+
 export interface HealthCheckResponseDto {
   /**
    * Overall health status
@@ -51,6 +72,64 @@ export interface HealthCheckResponseDto {
    * @example 200
    */
   httpStatus: number;
+}
+
+export interface SendSimulationRequestDto {
+  /**
+   * Age of the person
+   * @min 0
+   * @example 30
+   */
+  age: number;
+  /**
+   * Sex of the person
+   * @example "male"
+   */
+  sex: "male" | "female";
+  /**
+   * Gross salary amount
+   * @min 0
+   * @example 7500
+   */
+  grossSalary: number;
+  /**
+   * Work start date in ISO 8601 format
+   * @format date
+   * @example "2015-01-01"
+   */
+  workStartDate: string;
+  /**
+   * Planned retirement year
+   * @min 1900
+   * @example 2060
+   */
+  plannedRetirementYear: number;
+  /**
+   * Whether to include sick leave in calculation
+   * @example true
+   */
+  includeSickLeave: boolean;
+}
+
+export interface SendSimulationResponseDto {
+  /**
+   * Unique simulation request identifier (token)
+   * @example "550e8400-e29b-41d4-a716-446655440000"
+   */
+  id: string;
+}
+
+export interface GetSimulationResultResponseDto {
+  /**
+   * Simulation token ID
+   * @example "550e8400-e29b-41d4-a716-446655440000"
+   */
+  id: string;
+  /**
+   * Test value generated for simulation
+   * @example 5432
+   */
+  test: number;
 }
 
 export interface CreateTestTableRequestDto {
