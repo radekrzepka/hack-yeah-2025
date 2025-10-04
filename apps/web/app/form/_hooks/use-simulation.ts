@@ -4,6 +4,7 @@ import type {
 } from "@hackathon/shared";
 import { useMutation } from "@tanstack/react-query";
 
+import { sendSimulationClient } from "../_api/send-simulation";
 import { type PensionFormData } from "../schema";
 
 // Transform form data to API format
@@ -26,25 +27,7 @@ export function useSimulation() {
       formData: PensionFormData,
     ): Promise<SendSimulationResponseDto> => {
       const apiData = transformFormDataToApi(formData);
-
-      const response = await fetch("/api/simulation/send", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(apiData),
-      });
-
-      if (!response.ok) {
-        const errorData = (await response.json().catch(() => ({}))) as {
-          error?: string;
-        };
-        throw new Error(
-          errorData.error || `HTTP error! status: ${response.status}`,
-        );
-      }
-
-      return response.json() as Promise<SendSimulationResponseDto>;
+      return sendSimulationClient(apiData);
     },
     onSuccess: (data) => {
       console.log("Simulation sent successfully:", data);
