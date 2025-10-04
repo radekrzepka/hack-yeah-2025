@@ -2,7 +2,7 @@ import "@hackathon/ui/globals.css";
 
 import { ThemeProvider } from "@hackathon/ui";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import { Toaster } from "sonner";
 import { Footer } from "./_components/footer";
@@ -24,8 +24,12 @@ export const metadata: Metadata = {
     "świadczenia",
   ],
   authors: [{ name: "ZUS" }],
-  viewport: "width=device-width, initial-scale=1",
   robots: "index, follow",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({
