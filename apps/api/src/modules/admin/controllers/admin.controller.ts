@@ -1,6 +1,13 @@
-import { Body, Controller, Post, UnauthorizedException } from "@nestjs/common";
+import {
+  Body,
+  Controller,
+  Get,
+  Post,
+  UnauthorizedException,
+} from "@nestjs/common";
 import {
   ApiBadRequestResponse,
+  ApiBearerAuth,
   ApiBody,
   ApiOkResponse,
   ApiOperation,
@@ -10,6 +17,7 @@ import {
 
 import { ApiServerErrorResponse } from "../../../common/decorators/api-server-error-response.decorator";
 import { Public } from "../../../common/decorators/public.decorator";
+import { GetAllSimulationResultsResponseDto } from "../dtos/get-all-simulation-results/get-all-simulation-results-response.dto";
 import { LoginRequestDto } from "../dtos/login/login-request.dto";
 import { LoginResponseDto } from "../dtos/login/login-response.dto";
 import {
@@ -57,5 +65,24 @@ export class AdminController {
       throw error;
     }
   }
-}
 
+  @Get("data")
+  @ApiBearerAuth()
+  @ApiOperation({
+    summary: "Get all simulation results (Admin only)",
+    description:
+      "Retrieves all simulation results data. Requires admin JWT token in Authorization header.",
+  })
+  @ApiOkResponse({
+    type: GetAllSimulationResultsResponseDto,
+    description: "List of simulation results retrieved successfully",
+    isArray: true,
+  })
+  @ApiUnauthorizedResponse({
+    description: "Unauthorized - Invalid or missing JWT token",
+  })
+  @ApiServerErrorResponse()
+  async getAllData(): Promise<Array<GetAllSimulationResultsResponseDto>> {
+    return await this.adminService.getAllData();
+  }
+}

@@ -31,47 +31,17 @@ export interface LoginResponseDto {
   token: string;
 }
 
-export interface HealthCheckResponseDto {
+export interface GetAllSimulationResultsResponseDto {
   /**
-   * Overall health status
-   * @example "healthy"
+   * Simulation result ID
+   * @example "550e8400-e29b-41d4-a716-446655440000"
    */
-  status: "healthy" | "unhealthy";
+  id: string;
   /**
-   * ISO timestamp of the health check
-   * @example "2024-01-15T10:30:00.000Z"
+   * Test value
+   * @example 42
    */
-  timestamp: string;
-  /**
-   * Application uptime in seconds
-   * @example 3600
-   */
-  uptime: number;
-  /**
-   * Health check response time in milliseconds
-   * @example 25
-   */
-  responseTime: number;
-  /**
-   * Application version
-   * @example "1.0.0"
-   */
-  version: string;
-  /**
-   * Current environment
-   * @example "production"
-   */
-  environment: string;
-  /**
-   * Individual service checks
-   * @example {"database":true,"api":true}
-   */
-  checks: object;
-  /**
-   * HTTP status code
-   * @example 200
-   */
-  httpStatus: number;
+  test: number;
 }
 
 export interface SendSimulationRequestDto {
@@ -130,6 +100,49 @@ export interface GetSimulationResultResponseDto {
    * @example 5432
    */
   test: number;
+}
+
+export interface HealthCheckResponseDto {
+  /**
+   * Overall health status
+   * @example "healthy"
+   */
+  status: "healthy" | "unhealthy";
+  /**
+   * ISO timestamp of the health check
+   * @example "2024-01-15T10:30:00.000Z"
+   */
+  timestamp: string;
+  /**
+   * Application uptime in seconds
+   * @example 3600
+   */
+  uptime: number;
+  /**
+   * Health check response time in milliseconds
+   * @example 25
+   */
+  responseTime: number;
+  /**
+   * Application version
+   * @example "1.0.0"
+   */
+  version: string;
+  /**
+   * Current environment
+   * @example "production"
+   */
+  environment: string;
+  /**
+   * Individual service checks
+   * @example {"database":true,"api":true}
+   */
+  checks: object;
+  /**
+   * HTTP status code
+   * @example 200
+   */
+  httpStatus: number;
 }
 
 export interface CreateTestTableRequestDto {
