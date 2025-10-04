@@ -12,22 +12,8 @@
     {
       "idx": 1,
       "version": "7",
-      "when": 1759582576034,
-      "tag": "0001_steep_dust",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1759583177435,
-      "tag": "0002_heavy_pixie",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "7",
-      "when": 1759585754294,
-      "tag": "0003_overjoyed_ricochet",
+      "when": 1759588575296,
+      "tag": "0001_handy_invaders",
       "breakpoints": true
     }
   ]
