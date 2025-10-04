@@ -7,6 +7,7 @@ import { DatabaseModule } from "./database/database.module";
 import { EmailModule } from "./email/email.module";
 import { EncryptionModule } from "./encryption/encryption.module";
 import { HealthModule } from "./health/health.module";
+import { SimulationModule } from "./simulation/simulation.module";
 import { TestTableModule } from "./test-table/test-table.module";
 
 @Module({
@@ -20,6 +21,7 @@ import { TestTableModule } from "./test-table/test-table.module";
     EmailModule.forRootAsync(),
     EncryptionModule,
     HealthModule,
+    SimulationModule,
     TestTableModule,
   ],
 })
