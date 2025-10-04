@@ -1,0 +1,306 @@
+---
+description: Hackathon Template 2k25 Development Rules - Comprehensive guidelines for TypeScript development in this Turborepo monorepo
+globs: ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx", "**/*.json", "**/*.md"]
+alwaysApply: true
+---
+
+# Hackathon Template 2k25 - Cursor Development Rules
+
+You are a senior TypeScript programmer working on the Hackathon Template 2k25 project - a modern full-stack TypeScript template built with NestJS, Next.js, and Turborepo.
+
+## 📚 Project Documentation
+
+**ALWAYS reference the comprehensive project documentation before making changes:**
+
+- **[README.md](../../README.md)** - Project overview, quick start, and technology stack
+- **[docs/packages.md](../../docs/packages.md)** - Detailed guide to all packages and their usage
+- **[docs/apps.md](../../docs/apps.md)** - Applications structure (API & Web) and features
+- **[docs/templates.md](../../docs/templates.md)** - Step-by-step templates for creating new features
+- **[docs/development-guide.md](../../docs/development-guide.md)** - Best practices and development workflows
+- **[docs/architecture.md](../../docs/architecture.md)** - System architecture and design patterns
+
+## 🎯 Project-Specific Guidelines
+
+### Template Usage
+
+- **Use `test-table` module as template** for all new CRUD features
+- Follow the established patterns in `apps/api/src/modules/test-table/` for backend
+- Follow the established patterns in `apps/web/app/test/` for frontend
+- Reference [docs/templates.md](../../docs/templates.md) for step-by-step feature creation
+
+### Monorepo Structure
+
+- **Never edit root package.json** for app dependencies
+- Use `pnpm --filter=<package-name>` to install dependencies in correct packages
+- Follow the established package structure documented in [docs/packages.md](../../docs/packages.md)
+- Maintain clean package boundaries as defined in the architecture
+
+### Code Organization
+
+- **Backend**: Follow CQRS pattern with Commands/Queries as shown in test-table
+- **Frontend**: Use feature-based organization with `_api/`, `_modules/`, `_utils/` structure
+- **Shared types**: Generate from API using `pnpm --filter=shared generate-types`
+- **Database**: Use Drizzle ORM schemas in `packages/db/src/schemas/`
+
+### API Development (NestJS)
+
+- Follow the module structure in `apps/api/src/modules/test-table/` exactly
+- Use CQRS pattern: Commands for writes, Queries for reads
+- Implement Repository pattern with interfaces for data access
+- Use proper Swagger decorators for API documentation
+- Follow error handling patterns from test-table examples
+- Reference [docs/apps.md](../../docs/apps.md) for detailed API architecture
+
+### Frontend Development (Next.js)
+
+- Use App Router with feature-based organization
+- Implement server-side data fetching in page components
+- Use React Query for client-side state management
+- Follow form patterns with React Hook Form + Zod validation
+- Use `@hackathon/ui` components for consistent design (built with shadcn/ui)
+- Reference [docs/apps.md](../../docs/apps.md) for detailed frontend patterns
+
+### Database Development
+
+- Use Drizzle ORM with PostgreSQL
+- Define schemas in `packages/db/src/schemas/`
+- Use domain constants from `@hackathon/domain` for validation
+- Generate migrations: `pnpm --filter=db db:generate`
+- Apply migrations: `pnpm --filter=db db:migrate`
+- Reference [docs/packages.md](../../docs/packages.md) for database patterns
+
+### Package Development
+
+- **@hackathon/db**: Database schemas and operations
+- **@hackathon/domain**: Business logic and constants
+- **@hackathon/shared**: Shared types and utilities
+- **@hackathon/ui**: React components with Tailwind CSS and shadcn/ui
+- **@hackathon/transactional**: Email templates with React Email
+- Reference [docs/packages.md](../../docs/packages.md) for detailed package usage
+
+## 🏗 Development Workflow
+
+### Before Making Changes
+
+1. **Read the documentation** - Check relevant docs in `/docs/` directory
+2. **Use existing templates** - Copy patterns from `test-table` module
+3. **Follow established architecture** - Reference [docs/architecture.md](../../docs/architecture.md)
+4. **Check development guide** - Follow [docs/development-guide.md](../../docs/development-guide.md)
+
+### Creating New Features
+
+1. **Backend First**: Create API module following `test-table` pattern
+2. **Generate Types**: Run `pnpm --filter=shared generate-types`
+3. **Frontend Second**: Create frontend feature following `test/` pattern
+4. **Reference Templates**: Use [docs/templates.md](../../docs/templates.md) step-by-step guide
+
+## TypeScript General Guidelines
+
+### Basic Principles (Aligned with Development Guide)
+
+- **Use English** for all code and documentation to maintain consistency
+- **Always declare types** for variables and functions (parameters and return values)
+  - **Avoid using `any`** - defeats TypeScript's type checking benefits
+  - **Create necessary types** to model domain accurately
+  - **Reference [docs/development-guide.md](../../docs/development-guide.md)** for complete TypeScript guidelines
+- **No blank lines within functions** to maintain code density
+- **One export per file** to ensure clear module boundaries
+- **Use arrow functions** for simple functions (< 3 instructions)
+- **Use named functions** for complex logic
+- **Follow RO-RO pattern** (Receive Object, Return Object) for function parameters
+
+### Nomenclature (Project Standards)
+
+**Follow the established naming conventions from [docs/development-guide.md](../../docs/development-guide.md):**
+
+- **PascalCase** for classes: `UserService`, `CreateUserCommand`
+- **camelCase** for variables, functions, methods: `getUserById`, `isLoading`
+- **kebab-case** for files and directories: `user-service.ts`, `create-user/`
+- **UPPERCASE** for environment variables: `DATABASE_URL`, `JWT_SECRET`
+
+**Function Naming:**
+
+- Start with verbs: `createUser`, `validateEmail`, `fetchData`
+- Boolean functions: `isValid`, `hasPermission`, `canDelete`
+- Avoid abbreviations except: `i/j` (loops), `err` (errors), `ctx` (contexts), `req/res/next` (middleware)
+
+**Project-Specific Patterns:**
+
+- Commands: `CreateUserCommand`, `UpdateUserCommand`
+- Handlers: `CreateUserHandler`, `GetUserByIdHandler`
+- DTOs: `CreateUserRequestDto`, `GetUserResponseDto`
+- Repositories: `UserRepository`, `UserRepositoryInterface`
+- Services: `UserService`, `EmailService`
+
+### Functions
+
+- In this context, what is understood as a function will also apply to a method.
+- Write short functions with a single purpose
+- Name functions with a verb and something else.
+  - If it returns a boolean, use isX or hasX, canX, etc.
+  - If it doesn't return anything, use executeX or saveX, etc.
+- Avoid nesting blocks by:
+  - Early checks and returns.
+  - Extraction to utility functions.
+- Use higher-order functions (map, filter, reduce, etc.) to avoid function nesting.
+  - Use arrow functions for simple functions (less than 3 instructions).
+  - Use named functions for non-simple functions.
+- Use default parameter values instead of checking for null or undefined.
+- Reduce function parameters using RO-RO - THIS IS IMPORTANT. WE ARE A RO-RO HOUSEHOLD.
+  - Use an object to pass multiple parameters.
+  - Use an object to return results.
+  - Declare necessary types for input arguments and output.
+- Use a single level of abstraction.
+
+### Data
+
+- Don't abuse primitive types and encapsulate data in composite types.
+- Avoid data validations in functions and use classes with internal validation.
+- Prefer immutability for data.
+  - Use readonly for data that doesn't change.
+  - Use as const for literals that don't change.
+
+### React Query Patterns (Project Implementation)
+
+**Follow the patterns established in `apps/web/app/test/` for data fetching:**
+
+- **Query Keys**: Use descriptive arrays: `['users']`, `['users', userId]`
+- **Server-side fetching**: Use `*Server` functions in page components
+- **Client-side fetching**: Use `*Client` functions with React Query
+- **Mutations**: Include optimistic updates and cache invalidation
+- **Error handling**: Use project's error handling utilities from `_utils/`
+
+**Example from test-table pattern:**
+
+```typescript
+const { data: users = initialData } = useQuery({
+  queryKey: ["users"],
+  queryFn: getAllUsersClient,
+  initialData,
+});
+
+const { mutate } = useMutation({
+  mutationFn: createUserClient,
+  onSuccess: () => {
+    toast.success("User created successfully!");
+    queryClient.invalidateQueries({ queryKey: ["users"] });
+  },
+  onError: (error) => {
+    toast.error(handleUserError(error));
+  },
+});
+```
+
+### Monorepo Dependencies
+
+- Follow Package-Based approach (Turborepo recommended):
+  - Install dependencies where they're used
+  - Keep only repo management tools in root
+  - Allow teams to move at different speeds
+- Use tools for version management:
+  - syncpack for version synchronization
+  - manypkg for monorepo management
+  - sherif for dependency validation
+- Regular dependency audit and update cycles
+- Set up CI checks for major version mismatches
+
+### Component Architecture
+
+- Prefer controlled components over uncontrolled when state needs to be shared
+- Use composition over inheritance for component reuse
+- Keep components focused and single-purpose
+- Extract reusable logic into custom hooks
+- Follow React Query patterns for data fetching components
+- Use TypeScript generics for reusable components
+- Implement proper error boundaries
+- Use React.memo() and useCallback() judiciously
+
+### Performance Patterns
+
+- Implement proper code-splitting using dynamic imports
+- Use React.lazy() for component-level code splitting
+- Implement proper memoization strategies
+- Use proper keys in lists to optimize reconciliation
+- Implement proper loading states and suspense boundaries
+- Use proper image optimization techniques
+- Implement proper caching strategies
+- Monitor and optimize bundle sizes
+
+### Security Patterns
+
+- Never store sensitive data in client-side storage
+- Implement proper CSRF protection
+- Use proper Content Security Policy headers
+- Implement proper input sanitization
+- Use proper authentication and authorization
+- Implement proper rate limiting
+- Monitor for security vulnerabilities
+- Regular security audits
+
+### Documentation Patterns
+
+- **Reference existing documentation** in `/docs/` directory before making changes
+- **Update documentation** when adding new features or changing patterns
+- **Follow established examples** in test-table module
+- **Document breaking changes** and migration steps
+
+## 🚀 Common Project Commands
+
+### Development
+
+```bash
+pnpm dev                    # Start all apps in development
+pnpm --filter=api dev       # Start API only
+pnpm --filter=web dev       # Start web only
+```
+
+### Database
+
+```bash
+pnpm db:up                  # Start database with migrations and seed
+pnpm db:reset               # Reset database with fresh data
+pnpm --filter=db db:generate # Generate new migrations
+pnpm --filter=db db:migrate # Apply migrations
+```
+
+### UI Components (shadcn/ui)
+
+```bash
+cd packages/ui                           # Navigate to UI package
+npx shadcn@latest add <component-name>   # Add new component
+```
+
+**⚠️ Important: Fix imports manually after adding shadcn/ui components**
+
+```typescript
+// ❌ Generated import (incorrect)
+import { cn } from "src/lib/utils";
+
+// ✅ Correct import for this package
+import { cn } from "../../lib/utils";
+```
+
+### Quality Checks
+
+```bash
+pnpm lint                   # Lint all packages
+pnpm check-types           # Type check all packages
+pnpm build                 # Build all packages
+```
+
+## 🎯 Key Project Reminders
+
+1. **Always use templates** - Copy from `test-table` patterns
+2. **Reference documentation** - Check `/docs/` before implementing
+3. **Follow CQRS** - Commands for writes, Queries for reads
+4. **Use proper packages** - Install dependencies in correct locations
+5. **Generate types** - Keep shared types updated from API
+6. **Follow naming conventions** - Consistent patterns across codebase
+7. **Test your changes** - Use existing endpoints and UI patterns
+
+**For detailed guidance, always reference:**
+
+- [README.md](../../README.md) for project overview
+- [docs/templates.md](../../docs/templates.md) for step-by-step feature creation
+- [docs/development-guide.md](../../docs/development-guide.md) for best practices
+- [docs/architecture.md](../../docs/architecture.md) for system design

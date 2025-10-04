@@ -1,0 +1,9 @@
+{
+  "extends": "@hackathon/typescript-config/internal-library.json",
+  "compilerOptions": {
+    "lib": ["DOM"],
+    "outDir": "dist"
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
+}

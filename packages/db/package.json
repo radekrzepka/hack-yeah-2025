@@ -1,0 +1,39 @@
+{
+  "name": "@hackathon/db",
+  "version": "1.0.0",
+  "private": true,
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "tsc",
+    "lint": "eslint . --max-warnings 0",
+    "check-types": "tsc --noEmit",
+    "with-env": "dotenv -e ../../.env --",
+    "db:push": "pnpm with-env npx drizzle-kit push",
+    "db:generate": "pnpm with-env npx drizzle-kit generate",
+    "db:migrate": "pnpm with-env npx drizzle-kit migrate",
+    "db:seed": "pnpm with-env pnpm exec tsx src/seed.ts",
+    "db:studio": "pnpm with-env pnpm drizzle-kit studio",
+    "db:reset": "pnpm with-env pnpm exec tsx src/reset.ts"
+  },
+  "devDependencies": {
+    "@hackathon/domain": "workspace:*",
+    "@hackathon/eslint-config": "workspace:*",
+    "@hackathon/shared": "workspace:*",
+    "@hackathon/typescript-config": "workspace:*",
+    "@types/eslint": "^8.56.5",
+    "@types/node": "^22.9.1",
+    "@types/pg": "^8.11.11",
+    "dotenv-cli": "^7.4.2",
+    "drizzle-kit": "^0.30.4",
+    "eslint": "8.57.0",
+    "tsx": "^4.19.3",
+    "typescript": "5.5.4"
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.39.3",
+    "drizzle-seed": "^0.3.1",
+    "pg": "^8.13.3"
+  }
+}

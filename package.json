@@ -1,0 +1,36 @@
+{
+  "name": "hackathon",
+  "private": true,
+  "scripts": {
+    "build": "dotenv -- turbo build",
+    "start": "node apps/api/dist/main.js",
+    "db:up": "docker-compose up -d && pnpm --filter=db run db:migrate && pnpm --filter=db run db:seed",
+    "db:down": "docker-compose down",
+    "db:reset": "pnpm --filter=db run db:reset && pnpm --filter=db run db:migrate && pnpm --filter=db run db:seed",
+    "dev": "dotenv -- turbo dev",
+    "lint": "dotenv -- turbo lint",
+    "check-types": "dotenv -- turbo check-types",
+    "test": "dotenv -- turbo test",
+    "list:node_modules": "find . -name 'node_modules' -type d -prune",
+    "remove:node_modules": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +",
+    "remove:dist": "find . -name 'dist' -type d -prune -exec rm -rf '{}' +",
+    "remove:turbo": "find . -name '.turbo' -type d -prune -exec rm -rf '{}' +",
+    "reduce:size": "rm -rf apps/web/.next && rm -rf apps/app/.next && rm -rf apps/api/dist && pnpm run remove:node_modules && pnpm run remove:dist && pnpm run remove:turbo",
+    "packages:check": "manypkg check",
+    "packages:fix": "manypkg fix",
+    "packages:upgrade": "manypkg upgrade"
+  },
+  "packageManager": "pnpm@8.15.6",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@ianvs/prettier-plugin-sort-imports": "^4.4.0",
+    "@manypkg/cli": "^0.22.0",
+    "dotenv-cli": "^8.0.0",
+    "prettier": "^3.2.5",
+    "prettier-plugin-tailwindcss": "^0.6.9",
+    "turbo": "^2.3.0",
+    "typescript": "5.5.4"
+  }
+}

@@ -1,0 +1,75 @@
+name: Build and Test
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  build-and-test:
+    name: Build and Test
+    timeout-minutes: 30
+    runs-on: ubuntu-latest
+    environment: CI/CD
+    env:
+      CI: true
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Start database with Docker Compose
+        run: docker compose up -d db
+
+      - name: Wait for database to be ready
+        run: |
+          until docker compose exec -T db pg_isready -U user -d hackathon; do
+            echo "Waiting for database..."
+            sleep 2
+          done
+
+      - name: Setup environment variables
+        run: echo "${{ secrets.ENV_FILE }}" > .env
+
+      - name: Build packages
+        run: pnpm build
+
+      - name: Run database migrations
+        run: |
+          cd packages/db
+          pnpm db:migrate
+
+      - name: Run database seed
+        run: |
+          cd packages/db
+          pnpm db:seed
+
+      - name: Run linting
+        run: pnpm lint
+
+      - name: Run type checking
+        run: pnpm check-types
+
+      - name: Run tests
+        run: pnpm test
+        env:
+          NODE_ENV: test
+
+      - name: Cleanup
+        if: always()
+        run: docker compose down

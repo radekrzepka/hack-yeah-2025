@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+  db:
+    container_name: hackathon-db
+    image: postgres:17.3-bullseye
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: ZAQ!2wsx
+      POSTGRES_DB: hackathon
+    ports:
+      - "54321:5432"
