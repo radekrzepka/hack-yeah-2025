@@ -14,7 +14,6 @@ import {
 import { useMemo, useRef } from "react";
 import type { LandingPageData } from "../_api/get-landing-data";
 
-// stabilna pusta tablica, nie tworzy nowej referencji co render
 const EMPTY_FACTS: ReadonlyArray<{
   id: string;
   fact: string;
@@ -25,9 +24,9 @@ type Props = {
   initialData: LandingPageData;
 };
 
-function pickRandom<T>(arr: readonly T[], count: number): T[] {
+function pickRandom<T>(arr: ReadonlyArray<T>, count: number): Array<T> {
   if (!arr?.length) return [];
-  const res: T[] = [];
+  const res: Array<T> = [];
   const seen = new Set<number>();
 
   while (res.length < Math.min(count, arr.length)) {
@@ -66,8 +65,6 @@ export default function FunFacts({ initialData }: Props) {
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   const facts = initialData?.facts ?? EMPTY_FACTS;
-
-  // losujemy 3 fakty tylko raz dla danych
   const selectedFacts = useMemo(() => pickRandom(facts, 3), [facts]);
 
   if (selectedFacts.length === 0) return <div className="w-full" />;
@@ -75,24 +72,23 @@ export default function FunFacts({ initialData }: Props) {
   return (
     <div className="w-full">
       <Carousel
+        // ref-callback: gdy element znika (el === null) — czyścimy interwał
+        ref={(el) => {
+          if (!el && intervalRef.current) {
+            clearInterval(intervalRef.current);
+            intervalRef.current = null;
+          }
+        }}
         opts={{ align: "start", loop: true }}
         className="relative w-full"
         setApi={(api) => {
-          // Jeśli API jest dostępne — ustaw interwał, jeśli nie, wyczyść
+          // nic nie zwracamy (void) -> brak błędu TS
           if (api && !intervalRef.current) {
-            const timer = setInterval(() => {
+            intervalRef.current = setInterval(() => {
               api.scrollNext();
             }, 10000);
-            intervalRef.current = timer;
-
-            // zwracamy cleanup callback — wywoła się przy odmontowaniu
-            return () => {
-              clearInterval(timer);
-              intervalRef.current = null;
-            };
           }
-
-          // gdy API zostanie odłączone (np. unmount)
+          // dodatkowe zabezpieczenie: gdy api przestanie istnieć
           if (!api && intervalRef.current) {
             clearInterval(intervalRef.current);
             intervalRef.current = null;
