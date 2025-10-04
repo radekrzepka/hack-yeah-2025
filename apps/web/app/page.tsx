@@ -7,7 +7,7 @@ import { getLandingData } from "./(landing)/_api/get-landing-data";
 export default async function Dashboard() {
   const data = await getLandingData(); 
   return (
-    <div className="bg-primary w-full">
+    <div className="w-full">
       <Header />
       <SeeMore />
       <FunFacts initialData={data} />

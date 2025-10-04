@@ -9,7 +9,7 @@ type Props = {
 };
 
 export default function FunFacts({ initialData }: Props) {
-  const [randomNumber, setRandomNumber] = useState<number>(
+  const [randomNumber] = useState<number>(
     Math.floor(Math.random() * initialData.facts.length),
   );
   const straightFacts = initialData.facts[randomNumber];
