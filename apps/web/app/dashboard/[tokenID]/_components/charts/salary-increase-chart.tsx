@@ -19,7 +19,7 @@ interface SalaryIncreaseOption {
 interface SalaryIncreaseChartProps {
   data: {
     currentPension: number;
-    options: SalaryIncreaseOption[];
+    options: Array<SalaryIncreaseOption>;
   };
 }
 

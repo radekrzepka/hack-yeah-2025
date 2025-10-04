@@ -19,7 +19,7 @@ interface WorkLongerOption {
 interface WorkLongerChartProps {
   data: {
     currentPension: number;
-    options: WorkLongerOption[];
+    options: Array<WorkLongerOption>;
   };
 }
 
@@ -66,7 +66,7 @@ export function WorkLongerChart({ data }: WorkLongerChartProps) {
         />
         <ChartTooltip
           content={<ChartTooltipContent />}
-          formatter={(value: number, name: string, props: any) => {
+          formatter={(value: number, name: string) => {
             if (name === "improvement") {
               return [`${value.toLocaleString()} zł`, "Poprawa"];
             }

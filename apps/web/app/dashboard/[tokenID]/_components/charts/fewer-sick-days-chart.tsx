@@ -21,7 +21,7 @@ interface FewerSickDaysChartProps {
   data: {
     currentPension: number;
     currentlyIncludesSickLeave: boolean;
-    options: FewerSickDaysOption[];
+    options: Array<FewerSickDaysOption>;
   };
 }
 
