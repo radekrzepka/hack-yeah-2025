@@ -10,6 +10,7 @@ async function bootstrap() {
   app.enableCors({
     origin: [
       process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
+      "http://localhost:3000",
       /^https:\/\/.*\.railway\.app$/,
       /^https:\/\/.*\.vercel\.app$/,
       /^https:\/\/.*\.vercel\.dev$/,
