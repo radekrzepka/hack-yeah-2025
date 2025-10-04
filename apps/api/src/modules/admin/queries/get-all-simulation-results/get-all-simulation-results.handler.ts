@@ -16,13 +16,17 @@ export class GetAllSimulationResultsHandler
   }
 
   async execute(): Promise<Array<GetAllSimulationResultsResponseDto>> {
-    this.logger.log("Finding all simulation results", { method: "execute" });
-    const results = await this.simulationRepository.findAllResults();
-    this.logger.log(`Found ${results.length} simulation results`, {
+    this.logger.log("Finding all simulation requests with results", {
       method: "execute",
     });
-    return results.map(
-      (result) => new GetAllSimulationResultsResponseDto(result),
+    const requestsWithResults =
+      await this.simulationRepository.findAllRequestsWithResults();
+    this.logger.log(
+      `Found ${requestsWithResults.length} simulation requests with results`,
+      { method: "execute" },
+    );
+    return requestsWithResults.map(
+      (data) => new GetAllSimulationResultsResponseDto(data),
     );
   }
 }

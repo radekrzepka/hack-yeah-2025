@@ -6,5 +6,7 @@ export class CreateSimulationRequestCommand {
     public readonly workStartDate: string,
     public readonly plannedRetirementYear: number,
     public readonly includeSickLeave: boolean,
+    public readonly expectedPension: number,
+    public readonly postalCode?: string,
   ) {}
 }

@@ -5,22 +5,8 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1757417570394,
-      "tag": "0000_young_tag",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1759588575296,
-      "tag": "0001_handy_invaders",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1759597716871,
-      "tag": "0002_clever_tigra",
+      "when": 1759610755093,
+      "tag": "0000_sleepy_sasquatch",
       "breakpoints": true
     }
   ]

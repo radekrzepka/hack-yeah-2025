@@ -5,6 +5,9 @@ import {
   IsInt,
   IsISO8601,
   IsNotEmpty,
+  IsOptional,
+  IsString,
+  Matches,
   Min,
 } from "class-validator";
 
@@ -72,4 +75,27 @@ export class SendSimulationRequestDto {
   @IsBoolean({ message: "Include sick leave must be a boolean" })
   @IsNotEmpty({ message: "Include sick leave is required" })
   includeSickLeave!: boolean;
+
+  @ApiProperty({
+    description: "Expected pension amount",
+    example: 5000,
+    minimum: 0,
+  })
+  @IsInt({ message: "Expected pension must be an integer" })
+  @Min(0, { message: "Expected pension must be at least 0" })
+  @IsNotEmpty({ message: "Expected pension is required" })
+  expectedPension!: number;
+
+  @ApiProperty({
+    description: "Postal code",
+    example: "00-001",
+    pattern: "^[0-9]{2}-[0-9]{3}$",
+    required: false,
+  })
+  @IsOptional()
+  @IsString({ message: "Postal code must be a string" })
+  @Matches(/^[0-9]{2}-[0-9]{3}$/, {
+    message: "Postal code must be in format XX-XXX",
+  })
+  postalCode?: string;
 }

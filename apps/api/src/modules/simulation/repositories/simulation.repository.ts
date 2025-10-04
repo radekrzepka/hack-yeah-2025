@@ -56,4 +56,20 @@ export class SimulationRepository implements ISimulationRepository {
     const results = await this.db.client.select().from(simulationResults);
     return results;
   }
+
+  async findAllRequestsWithResults(): Promise<
+    Array<{
+      request: SimulationRequestSelect;
+      result: SimulationResultSelect | null;
+    }>
+  > {
+    const requests = await this.db.client.select().from(simulationRequests);
+    const requestsWithResults = await Promise.all(
+      requests.map(async (request) => {
+        const result = await this.findResultById(request.id);
+        return { request, result };
+      }),
+    );
+    return requestsWithResults;
+  }
 }
