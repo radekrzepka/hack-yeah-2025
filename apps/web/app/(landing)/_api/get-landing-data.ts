@@ -1,5 +1,9 @@
 "use server";
 
+import type { ApiResponse } from "@/_utils/fetch/shared";
+
+import { clientFetch } from "@/_utils/fetch/client-fetch";
+
 export interface FactData {
   id: string;
   fact: string;
@@ -11,12 +15,12 @@ export interface LandingPageData {
 }
 
 export async function getLandingData(): Promise<LandingPageData> {
-  const base = process.env.NEXT_PUBLIC_API_URL;
-  if (!base) throw new Error("Missing API_URL or NEXT_PUBLIC_API_URL");
+  // używamy clientFetch z endpointem zgodnym z konwencją /v1/*
+  const response: ApiResponse<LandingPageData> =
+    await clientFetch<LandingPageData>("/data/landing-page-data", {
+      method: "GET",
+    });
 
-  const url = `${base}v1/data/landing-page-data`; // dodany brakujący "/"
-  const res = await fetch(url, { cache: "no-store" });
-
-  if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-  return res.json() as Promise<LandingPageData>;
+  // clientFetch już sam rzuci ApiError przy błędzie, więc tu tylko zwracamy dane
+  return response.data;
 }
