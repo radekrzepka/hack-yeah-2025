@@ -8,14 +8,7 @@ export class GetAllSimulationResultsResponseDto {
   })
   id: string;
 
-  @ApiProperty({
-    description: "Test value",
-    example: 42,
-  })
-  test: number;
-
   constructor(result: SimulationResultSelect) {
     this.id = result.id;
-    this.test = result.test;
   }
 }

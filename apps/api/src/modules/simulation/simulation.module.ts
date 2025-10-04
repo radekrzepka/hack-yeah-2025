@@ -5,6 +5,10 @@ import { CreateSimulationRequestHandler } from "./commands/create-simulation-req
 import { SimulationController } from "./controllers/simulation.controller";
 import { GetSimulationResultByIdHandler } from "./queries/get-simulation-result-by-id/get-simulation-result-by-id.handler";
 import { SimulationRepository } from "./repositories/simulation.repository";
+import { DataProviderService } from "./services/data-provider.service";
+import { ImprovementScenariosService } from "./services/improvement-scenarios.service";
+import { PensionCalculationService } from "./services/pension-calculation.service";
+import { ResponseBuilderService } from "./services/response-builder.service";
 import { SimulationService } from "./services/simulation.service";
 
 const SimulationCommandHandlers = [CreateSimulationRequestHandler];
@@ -19,6 +23,10 @@ const SimulationQueryHandlers = [GetSimulationResultByIdHandler];
     ...SimulationQueryHandlers,
     SimulationService,
     SimulationRepository,
+    DataProviderService,
+    PensionCalculationService,
+    ImprovementScenariosService,
+    ResponseBuilderService,
   ],
   exports: [SimulationService, SimulationRepository],
 })
