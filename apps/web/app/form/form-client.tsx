@@ -102,10 +102,6 @@ export function FormClient() {
                   Dane wysłane pomyślnie!
                 </h4>
               </div>
-              <p className="text-sm text-green-700">
-                Twoja prognoza emerytalna została przesłana. Otrzymasz wyniki na
-                podany adres email.
-              </p>
             </div>
           )}
 
