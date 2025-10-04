@@ -1,8 +1,11 @@
+import type { Response } from "express";
 import {
   Body,
   Controller,
   Get,
+  Header,
   Post,
+  Res,
   UnauthorizedException,
 } from "@nestjs/common";
 import {
@@ -84,5 +87,35 @@ export class AdminController {
   @ApiServerErrorResponse()
   async getAllData(): Promise<Array<GetAllSimulationResultsResponseDto>> {
     return await this.adminService.getAllData();
+  }
+
+  @Get("data/export")
+  @ApiBearerAuth()
+  @Header(
+    "Content-Type",
+    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+  )
+  @ApiOperation({
+    summary: "Export all simulation results as XLSX (Admin only)",
+    description:
+      "Downloads all simulation results data as an Excel file. Requires admin JWT token in Authorization header.",
+  })
+  @ApiOkResponse({
+    description: "XLSX file with simulation results downloaded successfully",
+    schema: {
+      type: "string",
+      format: "binary",
+    },
+  })
+  @ApiUnauthorizedResponse({
+    description: "Unauthorized - Invalid or missing JWT token",
+  })
+  @ApiServerErrorResponse()
+  async exportDataAsXlsx(@Res() res: Response): Promise<void> {
+    const buffer = await this.adminService.getAllDataAsXlsx();
+    const timestamp = new Date().toISOString().split("T")[0];
+    const filename = `wyniki-symulacji-${timestamp}.xlsx`;
+    res.setHeader("Content-Disposition", `attachment; filename="${filename}"`);
+    res.send(buffer);
   }
 }
