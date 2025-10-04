@@ -24,7 +24,8 @@ import {
 } from "@hackathon/ui";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CircleAlert as AlertCircle, Calculator, Info } from "lucide-react";
-import { useState } from "react";
+import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useSimulation } from "./_hooks/use-simulation";
 import { FormError } from "./form-error";
@@ -32,6 +33,7 @@ import { pensionFormSchema, type PensionFormData } from "./schema";
 
 export function FormClient() {
   const [hasAttemptedSubmit, setHasAttemptedSubmit] = useState(false);
+  const searchParams = useSearchParams();
 
   const {
     register,
@@ -53,6 +55,19 @@ export function FormClient() {
 
   const watchedValues = watch();
   const simulationMutation = useSimulation();
+
+  // Pobierz preferowaną wysokość emerytury z URL
+  const preferredPensionFromUrl = searchParams.get("target");
+
+  // Prefill formularz wartością z URL
+  useEffect(() => {
+    if (preferredPensionFromUrl) {
+      const pensionValue = Number(preferredPensionFromUrl);
+      if (!isNaN(pensionValue) && pensionValue > 0) {
+        setValue("targetPension", pensionValue);
+      }
+    }
+  }, [preferredPensionFromUrl, setValue]);
 
   const onSubmit = (data: PensionFormData) => {
     setHasAttemptedSubmit(true);
@@ -171,6 +186,46 @@ export function FormClient() {
                   aria-hidden="true"
                 >
                   1
+                </span>
+                Docelowa wysokość emerytury
+              </legend>
+
+              <div className="space-y-2">
+                <Label htmlFor="targetPension">
+                  Jaką wysokość emerytury chciałbyś osiągnąć? (PLN) *
+                </Label>
+                <Input
+                  id="targetPension"
+                  type="number"
+                  placeholder="np. 5000"
+                  min="0"
+                  step="100"
+                  required
+                  aria-required="true"
+                  aria-invalid={errors.targetPension ? "true" : "false"}
+                  aria-describedby={
+                    errors.targetPension ? "targetPension-error" : undefined
+                  }
+                  aria-label="Docelowa wysokość emerytury w PLN (wymagane pole)"
+                  {...register("targetPension", { valueAsNumber: true })}
+                />
+                <FormError
+                  error={errors.targetPension?.message}
+                  showError={hasAttemptedSubmit || touchedFields.targetPension}
+                  id="targetPension-error"
+                />
+              </div>
+            </fieldset>
+
+            <Separator />
+
+            <fieldset className="space-y-6">
+              <legend className="text-foreground mb-4 flex items-center gap-2 text-lg font-semibold">
+                <span
+                  className="bg-primary text-primary-foreground flex h-6 w-6 items-center justify-center rounded-full text-sm"
+                  aria-hidden="true"
+                >
+                  2
                 </span>
                 Dane obowiązkowe
               </legend>
@@ -399,7 +454,7 @@ export function FormClient() {
                   className="bg-secondary text-secondary-foreground flex h-6 w-6 items-center justify-center rounded-full text-sm"
                   aria-hidden="true"
                 >
-                  2
+                  3
                 </span>
                 Dane fakultatywne
               </legend>
@@ -503,72 +558,42 @@ export function FormClient() {
                   className="bg-accent text-accent-foreground flex h-6 w-6 items-center justify-center rounded-full text-sm"
                   aria-hidden="true"
                 >
-                  3
+                  4
                 </span>
                 Dodatkowe preferencje
               </legend>
 
-              <div className="space-y-6">
-                <div className="space-y-2">
-                  <Label htmlFor="targetPension">
-                    Jaką wysokość emerytury chciałbyś osiągnąć? (PLN)
+              <div className="space-y-4">
+                <div className="flex items-center space-x-2">
+                  <Checkbox
+                    id="wageGrowth"
+                    checked={watchedValues.includeWageGrowth}
+                    onCheckedChange={(checked: boolean) =>
+                      setValue("includeWageGrowth", checked)
+                    }
+                  />
+                  <Label
+                    htmlFor="wageGrowth"
+                    className="cursor-pointer text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  >
+                    Uwzględniaj prognozowany wzrost wynagrodzeń (NBP/GUS)
                   </Label>
-                  <Input
-                    id="targetPension"
-                    type="number"
-                    placeholder="np. 5000"
-                    min="0"
-                    step="100"
-                    aria-invalid={errors.targetPension ? "true" : "false"}
-                    aria-describedby={
-                      errors.targetPension ? "targetPension-error" : undefined
-                    }
-                    {...register("targetPension", {
-                      setValueAs: (value) =>
-                        value === "" ? undefined : Number(value),
-                    })}
-                  />
-                  <FormError
-                    error={errors.targetPension?.message}
-                    showError={
-                      hasAttemptedSubmit || touchedFields.targetPension
-                    }
-                    id="targetPension-error"
-                  />
                 </div>
 
-                <div className="space-y-4">
-                  <div className="flex items-center space-x-2">
-                    <Checkbox
-                      id="wageGrowth"
-                      checked={watchedValues.includeWageGrowth}
-                      onCheckedChange={(checked: boolean) =>
-                        setValue("includeWageGrowth", checked)
-                      }
-                    />
-                    <Label
-                      htmlFor="wageGrowth"
-                      className="cursor-pointer text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                    >
-                      Uwzględniaj prognozowany wzrost wynagrodzeń (NBP/GUS)
-                    </Label>
-                  </div>
-
-                  <div className="flex items-center space-x-2">
-                    <Checkbox
-                      id="indexation"
-                      checked={watchedValues.includeIndexation}
-                      onCheckedChange={(checked: boolean) =>
-                        setValue("includeIndexation", checked)
-                      }
-                    />
-                    <Label
-                      htmlFor="indexation"
-                      className="cursor-pointer text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                    >
-                      Uwzględniaj indeksację świadczeń po przejściu na emeryturę
-                    </Label>
-                  </div>
+                <div className="flex items-center space-x-2">
+                  <Checkbox
+                    id="indexation"
+                    checked={watchedValues.includeIndexation}
+                    onCheckedChange={(checked: boolean) =>
+                      setValue("includeIndexation", checked)
+                    }
+                  />
+                  <Label
+                    htmlFor="indexation"
+                    className="cursor-pointer text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  >
+                    Uwzględniaj indeksację świadczeń po przejściu na emeryturę
+                  </Label>
                 </div>
               </div>
             </fieldset>
