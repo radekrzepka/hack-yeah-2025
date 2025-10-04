@@ -7,18 +7,32 @@ import { AppModule } from "./modules/app.module";
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
+  const allowedOrigins = [
+    process.env.NEXT_PUBLIC_APP_URL,
+    "http://localhost:3000",
+    /^https:\/\/.*\.railway\.app$/,
+    /^https:\/\/.*\.vercel\.app$/,
+    /^https:\/\/.*\.vercel\.dev$/,
+  ];
+
   app.enableCors({
-    origin: [
-      process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
-
-      "http://localhost:3000",
-
-      /^https:\/\/.*\.railway\.app$/,
-
-      /^https:\/\/.*\.vercel\.app$/,
-
-      /^https:\/\/.*\.vercel\.dev$/,
-    ],
+    origin: (origin, callback) => {
+      if (
+        !origin ||
+        allowedOrigins.some((o) => {
+          if (typeof o === "string") {
+            return o === origin;
+          } else if (o instanceof RegExp) {
+            return o.test(origin);
+          }
+          return false;
+        })
+      ) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
     credentials: true,
   });
