@@ -1,15 +1,15 @@
 "use client";
 
 import {
-  Card,
-  CardContent,
-  CardTitle,
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-  TypographyP,
+    Card,
+    CardContent,
+    CardTitle,
+    Carousel,
+    CarouselContent,
+    CarouselItem,
+    CarouselNext,
+    CarouselPrevious,
+    TypographyP,
 } from "@hackathon/ui";
 import { useMemo, useRef } from "react";
 import type { LandingPageData } from "../_api/get-landing-data";
