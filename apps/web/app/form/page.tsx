@@ -7,7 +7,7 @@ function Form() {
         <header className="mb-8 text-center">
           <div className="mb-4 flex items-center justify-center gap-3">
             <div className="bg-primary text-primary-foreground px-6 py-2 text-2xl font-bold">
-              ZUS
+              ZUSS
             </div>
           </div>
           <h1 className="text-foreground mb-3 text-4xl font-bold">
