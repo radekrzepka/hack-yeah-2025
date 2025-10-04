@@ -1,5 +1,5 @@
-import { ApiProperty } from "@nestjs/swagger";
 import type { ChartTableSelect, FactsTableSelect } from "@hackathon/db";
+import { ApiProperty } from "@nestjs/swagger";
 
 export class FactDto {
   @ApiProperty({
@@ -10,13 +10,15 @@ export class FactDto {
 
   @ApiProperty({
     description: "The fact content in Polish",
-    example: "Podstawowy wiek emerytalny w Polsce wynosi 60 lat dla kobiet i 65 lat dla mężczyzn.",
+    example:
+      "Podstawowy wiek emerytalny w Polsce wynosi 60 lat dla kobiet i 65 lat dla mężczyzn.",
   })
   fact: string;
 
   @ApiProperty({
     description: "Source of the fact",
-    example: "Ustawa z dnia 17 grudnia 1998 r. o emeryturach i rentach z Funduszu Ubezpieczeń Społecznych",
+    example:
+      "Ustawa z dnia 17 grudnia 1998 r. o emeryturach i rentach z Funduszu Ubezpieczeń Społecznych",
   })
   source: string;
 
@@ -50,7 +52,11 @@ export class ChartDto {
   @ApiProperty({
     description: "Chart data in Chart.js format",
     example: {
-      labels: ["Emerytury ogółem", "Emerytura", "Renta z tyt. niezdolności do pracy"],
+      labels: [
+        "Emerytury ogółem",
+        "Emerytura",
+        "Renta z tyt. niezdolności do pracy",
+      ],
       datasets: [
         {
           label: "Średnia kwota (PLN)",
@@ -64,7 +70,8 @@ export class ChartDto {
 
   @ApiProperty({
     description: "Source of the chart data",
-    example: "https://lang.zus.pl/benefits/general-information-about-old-age-pensions",
+    example:
+      "https://lang.zus.pl/benefits/general-information-about-old-age-pensions",
   })
   source: string;
 
@@ -82,15 +89,15 @@ export class GetLandingPageDataResponseDto {
     description: "Array of facts about ZUS and retirement",
     type: [FactDto],
   })
-  facts: FactDto[];
+  facts: Array<FactDto>;
 
   @ApiProperty({
     description: "Array of charts with statistical data",
     type: [ChartDto],
   })
-  charts: ChartDto[];
+  charts: Array<ChartDto>;
 
-  constructor(facts: FactsTableSelect[], charts: ChartTableSelect[]) {
+  constructor(facts: Array<FactsTableSelect>, charts: Array<ChartTableSelect>) {
     this.facts = facts.map((fact) => new FactDto(fact));
     this.charts = charts.map((chart) => new ChartDto(chart));
   }
