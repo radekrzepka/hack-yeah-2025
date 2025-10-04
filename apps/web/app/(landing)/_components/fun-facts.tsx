@@ -1,6 +1,5 @@
 "use client";
 
-import { useMemo, useRef } from "react";
 import {
   Card,
   CardContent,
@@ -12,20 +11,23 @@ import {
   CarouselPrevious,
   TypographyP,
 } from "@hackathon/ui";
-
+import { useMemo, useRef } from "react";
 import type { LandingPageData } from "../_api/get-landing-data";
+
+// stabilna pusta tablica, nie tworzy nowej referencji co render
+const EMPTY_FACTS: ReadonlyArray<{
+  id: string;
+  fact: string;
+  source: string;
+}> = Object.freeze([]);
 
 type Props = {
   initialData: LandingPageData;
 };
 
-// function getRandomInt(max: number) {
-//   return Math.floor(Math.random() * max);
-// }
-
-function pickRandom<T>(arr: Array<T>, count: number): Array<T> {
+function pickRandom<T>(arr: readonly T[], count: number): T[] {
   if (!arr?.length) return [];
-  const res: Array<T> = [];
+  const res: T[] = [];
   const seen = new Set<number>();
 
   while (res.length < Math.min(count, arr.length)) {
@@ -33,10 +35,9 @@ function pickRandom<T>(arr: Array<T>, count: number): Array<T> {
     if (!seen.has(idx)) {
       seen.add(idx);
       const value = arr[idx];
-      if (value !== undefined) res.push(value); // ✅ TS już wie, że value to T
+      if (value !== undefined) res.push(value);
     }
   }
-
   return res;
 }
 
@@ -64,16 +65,12 @@ function FunFactsCard({
 export default function FunFacts({ initialData }: Props) {
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  const facts = initialData?.facts ?? [];
+  const facts = initialData?.facts ?? EMPTY_FACTS;
 
-  // wylosuj 3 fakty raz na zmianę danych
+  // losujemy 3 fakty tylko raz dla danych
   const selectedFacts = useMemo(() => pickRandom(facts, 3), [facts]);
 
-  // brak danych -> nic nie renderujemy (lub placeholder)
-  if (selectedFacts.length === 0) {
-    return <div className="w-full" />;
-  }
-
+  if (selectedFacts.length === 0) return <div className="w-full" />;
 
   return (
     <div className="w-full">
@@ -81,11 +78,24 @@ export default function FunFacts({ initialData }: Props) {
         opts={{ align: "start", loop: true }}
         className="relative w-full"
         setApi={(api) => {
-          // zabezpieczenie przed wieloma interwałami
+          // Jeśli API jest dostępne — ustaw interwał, jeśli nie, wyczyść
           if (api && !intervalRef.current) {
-            intervalRef.current = setInterval(() => {
+            const timer = setInterval(() => {
               api.scrollNext();
             }, 10000);
+            intervalRef.current = timer;
+
+            // zwracamy cleanup callback — wywoła się przy odmontowaniu
+            return () => {
+              clearInterval(timer);
+              intervalRef.current = null;
+            };
+          }
+
+          // gdy API zostanie odłączone (np. unmount)
+          if (!api && intervalRef.current) {
+            clearInterval(intervalRef.current);
+            intervalRef.current = null;
           }
         }}
       >
