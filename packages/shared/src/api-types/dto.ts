@@ -86,10 +86,75 @@ export interface LoginResponseDto {
 
 export interface GetAllSimulationResultsResponseDto {
   /**
-   * Simulation result ID
+   * Simulation request ID
    * @example "550e8400-e29b-41d4-a716-446655440000"
    */
   id: string;
+  /**
+   * Date of use (creation date)
+   * @example "2024-10-04"
+   */
+  usageDate: string;
+  /**
+   * Time of use (creation time)
+   * @example "14:30:00"
+   */
+  usageTime: string;
+  /**
+   * Expected pension amount
+   * @example 5000
+   */
+  expectedPension: number;
+  /**
+   * Age of the person
+   * @example 30
+   */
+  age: number;
+  /**
+   * Sex of the person
+   * @example "male"
+   */
+  sex: string;
+  /**
+   * Gross salary amount
+   * @example 7500
+   */
+  grossSalary: number;
+  /**
+   * Whether sick leave was included in calculation
+   * @example true
+   */
+  includeSickLeave: boolean;
+  /**
+   * Total capital accumulated (main account + sub account)
+   * @example "450000.00"
+   */
+  totalCapital: object | null;
+  /**
+   * Main account capital
+   * @example "300000.00"
+   */
+  mainAccountCapital: object | null;
+  /**
+   * Sub account capital
+   * @example "150000.00"
+   */
+  subAccountCapital: object | null;
+  /**
+   * Actual monthly pension (gross)
+   * @example "3500.00"
+   */
+  actualPension: object | null;
+  /**
+   * Adjusted pension (monthly pension gross)
+   * @example "3500.00"
+   */
+  adjustedPension: object | null;
+  /**
+   * Postal code
+   * @example "00-001"
+   */
+  postalCode: object | null;
 }
 
 export interface SendSimulationRequestDto {
@@ -127,6 +192,18 @@ export interface SendSimulationRequestDto {
    * @example true
    */
   includeSickLeave: boolean;
+  /**
+   * Expected pension amount
+   * @min 0
+   * @example 5000
+   */
+  expectedPension: number;
+  /**
+   * Postal code
+   * @pattern ^[0-9]{2}-[0-9]{3}$
+   * @example "00-001"
+   */
+  postalCode?: string;
 }
 
 export interface SendSimulationResponseDto {

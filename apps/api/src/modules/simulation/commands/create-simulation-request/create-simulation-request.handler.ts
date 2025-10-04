@@ -32,6 +32,8 @@ export class CreateSimulationRequestHandler
       workStartDate,
       plannedRetirementYear,
       includeSickLeave,
+      expectedPension,
+      postalCode,
     } = command;
 
     this.logger.logCommandStart("CreateSimulationRequestCommand", "execute", {
@@ -41,6 +43,8 @@ export class CreateSimulationRequestHandler
       workStartDate,
       plannedRetirementYear,
       includeSickLeave,
+      expectedPension,
+      postalCode,
     });
 
     const createdRequest = await this.simulationRepository.create({
@@ -50,6 +54,8 @@ export class CreateSimulationRequestHandler
       workStartDate,
       plannedRetirementYear,
       includeSickLeave,
+      expectedPension,
+      postalCode,
     });
 
     if (!createdRequest) {

@@ -6,7 +6,9 @@ import {
   jsonb,
   pgEnum,
   pgTable,
+  timestamp,
   uuid,
+  varchar,
 } from "drizzle-orm/pg-core";
 
 export const sexEnum = pgEnum("sex", ["male", "female"]);
@@ -19,6 +21,9 @@ export const simulationRequests = pgTable("simulation_requests", {
   workStartDate: date().notNull(),
   plannedRetirementYear: integer().notNull(),
   includeSickLeave: boolean().notNull().default(false),
+  expectedPension: integer().notNull(),
+  postalCode: varchar({ length: 10 }),
+  createdAt: timestamp().notNull().defaultNow(),
   additionalData: jsonb(),
 });
 

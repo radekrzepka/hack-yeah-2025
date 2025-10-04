@@ -15,4 +15,10 @@ export interface ISimulationRepository {
   findRequestById(id: string): Promise<SimulationRequestSelect | null>;
   findResultById(id: string): Promise<SimulationResultSelect | null>;
   findAllResults(): Promise<Array<SimulationResultSelect>>;
+  findAllRequestsWithResults(): Promise<
+    Array<{
+      request: SimulationRequestSelect;
+      result: SimulationResultSelect | null;
+    }>
+  >;
 }

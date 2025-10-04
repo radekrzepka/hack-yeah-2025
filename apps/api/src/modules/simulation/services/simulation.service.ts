@@ -24,6 +24,8 @@ export class SimulationService {
       dto.workStartDate,
       dto.plannedRetirementYear,
       dto.includeSickLeave,
+      dto.expectedPension,
+      dto.postalCode,
     );
     return this.commandBus.execute(command);
   }
