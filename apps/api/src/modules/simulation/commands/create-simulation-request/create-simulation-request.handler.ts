@@ -4,6 +4,8 @@ import { LoggerService } from "../../../../common/services";
 import { SendSimulationResponseDto } from "../../dtos/send-simulation/send-simulation-response.dto";
 import { SimulationCreationException } from "../../exceptions/simulation.exceptions";
 import { SimulationRepository } from "../../repositories/simulation.repository";
+import { PensionCalculationService } from "../../services/pension-calculation.service";
+import { ResponseBuilderService } from "../../services/response-builder.service";
 import { CreateSimulationRequestCommand } from "./create-simulation-request.command";
 
 @CommandHandler(CreateSimulationRequestCommand)
@@ -12,7 +14,11 @@ export class CreateSimulationRequestHandler
 {
   private readonly logger: LoggerService;
 
-  constructor(private readonly simulationRepository: SimulationRepository) {
+  constructor(
+    private readonly simulationRepository: SimulationRepository,
+    private readonly pensionCalculationService: PensionCalculationService,
+    private readonly responseBuilderService: ResponseBuilderService,
+  ) {
     this.logger = new LoggerService(CreateSimulationRequestHandler.name);
   }
 
@@ -60,10 +66,26 @@ export class CreateSimulationRequestHandler
       "execute",
     );
 
-    const randomTestValue = Math.floor(Math.random() * 10000);
+    const calculationResult = this.pensionCalculationService.calculatePension({
+      age,
+      sex,
+      grossSalary,
+      workStartDate,
+      plannedRetirementYear,
+      includeSickLeave,
+    });
+
     const createdResult = await this.simulationRepository.createResult({
       id: createdRequest.id,
-      test: randomTestValue,
+      requestId: createdRequest.id,
+      monthlyPensionGross: calculationResult.monthlyPensionGross.toFixed(2),
+      totalCapital: calculationResult.totalCapital.toFixed(2),
+      mainAccountCapital: calculationResult.mainAccountCapital.toFixed(2),
+      subAccountCapital: calculationResult.subAccountCapital.toFixed(2),
+      averageLifeExpectancyMonths:
+        calculationResult.averageLifeExpectancyMonths.toFixed(2),
+      retirementAge: calculationResult.retirementAge,
+      yearlyBreakdown: calculationResult.yearlyBreakdown,
     });
 
     if (!createdResult) {
@@ -76,7 +98,7 @@ export class CreateSimulationRequestHandler
     }
 
     this.logger.logSuccess(
-      `Simulation result created successfully with ID: ${createdResult.id} and test value: ${randomTestValue}`,
+      `Simulation result created successfully with ID: ${createdResult.id}, monthly pension: ${calculationResult.monthlyPensionGross.toFixed(2)} PLN`,
       "execute",
     );
 

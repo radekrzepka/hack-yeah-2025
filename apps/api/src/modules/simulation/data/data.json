@@ -1,0 +1,698 @@
+[
+  {
+    "rok": 2014,
+    "wskaznikWzrostuWynagrodzenia": 1.03655,
+    "przecietneWynagrodzenie": 3783.46,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0206,
+    "waloryzacjaSubkonta": 1.0489
+  },
+  {
+    "rok": 2015,
+    "wskaznikWzrostuWynagrodzenia": 1.04011,
+    "przecietneWynagrodzenie": 3899.78,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0537,
+    "waloryzacjaSubkonta": 1.0437
+  },
+  {
+    "rok": 2016,
+    "wskaznikWzrostuWynagrodzenia": 1.04407,
+    "przecietneWynagrodzenie": 4047.21,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0637,
+    "waloryzacjaSubkonta": 1.0339
+  },
+  {
+    "rok": 2017,
+    "wskaznikWzrostuWynagrodzenia": 1.03473,
+    "przecietneWynagrodzenie": 4271.51,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0868,
+    "waloryzacjaSubkonta": 1.0399
+  },
+  {
+    "rok": 2018,
+    "wskaznikWzrostuWynagrodzenia": 1.05649,
+    "przecietneWynagrodzenie": 4585.03,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.092,
+    "waloryzacjaSubkonta": 1.0501
+  },
+  {
+    "rok": 2019,
+    "wskaznikWzrostuWynagrodzenia": 1.04854,
+    "przecietneWynagrodzenie": 4918.17,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0894,
+    "waloryzacjaSubkonta": 1.0573000000000001
+  },
+  {
+    "rok": 2020,
+    "wskaznikWzrostuWynagrodzenia": 1.01614,
+    "przecietneWynagrodzenie": 5167.47,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0541,
+    "waloryzacjaSubkonta": 1.0523
+  },
+  {
+    "rok": 2021,
+    "wskaznikWzrostuWynagrodzenia": 1.04263,
+    "przecietneWynagrodzenie": 5662.53,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0933,
+    "waloryzacjaSubkonta": 1.0707
+  },
+  {
+    "rok": 2022,
+    "wskaznikWzrostuWynagrodzenia": 0.97966,
+    "przecietneWynagrodzenie": 6346.15,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.1440000000000001,
+    "waloryzacjaSubkonta": 1.092
+  },
+  {
+    "rok": 2023,
+    "wskaznikWzrostuWynagrodzenia": 1.01215,
+    "przecietneWynagrodzenie": 7155.48,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.1487,
+    "waloryzacjaSubkonta": 1.0991
+  },
+  {
+    "rok": 2024,
+    "wskaznikWzrostuWynagrodzenia": 1.095,
+    "przecietneWynagrodzenie": 8181.72,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.1441,
+    "waloryzacjaSubkonta": 1.0983
+  },
+  {
+    "rok": 2025,
+    "wskaznikWzrostuWynagrodzenia": 1.0202,
+    "przecietneWynagrodzenie": 8766.84,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0739,
+    "waloryzacjaSubkonta": 1.1113
+  },
+  {
+    "rok": 2026,
+    "wskaznikWzrostuWynagrodzenia": 1.0308,
+    "przecietneWynagrodzenie": 9312.48,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0661,
+    "waloryzacjaSubkonta": 1.1004
+  },
+  {
+    "rok": 2027,
+    "wskaznikWzrostuWynagrodzenia": 1.0308,
+    "przecietneWynagrodzenie": 9850.81,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0573000000000001,
+    "waloryzacjaSubkonta": 1.0762
+  },
+  {
+    "rok": 2028,
+    "wskaznikWzrostuWynagrodzenia": 1.0277,
+    "przecietneWynagrodzenie": 10378.79,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0519,
+    "waloryzacjaSubkonta": 1.0676
+  },
+  {
+    "rok": 2029,
+    "wskaznikWzrostuWynagrodzenia": 1.0271,
+    "przecietneWynagrodzenie": 10926.56,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0493000000000001,
+    "waloryzacjaSubkonta": 1.0646
+  },
+  {
+    "rok": 2030,
+    "wskaznikWzrostuWynagrodzenia": 1.0266,
+    "przecietneWynagrodzenie": 11497.64,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0472,
+    "waloryzacjaSubkonta": 1.0567
+  },
+  {
+    "rok": 2031,
+    "wskaznikWzrostuWynagrodzenia": 1.026,
+    "przecietneWynagrodzenie": 12091.49,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.045,
+    "waloryzacjaSubkonta": 1.0531
+  },
+  {
+    "rok": 2032,
+    "wskaznikWzrostuWynagrodzenia": 1.0254,
+    "przecietneWynagrodzenie": 12708.58,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0432,
+    "waloryzacjaSubkonta": 1.0508
+  },
+  {
+    "rok": 2033,
+    "wskaznikWzrostuWynagrodzenia": 1.0249,
+    "przecietneWynagrodzenie": 13350.65,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0414,
+    "waloryzacjaSubkonta": 1.0492
+  },
+  {
+    "rok": 2034,
+    "wskaznikWzrostuWynagrodzenia": 1.0243,
+    "przecietneWynagrodzenie": 14016.95,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0412000000000001,
+    "waloryzacjaSubkonta": 1.0478
+  },
+  {
+    "rok": 2035,
+    "wskaznikWzrostuWynagrodzenia": 1.0237,
+    "przecietneWynagrodzenie": 14707.88,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.041,
+    "waloryzacjaSubkonta": 1.0465
+  },
+  {
+    "rok": 2036,
+    "wskaznikWzrostuWynagrodzenia": 1.0232,
+    "przecietneWynagrodzenie": 15425.33,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0412000000000001,
+    "waloryzacjaSubkonta": 1.0454
+  },
+  {
+    "rok": 2037,
+    "wskaznikWzrostuWynagrodzenia": 1.0226,
+    "przecietneWynagrodzenie": 16168.29,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0411,
+    "waloryzacjaSubkonta": 1.0445
+  },
+  {
+    "rok": 2038,
+    "wskaznikWzrostuWynagrodzenia": 1.022,
+    "przecietneWynagrodzenie": 16937.09,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0404,
+    "waloryzacjaSubkonta": 1.0433
+  },
+  {
+    "rok": 2039,
+    "wskaznikWzrostuWynagrodzenia": 1.0215,
+    "przecietneWynagrodzenie": 17733.77,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0398,
+    "waloryzacjaSubkonta": 1.0418
+  },
+  {
+    "rok": 2040,
+    "wskaznikWzrostuWynagrodzenia": 1.0209,
+    "przecietneWynagrodzenie": 18557.02,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0391,
+    "waloryzacjaSubkonta": 1.0401
+  },
+  {
+    "rok": 2041,
+    "wskaznikWzrostuWynagrodzenia": 1.0203,
+    "przecietneWynagrodzenie": 19407.07,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0388,
+    "waloryzacjaSubkonta": 1.0384
+  },
+  {
+    "rok": 2042,
+    "wskaznikWzrostuWynagrodzenia": 1.0198,
+    "przecietneWynagrodzenie": 20286.11,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0361,
+    "waloryzacjaSubkonta": 1.0366
+  },
+  {
+    "rok": 2043,
+    "wskaznikWzrostuWynagrodzenia": 1.0198,
+    "przecietneWynagrodzenie": 21204.97,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.033,
+    "waloryzacjaSubkonta": 1.0348
+  },
+  {
+    "rok": 2044,
+    "wskaznikWzrostuWynagrodzenia": 1.0195,
+    "przecietneWynagrodzenie": 22158.93,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0322,
+    "waloryzacjaSubkonta": 1.0332999999999999
+  },
+  {
+    "rok": 2045,
+    "wskaznikWzrostuWynagrodzenia": 1.0193,
+    "przecietneWynagrodzenie": 23151.26,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0327,
+    "waloryzacjaSubkonta": 1.0324
+  },
+  {
+    "rok": 2046,
+    "wskaznikWzrostuWynagrodzenia": 1.0191,
+    "przecietneWynagrodzenie": 24183.29,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0325,
+    "waloryzacjaSubkonta": 1.0316
+  },
+  {
+    "rok": 2047,
+    "wskaznikWzrostuWynagrodzenia": 1.0188,
+    "przecietneWynagrodzenie": 25253.88,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0325,
+    "waloryzacjaSubkonta": 1.0314
+  },
+  {
+    "rok": 2048,
+    "wskaznikWzrostuWynagrodzenia": 1.0186,
+    "przecietneWynagrodzenie": 26366.69,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0334,
+    "waloryzacjaSubkonta": 1.0316
+  },
+  {
+    "rok": 2049,
+    "wskaznikWzrostuWynagrodzenia": 1.0184,
+    "przecietneWynagrodzenie": 27523.13,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0331000000000001,
+    "waloryzacjaSubkonta": 1.0316
+  },
+  {
+    "rok": 2050,
+    "wskaznikWzrostuWynagrodzenia": 1.0182,
+    "przecietneWynagrodzenie": 28724.65,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0325,
+    "waloryzacjaSubkonta": 1.0314
+  },
+  {
+    "rok": 2051,
+    "wskaznikWzrostuWynagrodzenia": 1.0179,
+    "przecietneWynagrodzenie": 29969.79,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0321,
+    "waloryzacjaSubkonta": 1.0312999999999999
+  },
+  {
+    "rok": 2052,
+    "wskaznikWzrostuWynagrodzenia": 1.0177,
+    "przecietneWynagrodzenie": 31262.76,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0317,
+    "waloryzacjaSubkonta": 1.0311
+  },
+  {
+    "rok": 2053,
+    "wskaznikWzrostuWynagrodzenia": 1.0175,
+    "przecietneWynagrodzenie": 32605.1,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0317,
+    "waloryzacjaSubkonta": 1.031
+  },
+  {
+    "rok": 2054,
+    "wskaznikWzrostuWynagrodzenia": 1.0173,
+    "przecietneWynagrodzenie": 33998.4,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0322,
+    "waloryzacjaSubkonta": 1.0312000000000001
+  },
+  {
+    "rok": 2055,
+    "wskaznikWzrostuWynagrodzenia": 1.0171,
+    "przecietneWynagrodzenie": 35444.27,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0328,
+    "waloryzacjaSubkonta": 1.0316
+  },
+  {
+    "rok": 2056,
+    "wskaznikWzrostuWynagrodzenia": 1.0168,
+    "przecietneWynagrodzenie": 36940.73,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0331000000000001,
+    "waloryzacjaSubkonta": 1.0322
+  },
+  {
+    "rok": 2057,
+    "wskaznikWzrostuWynagrodzenia": 1.0166,
+    "przecietneWynagrodzenie": 38492.79,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0331000000000001,
+    "waloryzacjaSubkonta": 1.0327
+  },
+  {
+    "rok": 2058,
+    "wskaznikWzrostuWynagrodzenia": 1.0164,
+    "przecietneWynagrodzenie": 40102.17,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0332,
+    "waloryzacjaSubkonta": 1.0332
+  },
+  {
+    "rok": 2059,
+    "wskaznikWzrostuWynagrodzenia": 1.0162,
+    "przecietneWynagrodzenie": 41770.62,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0336,
+    "waloryzacjaSubkonta": 1.0337
+  },
+  {
+    "rok": 2060,
+    "wskaznikWzrostuWynagrodzenia": 1.016,
+    "przecietneWynagrodzenie": 43499.92,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.034,
+    "waloryzacjaSubkonta": 1.0341
+  },
+  {
+    "rok": 2061,
+    "wskaznikWzrostuWynagrodzenia": 1.0157,
+    "przecietneWynagrodzenie": 45287.44,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0343,
+    "waloryzacjaSubkonta": 1.0346
+  },
+  {
+    "rok": 2062,
+    "wskaznikWzrostuWynagrodzenia": 1.0155,
+    "przecietneWynagrodzenie": 47139.13,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0348,
+    "waloryzacjaSubkonta": 1.0351000000000001
+  },
+  {
+    "rok": 2063,
+    "wskaznikWzrostuWynagrodzenia": 1.0153,
+    "przecietneWynagrodzenie": 49056.87,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0352,
+    "waloryzacjaSubkonta": 1.0356
+  },
+  {
+    "rok": 2064,
+    "wskaznikWzrostuWynagrodzenia": 1.0151,
+    "przecietneWynagrodzenie": 51042.57,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0356,
+    "waloryzacjaSubkonta": 1.0361
+  },
+  {
+    "rok": 2065,
+    "wskaznikWzrostuWynagrodzenia": 1.0149,
+    "przecietneWynagrodzenie": 53098.18,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0359,
+    "waloryzacjaSubkonta": 1.0366
+  },
+  {
+    "rok": 2066,
+    "wskaznikWzrostuWynagrodzenia": 1.0147,
+    "przecietneWynagrodzenie": 55225.69,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.036,
+    "waloryzacjaSubkonta": 1.0368000000000002
+  },
+  {
+    "rok": 2067,
+    "wskaznikWzrostuWynagrodzenia": 1.0144,
+    "przecietneWynagrodzenie": 57421.46,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0356,
+    "waloryzacjaSubkonta": 1.0367
+  },
+  {
+    "rok": 2068,
+    "wskaznikWzrostuWynagrodzenia": 1.0142,
+    "przecietneWynagrodzenie": 59692.77,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0352,
+    "waloryzacjaSubkonta": 1.0364
+  },
+  {
+    "rok": 2069,
+    "wskaznikWzrostuWynagrodzenia": 1.014,
+    "przecietneWynagrodzenie": 62041.68,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0348,
+    "waloryzacjaSubkonta": 1.0359
+  },
+  {
+    "rok": 2070,
+    "wskaznikWzrostuWynagrodzenia": 1.0138,
+    "przecietneWynagrodzenie": 64470.3,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0347,
+    "waloryzacjaSubkonta": 1.0354999999999999
+  },
+  {
+    "rok": 2071,
+    "wskaznikWzrostuWynagrodzenia": 1.0138,
+    "przecietneWynagrodzenie": 66993.99,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.035,
+    "waloryzacjaSubkonta": 1.0352
+  },
+  {
+    "rok": 2072,
+    "wskaznikWzrostuWynagrodzenia": 1.0138,
+    "przecietneWynagrodzenie": 69616.47,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0354,
+    "waloryzacjaSubkonta": 1.0352
+  },
+  {
+    "rok": 2073,
+    "wskaznikWzrostuWynagrodzenia": 1.0138,
+    "przecietneWynagrodzenie": 72341.61,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0356999999999998,
+    "waloryzacjaSubkonta": 1.0353
+  },
+  {
+    "rok": 2074,
+    "wskaznikWzrostuWynagrodzenia": 1.0138,
+    "przecietneWynagrodzenie": 75173.42,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0356999999999998,
+    "waloryzacjaSubkonta": 1.0354
+  },
+  {
+    "rok": 2075,
+    "wskaznikWzrostuWynagrodzenia": 1.0138,
+    "przecietneWynagrodzenie": 78116.08,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0354,
+    "waloryzacjaSubkonta": 1.0354
+  },
+  {
+    "rok": 2076,
+    "wskaznikWzrostuWynagrodzenia": 1.0138,
+    "przecietneWynagrodzenie": 81173.93,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0349,
+    "waloryzacjaSubkonta": 1.0352
+  },
+  {
+    "rok": 2077,
+    "wskaznikWzrostuWynagrodzenia": 1.0138,
+    "przecietneWynagrodzenie": 84351.48,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0349,
+    "waloryzacjaSubkonta": 1.0349
+  },
+  {
+    "rok": 2078,
+    "wskaznikWzrostuWynagrodzenia": 1.0138,
+    "przecietneWynagrodzenie": 87653.42,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0349,
+    "waloryzacjaSubkonta": 1.0346
+  },
+  {
+    "rok": 2079,
+    "wskaznikWzrostuWynagrodzenia": 1.0138,
+    "przecietneWynagrodzenie": 91084.61,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0348,
+    "waloryzacjaSubkonta": 1.0344
+  },
+  {
+    "rok": 2080,
+    "wskaznikWzrostuWynagrodzenia": 1.0138,
+    "przecietneWynagrodzenie": 94650.12,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0347,
+    "waloryzacjaSubkonta": 1.0344
+  },
+  {
+    "rok": 2081,
+    "wskaznikWzrostuWynagrodzenia": 1.0138,
+    "przecietneWynagrodzenie": 98355.2,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0347,
+    "waloryzacjaSubkonta": 1.0344
+  },
+  {
+    "rok": 2082,
+    "wskaznikWzrostuWynagrodzenia": 1.0138,
+    "przecietneWynagrodzenie": 102205.31,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0347,
+    "waloryzacjaSubkonta": 1.0344
+  },
+  {
+    "rok": 2083,
+    "wskaznikWzrostuWynagrodzenia": 1.0138,
+    "przecietneWynagrodzenie": 106206.14,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0347,
+    "waloryzacjaSubkonta": 1.0344
+  },
+  {
+    "rok": 2084,
+    "wskaznikWzrostuWynagrodzenia": 1.0138,
+    "przecietneWynagrodzenie": 110363.58,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0347,
+    "waloryzacjaSubkonta": 1.0344
+  },
+  {
+    "rok": 2085,
+    "wskaznikWzrostuWynagrodzenia": 1.0138,
+    "przecietneWynagrodzenie": 114683.76,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0347,
+    "waloryzacjaSubkonta": 1.0344
+  },
+  {
+    "rok": 2086,
+    "wskaznikWzrostuWynagrodzenia": 1.0138,
+    "przecietneWynagrodzenie": 119173.06,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0347,
+    "waloryzacjaSubkonta": 1.0344
+  },
+  {
+    "rok": 2087,
+    "wskaznikWzrostuWynagrodzenia": 1.0138,
+    "przecietneWynagrodzenie": 123838.09,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0347,
+    "waloryzacjaSubkonta": 1.0344
+  },
+  {
+    "rok": 2088,
+    "wskaznikWzrostuWynagrodzenia": 1.0138,
+    "przecietneWynagrodzenie": 128685.73,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0347,
+    "waloryzacjaSubkonta": 1.0344
+  },
+  {
+    "rok": 2089,
+    "wskaznikWzrostuWynagrodzenia": 1.0138,
+    "przecietneWynagrodzenie": 133723.13,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0347,
+    "waloryzacjaSubkonta": 1.0344
+  },
+  {
+    "rok": 2090,
+    "wskaznikWzrostuWynagrodzenia": 1.0138,
+    "przecietneWynagrodzenie": 138957.72,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0347,
+    "waloryzacjaSubkonta": 1.0344
+  },
+  {
+    "rok": 2091,
+    "wskaznikWzrostuWynagrodzenia": 1.0138,
+    "przecietneWynagrodzenie": 144397.22,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0347,
+    "waloryzacjaSubkonta": 1.0344
+  },
+  {
+    "rok": 2092,
+    "wskaznikWzrostuWynagrodzenia": 1.0138,
+    "przecietneWynagrodzenie": 150049.65,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0347,
+    "waloryzacjaSubkonta": 1.0344
+  },
+  {
+    "rok": 2093,
+    "wskaznikWzrostuWynagrodzenia": 1.0138,
+    "przecietneWynagrodzenie": 155923.34,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0347,
+    "waloryzacjaSubkonta": 1.0344
+  },
+  {
+    "rok": 2094,
+    "wskaznikWzrostuWynagrodzenia": 1.0138,
+    "przecietneWynagrodzenie": 162026.96,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0347,
+    "waloryzacjaSubkonta": 1.0344
+  },
+  {
+    "rok": 2095,
+    "wskaznikWzrostuWynagrodzenia": 1.0138,
+    "przecietneWynagrodzenie": 168369.51,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0347,
+    "waloryzacjaSubkonta": 1.0344
+  },
+  {
+    "rok": 2096,
+    "wskaznikWzrostuWynagrodzenia": 1.0138,
+    "przecietneWynagrodzenie": 174960.33,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0347,
+    "waloryzacjaSubkonta": 1.0344
+  },
+  {
+    "rok": 2097,
+    "wskaznikWzrostuWynagrodzenia": 1.0138,
+    "przecietneWynagrodzenie": 181809.15,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0347,
+    "waloryzacjaSubkonta": 1.0344
+  },
+  {
+    "rok": 2098,
+    "wskaznikWzrostuWynagrodzenia": 1.0138,
+    "przecietneWynagrodzenie": 188926.07,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0347,
+    "waloryzacjaSubkonta": 1.0344
+  },
+  {
+    "rok": 2099,
+    "wskaznikWzrostuWynagrodzenia": 1.0138,
+    "przecietneWynagrodzenie": 196321.58,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0347,
+    "waloryzacjaSubkonta": 1.0344
+  },
+  {
+    "rok": 2100,
+    "wskaznikWzrostuWynagrodzenia": 1.0138,
+    "przecietneWynagrodzenie": 204006.59,
+    "stopaNaSubkonto": 0.0438,
+    "waloryzacjaKonta": 1.0347,
+    "waloryzacjaSubkonta": 1.0344
+  }
+]

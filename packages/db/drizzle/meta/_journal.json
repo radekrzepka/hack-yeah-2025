@@ -15,6 +15,13 @@
       "when": 1759588575296,
       "tag": "0001_handy_invaders",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1759597716871,
+      "tag": "0002_clever_tigra",
+      "breakpoints": true
     }
   ]
 }

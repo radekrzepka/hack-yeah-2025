@@ -36,6 +36,14 @@ export class SimulationRepository implements ISimulationRepository {
     return createdResult || null;
   }
 
+  async findRequestById(id: string): Promise<SimulationRequestSelect | null> {
+    const [request] = await this.db.client
+      .select()
+      .from(simulationRequests)
+      .where(eq(simulationRequests.id, id));
+    return request || null;
+  }
+
   async findResultById(id: string): Promise<SimulationResultSelect | null> {
     const [result] = await this.db.client
       .select()
