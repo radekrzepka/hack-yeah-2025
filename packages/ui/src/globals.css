@@ -19,7 +19,7 @@ html {
     --secondary: 204.5455 100% 21.5686%;
     --secondary-foreground: 0 0% 100%;
     --muted: 0 0% 96.0784%;
-    --muted-foreground: 0 0% 35%;
+    --muted-foreground: 0 0% 45.0980%;
     --accent: 210 11.7647% 93.3333%;
     --accent-foreground: 0 0% 0%;
     --destructive: 0 82.9545% 65.4902%;
@@ -30,7 +30,7 @@ html {
     --chart-1: 211.6364 100% 78.4314%;
     --chart-2: 211.8367 62.0253% 53.5294%;
     --chart-3: 221.5842 86.3248% 54.1176%;
-    --chart-4: 223.75 78.6885% 47.8431%;
+    --chart-4: 223.7500 78.6885% 47.8431%;
     --chart-5: 226.4789 69.6078% 40%;
     --sidebar: 0 0% 98.0392%;
     --sidebar-foreground: 0 0% 3.9216%;
@@ -40,15 +40,9 @@ html {
     --sidebar-accent-foreground: 0 0% 9.0196%;
     --sidebar-border: 0 0% 89.8039%;
     --sidebar-ring: 0 0% 63.1373%;
-    --font-sans:
-      ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-      Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
-      "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-      "Noto Color Emoji";
+    --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
     --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-    --font-mono:
-      ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
-      "Courier New", monospace;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     --radius: 0rem;
     --shadow-x: 0;
     --shadow-y: 1px;
@@ -58,21 +52,16 @@ html {
     --shadow-color: #000000;
     --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
     --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-    --shadow-sm:
-      0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
-    --shadow:
-      0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
-    --shadow-md:
-      0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 2px 4px -1px hsl(0 0% 0% / 0.1);
-    --shadow-lg:
-      0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 4px 6px -1px hsl(0 0% 0% / 0.1);
-    --shadow-xl:
-      0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 8px 10px -1px hsl(0 0% 0% / 0.1);
+    --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
+    --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
+    --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 2px 4px -1px hsl(0 0% 0% / 0.10);
+    --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 4px 6px -1px hsl(0 0% 0% / 0.10);
+    --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 8px 10px -1px hsl(0 0% 0% / 0.10);
     --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
     --tracking-normal: 0em;
     --spacing: 0.25rem;
   }
-  /*   
+/*   
   .dark {
     --background: 0 0% 3.9216%;
     --foreground: 0 0% 98.0392%;
@@ -85,7 +74,7 @@ html {
     --secondary: 34.0909 100% 65.4902%;
     --secondary-foreground: 221.2500 14.0351% 77.6471%;
     --muted: 0 0% 14.9020%;
-    --muted-foreground: 0 0% 70%;
+    --muted-foreground: 0 0% 63.1373%;
     --accent: 0 0% 25.0980%;
     --accent-foreground: 0 0% 98.0392%;
     --destructive: 358.8387 100% 69.6078%;
@@ -134,42 +123,5 @@ html {
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
-  }
-
-  /* Screen reader only class for accessibility */
-  .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-  }
-
-  /* Enhanced focus styles for better accessibility */
-  *:focus-visible {
-    outline: 2px solid hsl(var(--ring));
-    outline-offset: 2px;
-  }
-
-  /* Skip link for keyboard navigation */
-  .skip-link {
-    position: absolute;
-    top: -40px;
-    left: 6px;
-    background: hsl(var(--primary));
-    color: hsl(var(--primary-foreground));
-    padding: 8px;
-    text-decoration: none;
-    border-radius: 4px;
-    z-index: 1000;
-    font-weight: 600;
-  }
-
-  .skip-link:focus {
-    top: 6px;
   }
 }
