@@ -19,7 +19,7 @@ function SeeMoreCard({
   // imgAlt: string;
 }) {
   return (
-    <Card className="flex">
+    <Card className="mb-2 flex">
       <CardHeader>
         <CardTitle>{title}</CardTitle>
       </CardHeader>

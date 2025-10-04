@@ -47,7 +47,7 @@ function FunFactsCard({
 }) {
   return (
     <Card className="m-5 bg-[#fefefe] p-5">
-      <CardTitle className="mb-5">Ciekawostka:</CardTitle>
+      <CardTitle className="mb-5">Czy wiesz że:</CardTitle>
       <CardContent>
         <ul>
           <li>
@@ -72,7 +72,6 @@ export default function FunFacts({ initialData }: Props) {
   return (
     <div className="w-full">
       <Carousel
-        // ref-callback: gdy element znika (el === null) — czyścimy interwał
         ref={(el) => {
           if (!el && intervalRef.current) {
             clearInterval(intervalRef.current);
@@ -82,13 +81,11 @@ export default function FunFacts({ initialData }: Props) {
         opts={{ align: "start", loop: true }}
         className="relative w-full"
         setApi={(api) => {
-          // nic nie zwracamy (void) -> brak błędu TS
           if (api && !intervalRef.current) {
             intervalRef.current = setInterval(() => {
               api.scrollNext();
             }, 10000);
           }
-          // dodatkowe zabezpieczenie: gdy api przestanie istnieć
           if (!api && intervalRef.current) {
             clearInterval(intervalRef.current);
             intervalRef.current = null;
