@@ -18,6 +18,7 @@ function transformFormDataToApi(
     workStartDate: `${formData.startYear}-01-01`,
     plannedRetirementYear: formData.endYear,
     includeSickLeave: formData.includeSickLeave,
+    expectedPension: 1234,
   };
 }
 
