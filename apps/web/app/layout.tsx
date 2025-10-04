@@ -5,6 +5,8 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Toaster } from "sonner";
+import { Footer } from "./_components/footer";
+import { Menu } from "./_components/menu";
 import { QueryClientProvider } from "./_providers/query-client-provider";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -41,12 +43,14 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <QueryClientProvider>
+            <Menu />
             <a href="#main-content" className="skip-link">
               Przejdź do głównej zawartości
             </a>
-            <main role="main" id="main-content">
+            <main role="main" id="main-content" className="flex-1">
               {children}
             </main>
+            <Footer />
             <ReactQueryDevtools initialIsOpen={false} />
           </QueryClientProvider>
           <Toaster richColors position="top-center" />
