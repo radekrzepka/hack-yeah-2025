@@ -9,8 +9,8 @@ export default async function Dashboard() {
   return (
     <div className="bg-primary w-full">
       <Header />
-      <FunFacts initialData={data}/>
       <SeeMore />
+      <FunFacts initialData={data} />
     </div>
   );
 }
