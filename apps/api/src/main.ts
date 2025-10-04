@@ -9,14 +9,15 @@ async function bootstrap() {
 
   app.enableCors({
     origin: [
-      process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
-      "http://localhost:3000",
+      process.env.NEXT_PUBLIC_APP_URL || "*://localhost:*/*",
+      "*://localhost:*/*",
       /^https:\/\/.*\.railway\.app$/,
       /^https:\/\/.*\.vercel\.app$/,
       /^https:\/\/.*\.vercel\.dev$/,
     ],
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
     credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization"],
   });
 
   app.enableVersioning({ type: VersioningType.URI });
