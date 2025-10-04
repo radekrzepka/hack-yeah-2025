@@ -29,15 +29,7 @@ export function Footer() {
                   href="/form"
                   className="text-muted-foreground hover:text-foreground text-sm transition-colors"
                 >
-                  Kalkulator emerytury
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/test"
-                  className="text-muted-foreground hover:text-foreground text-sm transition-colors"
-                >
-                  Test Table
+                  ZUSometr
                 </Link>
               </li>
             </ul>

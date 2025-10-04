@@ -2,6 +2,7 @@ import type {
   SendSimulationRequestDto,
   SendSimulationResponseDto,
 } from "@hackathon/shared";
+import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 
 import { sendSimulationClient } from "../_api/send-simulation";
@@ -11,18 +12,27 @@ import { type PensionFormData } from "../schema";
 function transformFormDataToApi(
   formData: PensionFormData,
 ): SendSimulationRequestDto {
-  return {
+  const apiData: SendSimulationRequestDto = {
     age: formData.age,
     sex: formData.gender,
     grossSalary: formData.salary,
     workStartDate: `${formData.startYear}-01-01`,
     plannedRetirementYear: formData.endYear,
     includeSickLeave: formData.includeSickLeave,
-    expectedPension: 1234,
+    expectedPension: formData.targetPension,
   };
+
+  // Dodaj postalCode tylko jeśli jest wypełniony
+  if (formData.postalCode && formData.postalCode.trim() !== "") {
+    apiData.postalCode = formData.postalCode.trim();
+  }
+
+  return apiData;
 }
 
 export function useSimulation() {
+  const router = useRouter();
+
   return useMutation({
     mutationFn: async (
       formData: PensionFormData,
@@ -32,8 +42,8 @@ export function useSimulation() {
     },
     onSuccess: (data) => {
       console.log("Simulation sent successfully:", data);
-      // Tutaj można dodać redirect do strony wyników
-      // router.push(`/results/${data.id}`);
+      // Przekieruj na dashboard z ID symulacji
+      router.push(`/dashboard/${data.id}`);
     },
     onError: (error) => {
       console.error("Simulation failed:", error);

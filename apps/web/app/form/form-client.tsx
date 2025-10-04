@@ -53,8 +53,6 @@ export function FormClient() {
     },
   });
 
-  console.log("test");
-
   const watchedValues = watch();
   const simulationMutation = useSimulation();
 
@@ -181,7 +179,7 @@ export function FormClient() {
           )}
 
           <div className="space-y-6">
-            <fieldset className="space-y-6">
+            <fieldset>
               <legend className="text-foreground mb-4 flex items-center gap-2 text-lg font-semibold">
                 <span
                   className="bg-primary text-primary-foreground flex h-6 w-6 items-center justify-center rounded-full text-sm"
@@ -221,7 +219,7 @@ export function FormClient() {
 
             <Separator />
 
-            <fieldset className="space-y-6">
+            <fieldset>
               <legend className="text-foreground mb-4 flex items-center gap-2 text-lg font-semibold">
                 <span
                   className="bg-primary text-primary-foreground flex h-6 w-6 items-center justify-center rounded-full text-sm"
@@ -450,7 +448,7 @@ export function FormClient() {
 
             <Separator />
 
-            <fieldset className="space-y-6">
+            <fieldset>
               <legend className="text-foreground mb-4 flex items-center gap-2 text-lg font-semibold">
                 <span
                   className="bg-secondary text-secondary-foreground flex h-6 w-6 items-center justify-center rounded-full text-sm"
@@ -554,7 +552,7 @@ export function FormClient() {
 
             <Separator />
 
-            <fieldset className="space-y-6">
+            <fieldset>
               <legend className="text-foreground mb-4 flex items-center gap-2 text-lg font-semibold">
                 <span
                   className="bg-accent text-accent-foreground flex h-6 w-6 items-center justify-center rounded-full text-sm"
@@ -629,25 +627,13 @@ export function FormClient() {
               <Calculator className="mr-2 h-5 w-5" aria-hidden="true" />
               <span className="sr-only">Główny przycisk formularza: </span>
               {simulationMutation.isPending
-                ? "Wysyłanie danych..."
+                ? "Wysyłanie..."
                 : simulationMutation.isSuccess
-                  ? "Dane wysłane pomyślnie!"
+                  ? "Wysłano!"
                   : simulationMutation.isError
-                    ? "Błąd wysyłania - spróbuj ponownie"
-                    : "Zaprognozuj moją przyszłą emeryturę"}
+                    ? "Błąd - spróbuj ponownie"
+                    : "Zaprognozuj"}
             </Button>
-
-            {simulationMutation.isError && (
-              <Button
-                type="button"
-                variant="outline"
-                onClick={() => simulationMutation.reset()}
-                className="w-full"
-                aria-label="Spróbuj ponownie wysłać formularz"
-              >
-                Spróbuj ponownie
-              </Button>
-            )}
           </div>
         </CardFooter>
       </Card>

@@ -12,7 +12,7 @@ function FormLoadingFallback() {
             </div>
           </div>
           <h1 className="text-foreground mb-3 text-4xl font-bold">
-            Symulator Twojej przyszłej emerytury
+            Kalkulator Twojej przyszłej emerytury
           </h1>
           <p className="text-muted-foreground text-lg">
             Podaj dane, aby przygotować prognozę swojej przyszłej emerytury.
@@ -47,7 +47,7 @@ function Form() {
             </div>
           </div>
           <h1 className="text-foreground mb-3 text-4xl font-bold">
-            Symulator Twojej przyszłej emerytury
+            Kalkulator Twojej przyszłej emerytury
           </h1>
           <p className="text-muted-foreground text-lg">
             Podaj dane, aby przygotować prognozę swojej przyszłej emerytury.
