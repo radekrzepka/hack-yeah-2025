@@ -1,7 +1,8 @@
 import { drizzle } from "drizzle-orm/node-postgres";
 import { Pool } from "pg";
 
-import { testTable } from "./schema";
+import { adminTable, testTable } from "./schema";
+import { SEED_ADMIN } from "./seed-data/seed-admin";
 import { SEED_TEST } from "./seed-data/seed-test";
 
 const seed = async () => {
@@ -10,6 +11,7 @@ const seed = async () => {
   });
   const db = drizzle(client);
 
+  await db.insert(adminTable).values(SEED_ADMIN).onConflictDoNothing();
   await db.insert(testTable).values(SEED_TEST).onConflictDoNothing();
 };
 
