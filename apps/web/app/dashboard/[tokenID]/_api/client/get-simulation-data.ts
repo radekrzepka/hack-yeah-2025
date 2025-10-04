@@ -45,7 +45,43 @@ export interface GetSimulationResultResponseDto {
       growthInDecade: number;
     }>;
   };
-  improvementScenarios: any;
+  improvementScenarios: {
+    salaryIncrease: {
+      currentPension: number;
+      options: Array<{
+        increasePercentage: number;
+        newMonthlySalary: number;
+        salaryDifference: number;
+        newPension: number;
+        pensionImprovement: number;
+        improvementPercentage: number;
+      }>;
+    };
+    workLonger: {
+      currentPension: number;
+      options: Array<{
+        additionalYears: number;
+        newRetirementAge: number;
+        newRetirementYear: number;
+        newPension: number;
+        pensionImprovement: number;
+        improvementPercentage: number;
+      }>;
+    };
+    fewerSickDays: {
+      currentPension: number;
+      currentlyIncludesSickLeave: boolean;
+      options: Array<{
+        scenario: string;
+        reductionPercentage: number;
+        newPension: number;
+        pensionImprovement: number;
+        improvementPercentage: number;
+        currentAverageSickDays: number;
+        newAverageSickDays: number;
+      }>;
+    };
+  };
 }
 
 export async function getSimulationDataClient(
