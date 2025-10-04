@@ -17,6 +17,11 @@ export const pensionFormSchema = z
       invalid_type_error: "Nieprawidłowa wartość płci",
     }),
 
+    contractType: z.enum(["uop", "b2b", "zlecenie", "dzielo"], {
+      required_error: "Rodzaj umowy jest wymagany",
+      invalid_type_error: "Nieprawidłowy rodzaj umowy",
+    }),
+
     salary: z
       .number({
         required_error: "Wynagrodzenie jest wymagane",

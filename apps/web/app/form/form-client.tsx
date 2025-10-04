@@ -44,6 +44,7 @@ export function FormClient() {
     mode: "onBlur",
     reValidateMode: "onBlur",
     defaultValues: {
+      contractType: undefined,
       includeSickLeave: false,
       includeWageGrowth: false,
       includeIndexation: false,
@@ -59,14 +60,23 @@ export function FormClient() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      noValidate
+      aria-labelledby="form-title"
+      aria-describedby="form-description"
+      role="form"
+    >
       <Card className="rounded-2xl shadow-sm">
         <CardHeader>
-          <CardTitle className="text-foreground flex items-center gap-2">
-            <Calculator className="text-primary h-5 w-5" />
+          <CardTitle
+            className="text-foreground flex items-center gap-2"
+            id="form-title"
+          >
+            <Calculator className="text-primary h-5 w-5" aria-hidden="true" />
             Formularz prognozy emerytalnej
           </CardTitle>
-          <CardDescription>
+          <CardDescription id="form-description">
             Wypełnij poniższe pola, aby otrzymać orientacyjną prognozę Twojej
             przyszłej emerytury
           </CardDescription>
@@ -75,9 +85,17 @@ export function FormClient() {
         <CardContent className="space-y-8">
           {/* Sukces */}
           {simulationMutation.isSuccess && (
-            <div className="rounded-lg border border-green-200 bg-green-50 p-4">
+            <div
+              className="rounded-lg border border-green-200 bg-green-50 p-4"
+              role="status"
+              aria-live="polite"
+              aria-label="Komunikat o sukcesie"
+            >
               <div className="mb-2 flex items-center gap-2">
-                <div className="flex h-4 w-4 items-center justify-center rounded-full bg-green-500">
+                <div
+                  className="flex h-4 w-4 items-center justify-center rounded-full bg-green-500"
+                  aria-hidden="true"
+                >
                   <span className="text-xs text-white">✓</span>
                 </div>
                 <h4 className="text-sm font-medium text-green-800">
@@ -93,9 +111,17 @@ export function FormClient() {
 
           {/* Błędy API */}
           {simulationMutation.isError && (
-            <div className="rounded-lg border border-red-200 bg-red-50 p-4">
+            <div
+              className="rounded-lg border border-red-200 bg-red-50 p-4"
+              role="alert"
+              aria-live="assertive"
+              aria-label="Komunikat o błędzie"
+            >
               <div className="mb-2 flex items-center gap-2">
-                <AlertCircle className="h-4 w-4 text-red-500" />
+                <AlertCircle
+                  className="h-4 w-4 text-red-500"
+                  aria-hidden="true"
+                />
                 <h4 className="text-sm font-medium text-red-800">
                   Błąd wysyłania danych
                 </h4>
@@ -109,17 +135,31 @@ export function FormClient() {
 
           {/* Błędy formularza */}
           {hasAttemptedSubmit && Object.keys(errors).length > 0 && (
-            <div className="rounded-lg border border-red-200 bg-red-50 p-4">
+            <div
+              className="rounded-lg border border-red-200 bg-red-50 p-4"
+              role="alert"
+              aria-live="polite"
+              aria-label="Lista błędów formularza"
+            >
               <div className="mb-2 flex items-center gap-2">
-                <AlertCircle className="h-4 w-4 text-red-500" />
+                <AlertCircle
+                  className="h-4 w-4 text-red-500"
+                  aria-hidden="true"
+                />
                 <h4 className="text-sm font-medium text-red-800">
                   Proszę poprawić następujące błędy:
                 </h4>
               </div>
-              <ul className="space-y-1 text-sm text-red-700">
+              <ul className="space-y-1 text-sm text-red-700" role="list">
                 {Object.entries(errors).map(([field, error]) => (
-                  <li key={field} className="flex items-center gap-2">
-                    <span className="text-red-500">•</span>
+                  <li
+                    key={field}
+                    className="flex items-center gap-2"
+                    role="listitem"
+                  >
+                    <span className="text-red-500" aria-hidden="true">
+                      •
+                    </span>
                     <span>{error?.message}</span>
                   </li>
                 ))}
@@ -128,39 +168,57 @@ export function FormClient() {
           )}
 
           <div className="space-y-6">
-            <div>
-              <h3 className="text-foreground mb-4 flex items-center gap-2 text-lg font-semibold">
-                <span className="bg-primary text-primary-foreground flex h-6 w-6 items-center justify-center rounded-full text-sm">
+            <fieldset className="space-y-6">
+              <legend className="text-foreground mb-4 flex items-center gap-2 text-lg font-semibold">
+                <span
+                  className="bg-primary text-primary-foreground flex h-6 w-6 items-center justify-center rounded-full text-sm"
+                  aria-hidden="true"
+                >
                   1
                 </span>
                 Dane obowiązkowe
-              </h3>
+              </legend>
 
               <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                 <div className="space-y-2">
-                  <Label htmlFor="age">Wiek</Label>
+                  <Label htmlFor="age">Wiek *</Label>
                   <Input
                     id="age"
                     type="number"
                     placeholder="np. 35"
                     min="18"
                     max="100"
+                    required
+                    aria-required="true"
+                    aria-invalid={errors.age ? "true" : "false"}
+                    aria-describedby={errors.age ? "age-error" : undefined}
+                    aria-label="Wiek w latach (wymagane pole)"
                     {...register("age", { valueAsNumber: true })}
                   />
                   <FormError
                     error={errors.age?.message}
                     showError={hasAttemptedSubmit || touchedFields.age}
+                    id="age-error"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="gender">Płeć</Label>
+                  <Label htmlFor="gender">Płeć *</Label>
                   <Select
                     onValueChange={(value) =>
                       setValue("gender", value as "male" | "female")
                     }
+                    required
                   >
-                    <SelectTrigger id="gender">
+                    <SelectTrigger
+                      id="gender"
+                      aria-required="true"
+                      aria-invalid={errors.gender ? "true" : "false"}
+                      aria-describedby={
+                        errors.gender ? "gender-error" : undefined
+                      }
+                      aria-label="Wybierz płeć (wymagane pole)"
+                    >
                       <SelectValue placeholder="Wybierz płeć" />
                     </SelectTrigger>
                     <SelectContent>
@@ -171,12 +229,80 @@ export function FormClient() {
                   <FormError
                     error={errors.gender?.message}
                     showError={hasAttemptedSubmit || touchedFields.gender}
+                    id="gender-error"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2">
+                    <Label htmlFor="contractType">Rodzaj umowy *</Label>
+                    <TooltipProvider>
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <Info
+                            className="text-muted-foreground h-4 w-4 cursor-help"
+                            aria-label="Informacja o rodzajach umów"
+                          />
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <div className="max-w-xs space-y-2">
+                            <p>
+                              <strong>UoP:</strong> Umowa o pracę - pełne
+                              składki ZUS
+                            </p>
+                            <p>
+                              <strong>B2B:</strong> Umowa B2B - niższe składki
+                            </p>
+                            <p>
+                              <strong>Zlecenie:</strong> Umowa zlecenie -
+                              opcjonalne składki
+                            </p>
+                            <p>
+                              <strong>Dzieło:</strong> Umowa o dzieło - bez
+                              składek ZUS
+                            </p>
+                          </div>
+                        </TooltipContent>
+                      </Tooltip>
+                    </TooltipProvider>
+                  </div>
+                  <Select
+                    onValueChange={(value) =>
+                      setValue(
+                        "contractType",
+                        value as "uop" | "b2b" | "zlecenie" | "dzielo",
+                      )
+                    }
+                    required
+                  >
+                    <SelectTrigger
+                      id="contractType"
+                      aria-required="true"
+                      aria-invalid={errors.contractType ? "true" : "false"}
+                      aria-describedby={
+                        errors.contractType ? "contractType-error" : undefined
+                      }
+                      aria-label="Wybierz rodzaj umowy (wymagane pole)"
+                    >
+                      <SelectValue placeholder="Wybierz rodzaj umowy" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="uop">Umowa o pracę (UoP)</SelectItem>
+                      <SelectItem value="b2b">Umowa B2B</SelectItem>
+                      <SelectItem value="zlecenie">Umowa zlecenie</SelectItem>
+                      <SelectItem value="dzielo">Umowa o dzieło</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  <FormError
+                    error={errors.contractType?.message}
+                    showError={hasAttemptedSubmit || touchedFields.contractType}
+                    id="contractType-error"
                   />
                 </div>
 
                 <div className="space-y-2">
                   <Label htmlFor="salary">
-                    Wysokość wynagrodzenia brutto (PLN/miesiąc)
+                    Wysokość wynagrodzenia brutto (PLN/miesiąc) *
                   </Label>
                   <Input
                     id="salary"
@@ -184,39 +310,58 @@ export function FormClient() {
                     placeholder="np. 8000"
                     min="0"
                     step="100"
+                    required
+                    aria-required="true"
+                    aria-invalid={errors.salary ? "true" : "false"}
+                    aria-describedby={
+                      errors.salary ? "salary-error" : undefined
+                    }
+                    aria-label="Wysokość wynagrodzenia brutto w PLN na miesiąc (wymagane pole)"
                     {...register("salary", { valueAsNumber: true })}
                   />
                   <FormError
                     error={errors.salary?.message}
                     showError={hasAttemptedSubmit || touchedFields.salary}
+                    id="salary-error"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="startYear">Rok rozpoczęcia pracy</Label>
+                  <Label htmlFor="startYear">Rok rozpoczęcia pracy *</Label>
                   <Input
                     id="startYear"
                     type="number"
                     placeholder="np. 2010"
                     min="1950"
                     max={new Date().getFullYear()}
+                    required
+                    aria-required="true"
+                    aria-invalid={errors.startYear ? "true" : "false"}
+                    aria-describedby={
+                      errors.startYear ? "startYear-error" : undefined
+                    }
+                    aria-label="Rok rozpoczęcia pracy (wymagane pole)"
                     {...register("startYear", { valueAsNumber: true })}
                   />
                   <FormError
                     error={errors.startYear?.message}
                     showError={hasAttemptedSubmit || touchedFields.startYear}
+                    id="startYear-error"
                   />
                 </div>
 
                 <div className="space-y-2 md:col-span-2">
                   <div className="flex items-center gap-2">
                     <Label htmlFor="endYear">
-                      Planowany rok zakończenia aktywności zawodowej
+                      Planowany rok zakończenia aktywności zawodowej *
                     </Label>
                     <TooltipProvider>
                       <Tooltip>
                         <TooltipTrigger asChild>
-                          <Info className="text-muted-foreground h-4 w-4 cursor-help" />
+                          <Info
+                            className="text-muted-foreground h-4 w-4 cursor-help"
+                            aria-label="Pomoc: Domyślnie rok osiągnięcia wieku emerytalnego"
+                          />
                         </TooltipTrigger>
                         <TooltipContent>
                           <p className="max-w-xs">
@@ -232,25 +377,36 @@ export function FormClient() {
                     placeholder="np. 2055"
                     min={new Date().getFullYear()}
                     max="2100"
+                    required
+                    aria-required="true"
+                    aria-invalid={errors.endYear ? "true" : "false"}
+                    aria-describedby={
+                      errors.endYear ? "endYear-error" : undefined
+                    }
+                    aria-label="Planowany rok zakończenia aktywności zawodowej (wymagane pole)"
                     {...register("endYear", { valueAsNumber: true })}
                   />
                   <FormError
                     error={errors.endYear?.message}
                     showError={hasAttemptedSubmit || touchedFields.endYear}
+                    id="endYear-error"
                   />
                 </div>
               </div>
-            </div>
+            </fieldset>
 
             <Separator />
 
-            <div>
-              <h3 className="text-foreground mb-4 flex items-center gap-2 text-lg font-semibold">
-                <span className="bg-secondary text-secondary-foreground flex h-6 w-6 items-center justify-center rounded-full text-sm">
+            <fieldset className="space-y-6">
+              <legend className="text-foreground mb-4 flex items-center gap-2 text-lg font-semibold">
+                <span
+                  className="bg-secondary text-secondary-foreground flex h-6 w-6 items-center justify-center rounded-full text-sm"
+                  aria-hidden="true"
+                >
                   2
                 </span>
                 Dane fakultatywne
-              </h3>
+              </legend>
 
               <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                 <div className="space-y-2">
@@ -263,6 +419,10 @@ export function FormClient() {
                     placeholder="np. 150000"
                     min="0"
                     step="1000"
+                    aria-invalid={errors.currentFunds ? "true" : "false"}
+                    aria-describedby={
+                      errors.currentFunds ? "currentFunds-error" : undefined
+                    }
                     {...register("currentFunds", {
                       setValueAs: (value) =>
                         value === "" ? undefined : Number(value),
@@ -271,6 +431,7 @@ export function FormClient() {
                   <FormError
                     error={errors.currentFunds?.message}
                     showError={hasAttemptedSubmit || touchedFields.currentFunds}
+                    id="currentFunds-error"
                   />
                 </div>
 
@@ -281,11 +442,16 @@ export function FormClient() {
                     type="text"
                     placeholder="np. 00-001"
                     maxLength={6}
+                    aria-invalid={errors.postalCode ? "true" : "false"}
+                    aria-describedby={
+                      errors.postalCode ? "postalCode-error" : undefined
+                    }
                     {...register("postalCode")}
                   />
                   <FormError
                     error={errors.postalCode?.message}
                     showError={hasAttemptedSubmit || touchedFields.postalCode}
+                    id="postalCode-error"
                   />
                 </div>
 
@@ -297,6 +463,11 @@ export function FormClient() {
                       onCheckedChange={(checked: boolean) =>
                         setValue("includeSickLeave", checked)
                       }
+                      aria-describedby={
+                        watchedValues.includeSickLeave
+                          ? "sickLeave-info"
+                          : undefined
+                      }
                     />
                     <Label
                       htmlFor="sickLeave"
@@ -307,9 +478,12 @@ export function FormClient() {
                         <TooltipProvider>
                           <Tooltip>
                             <TooltipTrigger asChild>
-                              <Info className="text-muted-foreground h-4 w-4 cursor-help" />
+                              <Info
+                                className="text-muted-foreground h-4 w-4 cursor-help"
+                                aria-label="Informacja o zwolnieniach lekarskich"
+                              />
                             </TooltipTrigger>
-                            <TooltipContent>
+                            <TooltipContent id="sickLeave-info">
                               <p className="max-w-xs">
                                 Średni czas zwolnień lekarskich w Polsce to ok.
                                 14 dni rocznie. Może to obniżyć przyszłe
@@ -323,17 +497,20 @@ export function FormClient() {
                   </div>
                 </div>
               </div>
-            </div>
+            </fieldset>
 
             <Separator />
 
-            <div>
-              <h3 className="text-foreground mb-4 flex items-center gap-2 text-lg font-semibold">
-                <span className="bg-accent text-accent-foreground flex h-6 w-6 items-center justify-center rounded-full text-sm">
+            <fieldset className="space-y-6">
+              <legend className="text-foreground mb-4 flex items-center gap-2 text-lg font-semibold">
+                <span
+                  className="bg-accent text-accent-foreground flex h-6 w-6 items-center justify-center rounded-full text-sm"
+                  aria-hidden="true"
+                >
                   3
                 </span>
                 Dodatkowe preferencje
-              </h3>
+              </legend>
 
               <div className="space-y-6">
                 <div className="space-y-2">
@@ -346,6 +523,10 @@ export function FormClient() {
                     placeholder="np. 5000"
                     min="0"
                     step="100"
+                    aria-invalid={errors.targetPension ? "true" : "false"}
+                    aria-describedby={
+                      errors.targetPension ? "targetPension-error" : undefined
+                    }
                     {...register("targetPension", {
                       setValueAs: (value) =>
                         value === "" ? undefined : Number(value),
@@ -356,6 +537,7 @@ export function FormClient() {
                     showError={
                       hasAttemptedSubmit || touchedFields.targetPension
                     }
+                    id="targetPension-error"
                   />
                 </div>
 
@@ -393,11 +575,18 @@ export function FormClient() {
                   </div>
                 </div>
               </div>
-            </div>
+            </fieldset>
           </div>
 
-          <div className="border-accent/50 bg-accent/5 flex items-start gap-3 rounded-lg border p-4">
-            <AlertCircle className="text-accent-foreground mt-0.5 h-4 w-4 flex-shrink-0" />
+          <div
+            className="border-accent/50 bg-accent/5 flex items-start gap-3 rounded-lg border p-4"
+            role="note"
+            aria-label="Informacja prawna"
+          >
+            <AlertCircle
+              className="text-accent-foreground mt-0.5 h-4 w-4 flex-shrink-0"
+              aria-hidden="true"
+            />
             <p className="text-accent-foreground text-sm">
               Dane mają charakter orientacyjny i nie stanowią oficjalnej
               prognozy ZUS.
@@ -406,14 +595,16 @@ export function FormClient() {
         </CardContent>
 
         <CardFooter>
-          <div className="space-y-2">
+          <div className="w-full space-y-2">
             <Button
               type="submit"
               disabled={isSubmitting || simulationMutation.isPending}
-              className="bg-primary hover:bg-primary/90 text-primary-foreground w-full py-6 text-lg font-semibold"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground mx-auto w-full py-6 text-lg font-semibold"
               size="lg"
+              aria-describedby="form-description"
             >
-              <Calculator className="mr-2 h-5 w-5" />
+              <Calculator className="mr-2 h-5 w-5" aria-hidden="true" />
+              <span className="sr-only">Główny przycisk formularza: </span>
               {simulationMutation.isPending
                 ? "Wysyłanie danych..."
                 : simulationMutation.isSuccess
@@ -429,6 +620,7 @@ export function FormClient() {
                 variant="outline"
                 onClick={() => simulationMutation.reset()}
                 className="w-full"
+                aria-label="Spróbuj ponownie wysłać formularz"
               >
                 Spróbuj ponownie
               </Button>

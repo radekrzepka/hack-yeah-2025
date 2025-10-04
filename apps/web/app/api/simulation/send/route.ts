@@ -1,28 +1,12 @@
+import type {
+  SendSimulationRequestDto,
+  SendSimulationResponseDto,
+} from "@hackathon/shared";
 import { NextRequest, NextResponse } from "next/server";
-
-export interface SimulationRequest {
-  age: number;
-  sex: "male" | "female";
-  grossSalary: number;
-  workStartDate: string;
-  plannedRetirementYear: number;
-  includeSickLeave: boolean;
-  additionalData?: {
-    currentFunds?: number;
-    postalCode?: string;
-    targetPension?: number;
-    includeWageGrowth?: boolean;
-    includeIndexation?: boolean;
-  };
-}
-
-export interface SimulationResponse {
-  token: string;
-}
 
 export async function POST(request: NextRequest) {
   try {
-    const body: SimulationRequest = await request.json();
+    const body: SendSimulationRequestDto = await request.json();
 
     // Walidacja podstawowych danych
     if (
@@ -51,8 +35,8 @@ export async function POST(request: NextRequest) {
     //   body: JSON.stringify(body)
     // });
 
-    const response: SimulationResponse = {
-      token: token,
+    const response: SendSimulationResponseDto = {
+      id: token,
     };
 
     return NextResponse.json(response);

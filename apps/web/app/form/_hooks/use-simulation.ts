@@ -1,12 +1,15 @@
+import type {
+  SendSimulationRequestDto,
+  SendSimulationResponseDto,
+} from "@hackathon/shared";
 import { useMutation } from "@tanstack/react-query";
 
-import type { SimulationRequest } from "../_api/simulation";
-
-import { sendSimulationRequest } from "../_api/simulation";
 import { type PensionFormData } from "../schema";
 
 // Transform form data to API format
-function transformFormDataToApi(formData: PensionFormData): SimulationRequest {
+function transformFormDataToApi(
+  formData: PensionFormData,
+): SendSimulationRequestDto {
   return {
     age: formData.age,
     sex: formData.gender,
@@ -14,26 +17,39 @@ function transformFormDataToApi(formData: PensionFormData): SimulationRequest {
     workStartDate: `${formData.startYear}-01-01`,
     plannedRetirementYear: formData.endYear,
     includeSickLeave: formData.includeSickLeave,
-    additionalData: {
-      currentFunds: formData.currentFunds,
-      postalCode: formData.postalCode,
-      targetPension: formData.targetPension,
-      includeWageGrowth: formData.includeWageGrowth,
-      includeIndexation: formData.includeIndexation,
-    },
   };
 }
 
 export function useSimulation() {
   return useMutation({
-    mutationFn: (formData: PensionFormData) => {
+    mutationFn: async (
+      formData: PensionFormData,
+    ): Promise<SendSimulationResponseDto> => {
       const apiData = transformFormDataToApi(formData);
-      return sendSimulationRequest(apiData);
+
+      const response = await fetch("/api/simulation/send", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(apiData),
+      });
+
+      if (!response.ok) {
+        const errorData = (await response.json().catch(() => ({}))) as {
+          error?: string;
+        };
+        throw new Error(
+          errorData.error || `HTTP error! status: ${response.status}`,
+        );
+      }
+
+      return response.json() as Promise<SendSimulationResponseDto>;
     },
     onSuccess: (data) => {
       console.log("Simulation sent successfully:", data);
       // Tutaj można dodać redirect do strony wyników
-      // router.push(`/results/${data.token}`);
+      // router.push(`/results/${data.id}`);
     },
     onError: (error) => {
       console.error("Simulation failed:", error);
