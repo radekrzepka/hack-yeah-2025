@@ -10,7 +10,7 @@ import {
   Wallet,
 } from "lucide-react";
 import { useMemo } from "react";
-import type { AdminDataRow } from "../_api/client/admin-data";
+import type { AdminDataRow } from "../_hooks/use-admin-data";
 
 // This should match the structure of your data from useAdminData
 interface StatsCardsProps {
