@@ -1,13 +1,139 @@
 {
-<<<<<<< HEAD
-  "id": "fbc53a0c-f2d4-41dc-bebd-2f90dcd45ae0",
-=======
-  "id": "5df15d28-f7fa-4819-82c0-ac1e24c43eeb",
->>>>>>> 4396db7 (feat: landing page data)
+  "id": "e5cc180a-58dc-4a57-ad48-a0d0f2ebf54a",
   "prevId": "b791cd75-79f1-4ed7-bdae-04943d656627",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
+    "public.admin": {
+      "name": "admin",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "login": {
+          "name": "login",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "password": {
+          "name": "password",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "admin_login_unique": {
+          "name": "admin_login_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "login"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.simulation_requests": {
+      "name": "simulation_requests",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "age": {
+          "name": "age",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "sex": {
+          "name": "sex",
+          "type": "sex",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "grossSalary": {
+          "name": "grossSalary",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "workStartDate": {
+          "name": "workStartDate",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "plannedRetirementYear": {
+          "name": "plannedRetirementYear",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "includeSickLeave": {
+          "name": "includeSickLeave",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "additionalData": {
+          "name": "additionalData",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.simulation_results": {
+      "name": "simulation_results",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "test": {
+          "name": "test",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
     "public.testTable": {
       "name": "testTable",
       "schema": "",
@@ -48,13 +174,8 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-<<<<<<< HEAD
-    "public.simulation_requests": {
-      "name": "simulation_requests",
-=======
     "public.chartsTable": {
       "name": "chartsTable",
->>>>>>> 4396db7 (feat: landing page data)
       "schema": "",
       "columns": {
         "id": {
@@ -64,45 +185,6 @@
           "notNull": true,
           "default": "gen_random_uuid()"
         },
-<<<<<<< HEAD
-        "age": {
-          "name": "age",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "sex": {
-          "name": "sex",
-          "type": "sex",
-          "typeSchema": "public",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "grossSalary": {
-          "name": "grossSalary",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "workStartDate": {
-          "name": "workStartDate",
-          "type": "date",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "plannedRetirementYear": {
-          "name": "plannedRetirementYear",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "includeSickLeave": {
-          "name": "includeSickLeave",
-          "type": "boolean",
-          "primaryKey": false,
-          "notNull": true,
-          "default": false
-=======
         "chart_name": {
           "name": "chart_name",
           "type": "varchar(255)",
@@ -126,7 +208,6 @@
           "type": "varchar(255)",
           "primaryKey": false,
           "notNull": true
->>>>>>> 4396db7 (feat: landing page data)
         }
       },
       "indexes": {},
@@ -136,20 +217,6 @@
       "policies": {},
       "checkConstraints": {},
       "isRLSEnabled": false
-<<<<<<< HEAD
-    }
-  },
-  "enums": {
-    "public.sex": {
-      "name": "sex",
-      "schema": "public",
-      "values": [
-        "male",
-        "female"
-      ]
-    }
-  },
-=======
     },
     "public.factsTable": {
       "name": "factsTable",
@@ -192,8 +259,16 @@
       "isRLSEnabled": false
     }
   },
-  "enums": {},
->>>>>>> 4396db7 (feat: landing page data)
+  "enums": {
+    "public.sex": {
+      "name": "sex",
+      "schema": "public",
+      "values": [
+        "male",
+        "female"
+      ]
+    }
+  },
   "schemas": {},
   "sequences": {},
   "roles": {},
