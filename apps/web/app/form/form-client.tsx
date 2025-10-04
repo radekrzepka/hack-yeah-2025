@@ -53,6 +53,8 @@ export function FormClient() {
     },
   });
 
+  console.log("test");
+
   const watchedValues = watch();
   const simulationMutation = useSimulation();
 
