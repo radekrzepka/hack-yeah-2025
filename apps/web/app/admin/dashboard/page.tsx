@@ -336,7 +336,7 @@ export default function AdminDashboard() {
           <CardContent>
             {isLoading ? (
               <div className="space-y-2">
-                {[...Array(10)].map((_, i) => (
+                {[...Array<number>(10)].map((_, i) => (
                   <div
                     key={i}
                     className="bg-muted h-16 animate-pulse rounded"
