@@ -14,7 +14,6 @@ export default function FunFacts({ initialData }: Props) {
   );
   const straightFacts = initialData.facts[randomNumber];
 
-  //   console.log(straightFacts[randomNumber]);
   return (
     <div>
       {straightFacts && (
