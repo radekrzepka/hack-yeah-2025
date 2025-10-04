@@ -1,5 +1,6 @@
 "use client";
 
+import { useMemo, useRef } from "react";
 import {
   Card,
   CardContent,
@@ -11,20 +12,20 @@ import {
   CarouselPrevious,
   TypographyP,
 } from "@hackathon/ui";
-import { useEffect, useMemo, useRef } from "react";
+
 import type { LandingPageData } from "../_api/get-landing-data";
 
 type Props = {
   initialData: LandingPageData;
 };
 
-function getRandomInt(max: number) {
-  return Math.floor(Math.random() * max);
-}
+// function getRandomInt(max: number) {
+//   return Math.floor(Math.random() * max);
+// }
 
-function pickRandom<T>(arr: T[], count: number): T[] {
+function pickRandom<T>(arr: Array<T>, count: number): Array<T> {
   if (!arr?.length) return [];
-  const res: T[] = [];
+  const res: Array<T> = [];
   const seen = new Set<number>();
 
   while (res.length < Math.min(count, arr.length)) {
@@ -73,15 +74,6 @@ export default function FunFacts({ initialData }: Props) {
     return <div className="w-full" />;
   }
 
-  useEffect(() => {
-    // cleanup interwału przy odmontowaniu/rekonfiguracji
-    return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-        intervalRef.current = null;
-      }
-    };
-  }, []);
 
   return (
     <div className="w-full">
