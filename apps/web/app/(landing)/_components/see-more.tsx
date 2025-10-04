@@ -15,8 +15,8 @@ function SeeMoreCard({
 }: {
   title: string;
   content: string;
-  imgPath: string;
-  imgAlt: string;
+  // imgPath: string;
+  // imgAlt: string;
 }) {
   return (
     <Card className="flex">
@@ -44,14 +44,14 @@ export function SeeMore() {
       <SeeMoreCard
         title={"test"}
         content={"lorem12"}
-        imgPath={"./"}
-        imgAlt={";);)"}
+        // imgPath={"./"}
+        // imgAlt={";);)"}
       />
       <SeeMoreCard
         title={"test"}
         content={"lorem12"}
-        imgPath={"./"}
-        imgAlt={";);)"}
+        // imgPath={"./"}
+        // imgAlt={";);)"}
       />
     </div>
   );
