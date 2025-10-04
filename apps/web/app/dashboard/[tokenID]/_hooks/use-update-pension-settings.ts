@@ -3,8 +3,15 @@
 import type { UseMutationResult } from "@tanstack/react-query";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-import type { EarningsAdjustment } from "../_types";
 import { clientFetch } from "@/_utils/fetch/client-fetch";
+
+// Note: EarningsAdjustment type needs to be defined or imported from shared package
+interface EarningsAdjustment {
+  id: string;
+  yearStart: number;
+  yearEnd: number;
+  amount: number;
+}
 
 interface PensionSettingsData {
   retirementAge: number;

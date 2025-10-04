@@ -6,23 +6,29 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@hackathon/ui";
-
 interface PensionProjectionChartProps {
-  data: Array<ProjectionDataPoint>;
+  data: Array<{
+    year: number;
+    age: number;
+    totalBalance: number;
+    mainAccountBalance: number;
+    subAccountBalance: number;
+    yearlySalary: number;
+  }>;
 }
 
 export function PensionProjectionChart({ data }: PensionProjectionChartProps) {
   const chartConfig = {
-    optimistic: {
-      label: "Scenariusz Optymistyczny",
+    totalBalance: {
+      label: "Całkowity Kapitał",
       color: "rgb(26, 78, 218)",
     },
-    realistic: {
-      label: "Scenariusz Realistyczny",
+    mainAccountBalance: {
+      label: "Konto Główne",
       color: "rgb(0, 153, 63)",
     },
-    pessimistic: {
-      label: "Scenariusz Pesymistyczny",
+    subAccountBalance: {
+      label: "Konto Podrzędne",
       color: "rgb(255, 100, 103)",
     },
   };
@@ -51,29 +57,29 @@ export function PensionProjectionChart({ data }: PensionProjectionChartProps) {
         <Legend wrapperStyle={{ paddingTop: "20px" }} iconType="line" />
         <Line
           type="monotone"
-          dataKey="optimistic"
+          dataKey="totalBalance"
           stroke="hsl(220, 70%, 50%)"
           strokeWidth={3}
           dot={{ r: 4 }}
-          name="Scenariusz Optymistyczny"
+          name="Całkowity Kapitał"
           activeDot={{ r: 6 }}
         />
         <Line
           type="monotone"
-          dataKey="realistic"
+          dataKey="mainAccountBalance"
           stroke="hsl(160, 60%, 45%)"
           strokeWidth={3}
           dot={{ r: 4 }}
-          name="Scenariusz Realistyczny"
+          name="Konto Główne"
           activeDot={{ r: 6 }}
         />
         <Line
           type="monotone"
-          dataKey="pessimistic"
+          dataKey="subAccountBalance"
           stroke="hsl(0, 70%, 50%)"
           strokeWidth={3}
           dot={{ r: 4 }}
-          name="Scenariusz Pesymistyczny"
+          name="Konto Podrzędne"
           activeDot={{ r: 6 }}
         />
       </LineChart>

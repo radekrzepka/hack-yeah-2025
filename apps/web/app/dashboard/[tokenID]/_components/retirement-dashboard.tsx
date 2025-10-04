@@ -8,7 +8,13 @@ import {
   CardTitle,
 } from "@hackathon/ui";
 import { Button } from "@hackathon/ui";
-import { PensionProjectionChart, PensionComparisonChart } from "./charts";
+import {
+  PensionProjectionChart,
+  PensionComparisonChart,
+  SalaryIncreaseChart,
+  WorkLongerChart,
+  FewerSickDaysChart,
+} from "./charts";
 import { TopKpiCards } from "./layout";
 import { ControlPanel } from "./controls";
 import { usePensionData } from "../_hooks/use-pension-data";
@@ -29,14 +35,19 @@ import {
 import { FAQ } from "./faq";
 import { TipsAndRecommendations } from "./tips-and-recommendations";
 
-export function RetirementDashboard() {
-  const { kpiData, projectionData, comparisonData, isLoading, isError } =
-    usePensionData();
+export function RetirementDashboard({ tokenID }: { tokenID: string }) {
+  const {
+    kpiData,
+    projectionData,
+    comparisonData,
+    improvementScenarios,
+    isLoading,
+    isError,
+  } = usePensionData(tokenID);
   const handleDownloadReport = () => {
     // Placeholder for PDF generation
     console.log("Downloading report...");
   };
-
   const scrollToControlPanel = () => {
     const controlPanel = document.getElementById("control-panel");
     if (controlPanel) {
@@ -176,7 +187,7 @@ export function RetirementDashboard() {
               </CardHeader>
               <CardContent>
                 {comparisonData ? (
-                  <PensionComparisonChart data={comparisonData.data} />
+                  <PensionComparisonChart data={comparisonData} />
                 ) : (
                   <div className="flex h-64 items-center justify-center">
                     <div className="text-muted-foreground">
@@ -222,7 +233,7 @@ export function RetirementDashboard() {
             </CardHeader>
             <CardContent>
               {projectionData ? (
-                <PensionProjectionChart data={projectionData.data} />
+                <PensionProjectionChart data={projectionData} />
               ) : (
                 <div className="flex h-64 items-center justify-center">
                   <div className="text-muted-foreground">
@@ -232,6 +243,62 @@ export function RetirementDashboard() {
               )}
             </CardContent>
           </Card>
+
+          {/* Improvement Scenarios */}
+          {improvementScenarios && (
+            <div className="space-y-6">
+              <h2 className="text-2xl font-bold">
+                Scenariusze Poprawy Emerytury
+              </h2>
+
+              {/* Salary Increase Chart */}
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-xl">
+                    Zwiększenie Wynagrodzenia
+                  </CardTitle>
+                  <CardDescription>
+                    Wpływ podwyżki wynagrodzenia na wysokość emerytury
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <SalaryIncreaseChart
+                    data={improvementScenarios.salaryIncrease}
+                  />
+                </CardContent>
+              </Card>
+
+              {/* Work Longer Chart */}
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-xl">Praca Dłużej</CardTitle>
+                  <CardDescription>
+                    Korzyści z przedłużenia aktywności zawodowej
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <WorkLongerChart data={improvementScenarios.workLonger} />
+                </CardContent>
+              </Card>
+
+              {/* Fewer Sick Days Chart */}
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-xl">
+                    Redukcja Dni Chorobowych
+                  </CardTitle>
+                  <CardDescription>
+                    Wpływ zmniejszenia absencji chorobowej na emeryturę
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <FewerSickDaysChart
+                    data={improvementScenarios.fewerSickDays}
+                  />
+                </CardContent>
+              </Card>
+            </div>
+          )}
 
           {/* Control Panel - Bottom */}
           <div id="control-panel">

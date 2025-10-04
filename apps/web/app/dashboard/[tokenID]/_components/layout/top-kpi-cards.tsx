@@ -2,13 +2,21 @@ import { Card, CardContent, CardHeader, CardTitle } from "@hackathon/ui";
 import { TrendingUp, Calendar, Percent, Target } from "lucide-react";
 
 interface TopKpiCardsProps {
-  kpiData: KpiData;
+  kpiData: {
+    projectedPension: number;
+    currentSalary: number;
+    replacementRate: number;
+    yearsToRetirement: number;
+    totalCapital: number;
+    retirementAge: number;
+  };
 }
 
 export function TopKpiCards({ kpiData }: TopKpiCardsProps) {
   const {
     projectedPension,
-    expectedPension,
+    // expectedPension,
+    currentSalary,
     replacementRate,
     yearsToRetirement,
   } = kpiData;
@@ -27,7 +35,8 @@ export function TopKpiCards({ kpiData }: TopKpiCardsProps) {
             {projectedPension.toLocaleString("pl-PL")} zł{" "}
             <p className="text-muted-foreground my-auto ml-4 text-lg opacity-40">
               {"("}
-              {(projectedPension - expectedPension).toLocaleString("pl-PL")} zł
+              {/* {(projectedPension - expectedPension).toLocaleString("pl-PL")} zł */}
+              {(projectedPension - currentSalary).toLocaleString("pl-PL")} zł
               {")"}
             </p>
           </div>
@@ -46,10 +55,12 @@ export function TopKpiCards({ kpiData }: TopKpiCardsProps) {
         </CardHeader>
         <CardContent>
           <div className="text-foreground text-3xl font-bold">
-            {expectedPension.toLocaleString("pl-PL")} zł
+            {/* {expectedPension.toLocaleString("pl-PL")} zł */}
+            {currentSalary.toLocaleString("pl-PL")} zł
           </div>
           <p className="text-muted-foreground mt-1 text-xs">
-            Docelowa kwota emerytury
+            {/* Docelowa kwota emerytury */}
+            Aktualne wynagrodzenie
           </p>
         </CardContent>
       </Card>

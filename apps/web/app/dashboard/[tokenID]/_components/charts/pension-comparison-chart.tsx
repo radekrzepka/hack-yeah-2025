@@ -6,10 +6,13 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@hackathon/ui";
+import type { ContributionVsGrowthDto } from "../../[tokenID]/_types/shared-types";
 
 interface PensionComparisonChartProps {
-  data: Array<ComparisonDataPoint>;
+  data: Array<{ name: string; projected: number; expected: number }>;
 }
+
+const expectedPension = 5000;
 
 export function PensionComparisonChart({ data }: PensionComparisonChartProps) {
   const chartConfig = {

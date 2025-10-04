@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 import {
   Card,
   CardContent,
@@ -37,32 +39,48 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@hackathon/ui";
-import type { EarningsAdjustment } from "../../_types";
-import { useUpdatePensionSettings } from "../../_hooks/use-update-pension-settings";
+// Zod schema for validation
+const earningsAdjustmentSchema = z.object({
+  id: z.string(),
+  yearStart: z.number().min(1900).max(2100),
+  yearEnd: z.number().min(1900).max(2100),
+  amount: z.number().min(0),
+});
 
-interface PensionSettingsForm {
-  retirementAge: number;
-  monthlySalary: number;
-  salaryGrowthRate: number;
-  includeIllnessPeriods: boolean;
-  currentAge: number;
-  earningsAdjustments: Array<EarningsAdjustment>;
-}
+const pensionSettingsSchema = z.object({
+  retirementAge: z.number().min(60).max(75),
+  monthlySalary: z.number().min(0).max(100000),
+  salaryGrowthRate: z.number().min(0).max(20),
+  includeIllnessPeriods: z.boolean(),
+  currentAge: z.number().min(18).max(100),
+  earningsAdjustments: z.array(earningsAdjustmentSchema),
+});
+
+type PensionSettingsForm = z.infer<typeof pensionSettingsSchema>;
+type EarningsAdjustment = z.infer<typeof earningsAdjustmentSchema>;
+
+import { useUpdatePensionSettings } from "../../_hooks/use-update-pension-settings";
 
 export function ControlPanel() {
   const { mutate: updateSettings, isPending } = useUpdatePensionSettings();
 
-  const { register, handleSubmit, watch, setValue } =
-    useForm<PensionSettingsForm>({
-      defaultValues: {
-        retirementAge: 67,
-        monthlySalary: 5000,
-        salaryGrowthRate: 3,
-        includeIllnessPeriods: false,
-        currentAge: 25,
-        earningsAdjustments: [],
-      },
-    });
+  const {
+    register,
+    handleSubmit,
+    watch,
+    setValue,
+    formState: { errors },
+  } = useForm<PensionSettingsForm>({
+    resolver: zodResolver(pensionSettingsSchema),
+    defaultValues: {
+      retirementAge: 67,
+      monthlySalary: 5000,
+      salaryGrowthRate: 3,
+      includeIllnessPeriods: false,
+      currentAge: 25,
+      earningsAdjustments: [],
+    },
+  });
 
   const watchedValues = watch();
   const [isAddAdjustmentOpen, setIsAddAdjustmentOpen] = useState(false);
@@ -155,6 +173,11 @@ export function ControlPanel() {
                       />
                       <span className="text-muted-foreground text-sm">zł</span>
                     </div>
+                    {errors.monthlySalary && (
+                      <p className="text-destructive text-xs">
+                        {errors.monthlySalary.message}
+                      </p>
+                    )}
                   </div>
 
                   <div className="space-y-2">
@@ -325,7 +348,7 @@ export function ControlPanel() {
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
-            <Button type="submit" disabled={isPending}>
+            <Button type="submit" disabled={isPending} className="mx-auto flex">
               {isPending
                 ? "Zapisywanie..."
                 : "Oblicz na zmienionych parametrach"}
