@@ -67,7 +67,7 @@ export function FormClient() {
       aria-describedby="form-description"
       role="form"
     >
-      <Card className="rounded-2xl shadow-sm">
+      <Card className="shadow-sm">
         <CardHeader>
           <CardTitle
             className="text-foreground flex items-center gap-2"
@@ -86,7 +86,7 @@ export function FormClient() {
           {/* Sukces */}
           {simulationMutation.isSuccess && (
             <div
-              className="rounded-lg border border-green-200 bg-green-50 p-4"
+              className="border border-green-200 bg-green-50 p-4"
               role="status"
               aria-live="polite"
               aria-label="Komunikat o sukcesie"
@@ -112,7 +112,7 @@ export function FormClient() {
           {/* Błędy API */}
           {simulationMutation.isError && (
             <div
-              className="rounded-lg border border-red-200 bg-red-50 p-4"
+              className="border border-red-200 bg-red-50 p-4"
               role="alert"
               aria-live="assertive"
               aria-label="Komunikat o błędzie"
@@ -136,7 +136,7 @@ export function FormClient() {
           {/* Błędy formularza */}
           {hasAttemptedSubmit && Object.keys(errors).length > 0 && (
             <div
-              className="rounded-lg border border-red-200 bg-red-50 p-4"
+              className="border border-red-200 bg-red-50 p-4"
               role="alert"
               aria-live="polite"
               aria-label="Lista błędów formularza"
@@ -350,7 +350,7 @@ export function FormClient() {
                   />
                 </div>
 
-                <div className="space-y-2 md:col-span-2">
+                <div className="space-y-2">
                   <div className="flex items-center gap-2">
                     <Label htmlFor="endYear">
                       Planowany rok zakończenia aktywności zawodowej *
@@ -579,7 +579,7 @@ export function FormClient() {
           </div>
 
           <div
-            className="border-accent/50 bg-accent/5 flex items-start gap-3 rounded-lg border p-4"
+            className="border-accent/50 bg-accent/5 flex items-start gap-3 border p-4"
             role="note"
             aria-label="Informacja prawna"
           >

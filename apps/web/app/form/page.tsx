@@ -6,7 +6,7 @@ function Form() {
       <div className="animate-fade-in w-full max-w-4xl">
         <header className="mb-8 text-center">
           <div className="mb-4 flex items-center justify-center gap-3">
-            <div className="bg-primary text-primary-foreground rounded-lg px-6 py-2 text-2xl font-bold">
+            <div className="bg-primary text-primary-foreground px-6 py-2 text-2xl font-bold">
               ZUS
             </div>
           </div>
