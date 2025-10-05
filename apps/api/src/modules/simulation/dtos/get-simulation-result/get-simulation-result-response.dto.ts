@@ -12,6 +12,40 @@ export enum ContractTypeEnum {
   DZIELO = "dzielo",
 }
 
+export class CustomExperiencePeriodDto {
+  @ApiProperty({
+    description: "Year when the custom experience period starts",
+    example: 2025,
+  })
+  yearStart: number;
+
+  @ApiProperty({
+    description: "Year when the custom experience period ends",
+    example: 2026,
+  })
+  yearEnd: number;
+
+  @ApiProperty({
+    description: "Monthly salary for this period",
+    example: 5000,
+  })
+  monthlySalary: number;
+
+  @ApiProperty({
+    description: "Contract type for this period",
+    enum: ContractTypeEnum,
+    example: ContractTypeEnum.UOP,
+  })
+  contractType: ContractTypeEnum;
+
+  constructor(data: CustomExperiencePeriodDto) {
+    this.yearStart = data.yearStart;
+    this.yearEnd = data.yearEnd;
+    this.monthlySalary = data.monthlySalary;
+    this.contractType = data.contractType;
+  }
+}
+
 export class SimulationConfigDto {
   @ApiProperty({
     description: "Age of the person",
@@ -90,6 +124,14 @@ export class SimulationConfigDto {
   })
   includeIndexation: boolean;
 
+  @ApiProperty({
+    description:
+      "Custom experience periods with specific salaries and contract types",
+    type: [CustomExperiencePeriodDto],
+    required: false,
+  })
+  customExperience?: Array<CustomExperiencePeriodDto>;
+
   constructor(data: SimulationConfigDto) {
     this.age = data.age;
     this.sex = data.sex;
@@ -103,6 +145,11 @@ export class SimulationConfigDto {
     this.currentFunds = data.currentFunds;
     this.includeWageGrowth = data.includeWageGrowth;
     this.includeIndexation = data.includeIndexation;
+    this.customExperience = data.customExperience
+      ? data.customExperience.map(
+          (period) => new CustomExperiencePeriodDto(period),
+        )
+      : undefined;
   }
 }
 

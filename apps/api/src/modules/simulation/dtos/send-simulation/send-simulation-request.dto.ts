@@ -1,5 +1,7 @@
 import { ApiProperty } from "@nestjs/swagger";
+import { Type } from "class-transformer";
 import {
+  IsArray,
   IsBoolean,
   IsEnum,
   IsInt,
@@ -8,7 +10,8 @@ import {
   IsOptional,
   IsString,
   Matches,
-  Min
+  Min,
+  ValidateNested,
 } from "class-validator";
 
 export enum SexEnum {
@@ -21,6 +24,47 @@ export enum ContractTypeEnum {
   B2B = "b2b",
   ZLECENIE = "zlecenie",
   DZIELO = "dzielo",
+}
+
+export class CustomExperiencePeriodDto {
+  @ApiProperty({
+    description: "Year when the custom experience period starts",
+    example: 2025,
+    minimum: 1900,
+  })
+  @IsInt({ message: "Year start must be an integer" })
+  @Min(1900, { message: "Year start must be at least 1900" })
+  @IsNotEmpty({ message: "Year start is required" })
+  yearStart!: number;
+
+  @ApiProperty({
+    description: "Year when the custom experience period ends",
+    example: 2026,
+    minimum: 1900,
+  })
+  @IsInt({ message: "Year end must be an integer" })
+  @Min(1900, { message: "Year end must be at least 1900" })
+  @IsNotEmpty({ message: "Year end is required" })
+  yearEnd!: number;
+
+  @ApiProperty({
+    description: "Monthly salary for this period",
+    example: 5000,
+    minimum: 0,
+  })
+  @IsInt({ message: "Monthly salary must be an integer" })
+  @Min(0, { message: "Monthly salary must be at least 0" })
+  @IsNotEmpty({ message: "Monthly salary is required" })
+  monthlySalary!: number;
+
+  @ApiProperty({
+    description: "Contract type for this period",
+    enum: ContractTypeEnum,
+    example: ContractTypeEnum.UOP,
+  })
+  @IsEnum(ContractTypeEnum, { message: "Contract type must be a valid type" })
+  @IsNotEmpty({ message: "Contract type is required" })
+  contractType!: ContractTypeEnum;
 }
 
 export class SendSimulationRequestDto {
@@ -141,4 +185,24 @@ export class SendSimulationRequestDto {
   @IsBoolean({ message: "Include indexation must be a boolean" })
   @IsNotEmpty({ message: "Include indexation is required" })
   includeIndexation!: boolean;
+
+  @ApiProperty({
+    description:
+      "Custom experience periods with specific salaries and contract types",
+    type: [CustomExperiencePeriodDto],
+    required: false,
+    example: [
+      {
+        yearStart: 2025,
+        yearEnd: 2026,
+        monthlySalary: 5000,
+        contractType: "uop",
+      },
+    ],
+  })
+  @IsOptional()
+  @IsArray({ message: "Custom experience must be an array" })
+  @ValidateNested({ each: true })
+  @Type(() => CustomExperiencePeriodDto)
+  customExperience?: Array<CustomExperiencePeriodDto>;
 }

@@ -10,7 +10,8 @@ import { GetSimulationResultByIdQuery } from "./get-simulation-result-by-id.quer
 
 @QueryHandler(GetSimulationResultByIdQuery)
 export class GetSimulationResultByIdHandler
-  implements IQueryHandler<GetSimulationResultByIdQuery> {
+  implements IQueryHandler<GetSimulationResultByIdQuery>
+{
   private readonly logger: LoggerService;
 
   constructor(
@@ -50,12 +51,19 @@ export class GetSimulationResultByIdHandler
       method: "execute",
     });
     // Extract additional data from JSON field
-    const additionalData = request.additionalData as {
-      contractType?: "uop" | "b2b" | "zlecenie" | "dzielo";
-      currentFunds?: number;
-      includeWageGrowth?: boolean;
-      includeIndexation?: boolean;
-    } || {};
+    const additionalData =
+      (request.additionalData as {
+        contractType?: "uop" | "b2b" | "zlecenie" | "dzielo";
+        currentFunds?: number;
+        includeWageGrowth?: boolean;
+        includeIndexation?: boolean;
+        customExperience?: Array<{
+          yearStart: number;
+          yearEnd: number;
+          monthlySalary: number;
+          contractType: "uop" | "b2b" | "zlecenie" | "dzielo";
+        }>;
+      }) || {};
 
     const simulationInput = {
       age: request.age,
@@ -69,6 +77,7 @@ export class GetSimulationResultByIdHandler
       includeWageGrowth: additionalData.includeWageGrowth || false,
       includeIndexation: additionalData.includeIndexation || false,
       postalCode: request.postalCode || undefined,
+      customExperience: additionalData.customExperience,
     };
     const calculationResult =
       await this.pensionCalculationService.calculatePension(simulationInput);

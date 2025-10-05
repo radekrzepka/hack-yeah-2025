@@ -1,3 +1,10 @@
+export interface CustomExperiencePeriod {
+  yearStart: number;
+  yearEnd: number;
+  monthlySalary: number;
+  contractType: "uop" | "b2b" | "zlecenie" | "dzielo";
+}
+
 export class CreateSimulationRequestCommand {
   constructor(
     public readonly age: number,
@@ -12,5 +19,6 @@ export class CreateSimulationRequestCommand {
     public readonly currentFunds?: number,
     public readonly includeWageGrowth: boolean = false,
     public readonly includeIndexation: boolean = false,
-  ) { }
+    public readonly customExperience?: Array<CustomExperiencePeriod>,
+  ) {}
 }
