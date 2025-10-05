@@ -68,10 +68,11 @@ export class GetSimulationResultByIdHandler
       currentFunds: additionalData.currentFunds,
       includeWageGrowth: additionalData.includeWageGrowth || false,
       includeIndexation: additionalData.includeIndexation || false,
+      postalCode: request.postalCode || undefined,
     };
     const calculationResult =
-      this.pensionCalculationService.calculatePension(simulationInput);
-    const response = this.responseBuilderService.buildResponse({
+      await this.pensionCalculationService.calculatePension(simulationInput);
+    const response = await this.responseBuilderService.buildResponse({
       id: result.id,
       requestId: String(result.requestId),
       expectedPension: request.expectedPension,

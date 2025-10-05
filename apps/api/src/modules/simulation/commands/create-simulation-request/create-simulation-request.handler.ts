@@ -85,7 +85,7 @@ export class CreateSimulationRequestHandler
       "execute",
     );
 
-    const calculationResult = this.pensionCalculationService.calculatePension({
+    const calculationResult = await this.pensionCalculationService.calculatePension({
       age,
       sex,
       grossSalary,
@@ -96,6 +96,7 @@ export class CreateSimulationRequestHandler
       currentFunds,
       includeWageGrowth,
       includeIndexation,
+      postalCode,
     });
 
     const createdResult = await this.simulationRepository.createResult({

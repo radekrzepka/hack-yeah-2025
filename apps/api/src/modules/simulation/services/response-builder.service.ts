@@ -31,7 +31,7 @@ export class ResponseBuilderService {
     private readonly improvementScenariosService: ImprovementScenariosService,
   ) { }
 
-  buildResponse(input: BuildResponseInput): GetSimulationResultResponseDto {
+  async buildResponse(input: BuildResponseInput): Promise<GetSimulationResultResponseDto> {
     const { id, requestId, expectedPension, calculationResult, simulationInput } = input;
     const summary = this.buildSummary({
       calculationResult,
@@ -41,7 +41,7 @@ export class ResponseBuilderService {
       calculationResult,
     });
     const improvementScenarios =
-      this.improvementScenariosService.calculateImprovementScenarios({
+      await this.improvementScenariosService.calculateImprovementScenarios({
         baseInput: simulationInput,
         basePension: calculationResult.monthlyPensionGross,
         birthYear: calculationResult.birthYear,

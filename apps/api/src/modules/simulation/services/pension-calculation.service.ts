@@ -13,6 +13,7 @@ export interface SimulationInput {
   currentFunds?: number;
   includeWageGrowth: boolean;
   includeIndexation: boolean;
+  postalCode?: string;
 }
 
 export interface YearlyBreakdownItem {
@@ -47,7 +48,7 @@ export interface PensionCalculationResult {
 export class PensionCalculationService {
   constructor(private readonly dataProvider: DataProviderService) { }
 
-  calculatePension(input: SimulationInput): PensionCalculationResult {
+  async calculatePension(input: SimulationInput): Promise<PensionCalculationResult> {
     const currentYear = new Date().getFullYear();
     const birthYear = currentYear - input.age;
     const workStartYear = new Date(input.workStartDate).getFullYear();
@@ -112,8 +113,14 @@ export class PensionCalculationService {
     }
     // Apply sick leave impact if enabled
     if (input.includeSickLeave) {
-      // Reduce contributions by average sick leave days (14 days per year = ~3.8% reduction)
-      const sickLeaveReduction = 0.038; // 3.8% reduction
+      // Get real absence data based on postal code and sex
+      const absencePercentage = await this.dataProvider.getAbsenceDataForPostalCode(
+        input.postalCode || "",
+        input.sex
+      );
+
+      // Convert percentage to reduction factor (e.g., 35% absence = 0.35 reduction)
+      const sickLeaveReduction = absencePercentage / 100;
       mainAccountCapital *= (1 - sickLeaveReduction);
       subAccountCapital *= (1 - sickLeaveReduction);
     }
