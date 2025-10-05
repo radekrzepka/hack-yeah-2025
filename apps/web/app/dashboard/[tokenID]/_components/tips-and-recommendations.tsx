@@ -15,146 +15,137 @@ import {
 export function TipsAndRecommendations() {
   return (
     <section className="space-y-6">
-      <div className="space-y-2 text-center">
-        <h2 className="text-foreground text-3xl font-bold">
-          Porady i Rekomendacje
-        </h2>
-        <p className="text-muted-foreground">
-          Spersonalizowane wskazówki dla każdego scenariusza
-        </p>
-      </div>
-
-      <Tabs defaultValue="optimistic" className="w-full">
+      <Tabs defaultValue="salary-increase" className="w-full">
         <TabsList className="mb-6 grid w-full grid-cols-3">
           <TabsTrigger
-            value="optimistic"
+            value="salary-increase"
             className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
           >
-            Optymistyczny
+            Zwiększenie Zarobków
           </TabsTrigger>
           <TabsTrigger
-            value="medium"
+            value="work-longer"
             className="data-[state=active]:bg-secondary data-[state=active]:text-secondary-foreground"
           >
-            Średni
+            Praca Dłużej
           </TabsTrigger>
           <TabsTrigger
-            value="pessimistic"
+            value="fewer-sick-days"
             className="data-[state=active]:bg-destructive data-[state=active]:text-destructive-foreground"
           >
-            Pesymistyczny
+            Redukcja Dni Chorobowych
           </TabsTrigger>
         </TabsList>
 
-        <TabsContent value="optimistic">
+        <TabsContent value="salary-increase">
           <Card className="border-primary/30 shadow-md">
             <CardHeader>
               <CardTitle className="text-primary">
-                Scenariusz Optymistyczny
+                Zwiększenie Zarobków
               </CardTitle>
               <CardDescription>
-                Strategia dla najlepszych warunków ekonomicznych
+                Strategie podnoszenia wynagrodzenia dla wyższej emerytury
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <ul className="list-inside list-disc space-y-3">
                 <li className="text-foreground">
-                  <strong>Zwiększ składki o 20%</strong> - większe wpłaty
-                  zapewnią znacznie wyższą emeryturę
+                  <strong>Negocjuj podwyżki wynagrodzenia</strong> - zwiększenie
+                  pensji o 10-20% znacząco podniesie emeryturę
                 </li>
                 <li className="text-foreground">
-                  <strong>Rozważ III filar emerytalny</strong> - dodatkowe
-                  zabezpieczenie finansowe
+                  <strong>Rozwijaj umiejętności zawodowe</strong> - awanse i
+                  lepsze stanowiska to wyższe wynagrodzenie
                 </li>
                 <li className="text-foreground">
-                  <strong>Inwestuj w fundusze kapitałowe</strong> - wykorzystaj
-                  korzystne warunki rynkowe
+                  <strong>Poszukaj lepiej płatnej pracy</strong> - zmiana
+                  stanowiska może przynieść znaczący wzrost zarobków
                 </li>
                 <li className="text-foreground">
-                  <strong>Planuj wcześniejszą emeryturę</strong> - przy wysokich
-                  oszczędnościach możesz przejść na emeryturę wcześniej
+                  <strong>Dodatkowe kwalifikacje</strong> - certyfikaty i
+                  szkolenia zwiększają wartość na rynku pracy
                 </li>
                 <li className="text-foreground">
-                  <strong>Dywersyfikuj inwestycje</strong> - zabezpiecz kapitał
-                  przed zmianami ekonomicznymi
+                  <strong>Freelancing i dodatkowa praca</strong> - dodatkowe
+                  źródła dochodu zwiększają podstawę emerytalną
                 </li>
               </ul>
             </CardContent>
           </Card>
         </TabsContent>
 
-        <TabsContent value="medium">
+        <TabsContent value="work-longer">
           <Card className="border-secondary/30 shadow-md">
             <CardHeader>
               <CardTitle style={{ color: "rgb(0, 65, 110)" }}>
-                Scenariusz Średni
+                Praca Dłużej
               </CardTitle>
               <CardDescription>
-                Zrównoważona strategia dla stabilnych warunków
+                Korzyści z przedłużenia aktywności zawodowej
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <ul className="list-inside list-disc space-y-3">
                 <li className="text-foreground">
-                  <strong>Kontynuuj obecne składki</strong> - utrzymuj
-                  regularność wpłat
+                  <strong>Przedłuż pracę o 1-2 lata</strong> - każdy dodatkowy
+                  rok pracy znacząco zwiększa emeryturę
                 </li>
                 <li className="text-foreground">
-                  <strong>Rozważ dodatkowe oszczędności</strong> - 10-15%
-                  dochodu na emeryturę
+                  <strong>Stopniowe przechodzenie na emeryturę</strong> - praca
+                  w niepełnym wymiarze godzin
                 </li>
                 <li className="text-foreground">
-                  <strong>Monitoruj stan konta</strong> - regularna kontrola co
-                  kwartał
+                  <strong>Konsultacje z pracodawcą</strong> - możliwość
+                  elastycznego harmonogramu pracy
                 </li>
                 <li className="text-foreground">
-                  <strong>Ubezpieczenie na życie</strong> - dodatkowe
-                  zabezpieczenie rodziny
+                  <strong>Zachowanie zdrowia</strong> - regularne badania i
+                  aktywność fizyczna umożliwiają dłuższą pracę
                 </li>
                 <li className="text-foreground">
-                  <strong>Edukacja finansowa</strong> - poszerzaj wiedzę o
-                  planowaniu emerytalnym
+                  <strong>Dostosowanie stanowiska</strong> - mniej wymagające
+                  fizycznie zadania w starszym wieku
                 </li>
               </ul>
             </CardContent>
           </Card>
         </TabsContent>
 
-        <TabsContent value="pessimistic">
+        <TabsContent value="fewer-sick-days">
           <Card className="border-destructive/30 shadow-md">
             <CardHeader>
               <CardTitle className="text-destructive">
-                Scenariusz Pesymistyczny
+                Redukcja Dni Chorobowych
               </CardTitle>
               <CardDescription>
-                Działania zaradcze w trudnych warunkach ekonomicznych
+                Wpływ zmniejszenia absencji chorobowej na emeryturę
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <ul className="list-inside list-disc space-y-3">
                 <li className="text-foreground">
-                  <strong>Zwiększ składki o minimum 30%</strong> - niezbędne dla
-                  osiągnięcia minimalnej emerytury
+                  <strong>Zadbaj o zdrowie</strong> - profilaktyka i zdrowy tryb
+                  życia zmniejszają absencję w pracy
                 </li>
                 <li className="text-foreground">
-                  <strong>Rozważ dodatkową pracę</strong> - wydłuż okres
-                  składkowy lub zwiększ dochody
+                  <strong>Regularne badania lekarskie</strong> - wczesne
+                  wykrywanie problemów zdrowotnych
                 </li>
                 <li className="text-foreground">
-                  <strong>IKE lub IKZE</strong> - wykorzystaj ulgi podatkowe na
-                  oszczędności emerytalne
+                  <strong>Aktywność fizyczna</strong> - regularne ćwiczenia
+                  wzmacniają odporność i kondycję
                 </li>
                 <li className="text-foreground">
-                  <strong>Konsultacja z doradcą</strong> - profesjonalna pomoc w
-                  planowaniu finansowym
+                  <strong>Zbilansowana dieta</strong> - prawidłowe odżywianie
+                  wspiera układ odpornościowy
                 </li>
                 <li className="text-foreground">
-                  <strong>Redukcja wydatków</strong> - przeznaczyaj więcej
-                  środków na oszczędności
+                  <strong>Zarządzanie stresem</strong> - techniki relaksacyjne i
+                  work-life balance
                 </li>
                 <li className="text-foreground">
-                  <strong>Opóźnij przejście na emeryturę</strong> - każdy
-                  dodatkowy rok znacznie zwiększa świadczenie
+                  <strong>Szczepienia profilaktyczne</strong> - ochrona przed
+                  chorobami zakaźnymi
                 </li>
               </ul>
             </CardContent>

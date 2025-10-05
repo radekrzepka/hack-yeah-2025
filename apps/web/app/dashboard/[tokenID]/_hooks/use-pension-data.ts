@@ -19,7 +19,7 @@ export function usePensionData(tokenID: string) {
   const simulationData = simulationQuery.data;
 
   // Transform contributionVsGrowth data for the comparison chart
-  const comparisonData = simulationData?.charts.contributionVsGrowth
+  const comparisonData = simulationData?.summary
     ? [
       {
         name: "Prognozowana",
@@ -32,6 +32,7 @@ export function usePensionData(tokenID: string) {
   return {
     simulationData,
     kpiData: simulationData?.summary,
+    expected: simulationData?.expectedPension || 5000, // Expected pension amount
     projectionData: simulationData?.charts.accumulationOverTime,
     comparisonData,
     improvementScenarios: simulationData?.improvementScenarios,

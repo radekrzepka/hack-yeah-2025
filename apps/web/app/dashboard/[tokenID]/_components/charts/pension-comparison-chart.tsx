@@ -17,11 +17,11 @@ export function PensionComparisonChart({ data }: PensionComparisonChartProps) {
   const chartConfig = {
     projected: {
       label: "Prognozowana Emerytura",
-      color: "hsl(160, 60%, 45%)",
+      color: "rgb(0, 120, 52)",
     },
     expected: {
       label: "Oczekiwana Emerytura",
-      color: "hsl(220, 70%, 50%)",
+      color: "rgb(0, 65, 110)",
     },
   };
 
@@ -44,7 +44,10 @@ export function PensionComparisonChart({ data }: PensionComparisonChartProps) {
         />
         <ChartTooltip
           content={<ChartTooltipContent />}
-          formatter={(value: number) => [`${value.toLocaleString()} zł`, ""]}
+          formatter={(value: number, name: string) => [
+            `${value.toLocaleString()} zł `,
+            name,
+          ]}
         />
         <Legend
           wrapperStyle={{ paddingTop: "20px", textAlign: "center" }}
@@ -52,13 +55,13 @@ export function PensionComparisonChart({ data }: PensionComparisonChartProps) {
         />
         <Bar
           dataKey="projected"
-          fill="hsl(160, 60%, 45%)"
+          fill={chartConfig.projected.color}
           name="Prognozowana Emerytura"
           radius={[4, 4, 0, 0]}
         />
         <Bar
           dataKey="expected"
-          fill="hsl(220, 70%, 50%)"
+          fill={chartConfig.expected.color}
           name="Oczekiwana Emerytura"
           radius={[4, 4, 0, 0]}
         />
