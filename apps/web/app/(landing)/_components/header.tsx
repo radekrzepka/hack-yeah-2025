@@ -9,8 +9,8 @@ export default function Header() {
       {/* Photo - shown first on mobile, second on desktop (far right) */}
       <div className="order-1 w-full overflow-hidden rounded-2xl lg:order-2 lg:w-auto lg:flex-shrink-0">
         <Image
-          src="/preview.png"
-          alt="Preview image"
+          src="/man_with_glasses.png"
+          alt="man_with_glasses image"
           width={500}
           height={200}
           className="h-auto w-full object-cover"
@@ -33,6 +33,7 @@ export default function Header() {
           Przekonaj się, jak proste może być świadome kształtowanie swojej
           emerytury!
         </TypographyP>
+
         <div className="mt-5 flex flex-col gap-3 sm:flex-row">
           <Button
             className="border-primary text-primary border-spacing-1 border-y border-gray-300 bg-white p-3 shadow-lg hover:text-black lg:border-x"

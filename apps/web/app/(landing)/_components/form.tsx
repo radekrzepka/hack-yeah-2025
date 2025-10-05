@@ -30,14 +30,16 @@ export default function Form() {
   return (
     <form id="form-section" onSubmit={handleSubmit} className="flex flex-col gap-4 max-w-md mx-auto p-6">
       <div className="flex flex-col gap-2">
-        <Label htmlFor="amount">Oczekiwana wysokość emerytury?</Label>
+        <Label htmlFor="amount" id="pension-label">
+          Oczekiwana wysokość emerytury?
+        </Label>
         <Input
           id="amount"
           type="text"
           value={amount}
           onChange={handleAmountChange}
           placeholder="Wprowadź kwotę"
-          className="border-gray-300 focus:border-primary focus:ring-primary"
+          className="focus:border-primary focus:ring-primary border-gray-300"
           required
         />
       </div>
