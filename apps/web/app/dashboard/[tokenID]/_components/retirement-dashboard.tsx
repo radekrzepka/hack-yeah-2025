@@ -81,15 +81,27 @@ export function RetirementDashboard({ tokenID }: { tokenID: string }) {
                 <Settings className="mr-2 h-5 w-5" />
                 Panel Kontrolny
               </Button>
-              <Button
-                onClick={handleDownloadReport}
-                variant="outline"
-                size="lg"
-                disabled={isGeneratingPdf}
-              >
-                <Download className="mr-2 h-5 w-5" />
-                {isGeneratingPdf ? "Generowanie..." : "Pobierz Raport"}
-              </Button>
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button
+                      onClick={handleDownloadReport}
+                      variant="outline"
+                      size="lg"
+                      disabled={isGeneratingPdf}
+                    >
+                      <Download className="mr-2 h-5 w-5" />
+                      {isGeneratingPdf ? "Generowanie..." : "Pobierz Raport"}
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent className="max-w-xs">
+                    <p className="text-sm">
+                      Generowanie raportu PDF może potrwać około 10 sekund.
+                      Raport zostanie automatycznie pobrany po zakończeniu.
+                    </p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
             </div>
           </div>
         </div>
