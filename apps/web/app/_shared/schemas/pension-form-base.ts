@@ -104,9 +104,16 @@ export const basePensionFields = {
 };
 
 // Funkcje walidacji
-export const validateEndYearAfterStartYear = (data: any) =>
-  data.endYear > data.startYear;
-export const validateWorkPeriod = (data: any) => {
+export const validateEndYearAfterStartYear = (data: {
+  endYear: number;
+  startYear: number;
+}) => data.endYear > data.startYear;
+export const validateWorkPeriod = (data: {
+  endYear: number;
+  startYear: number;
+  gender: "female" | "male";
+  age: number;
+}) => {
   const workYears = data.endYear - data.startYear;
   const retirementAge = data.gender === "male" ? 65 : 60;
   const currentAge =
