@@ -91,6 +91,18 @@ export default function FunFacts({ initialData }: Props) {
             intervalRef.current = null;
           }
         }}
+        onMouseEnter={() => {
+          if (intervalRef.current) {
+            clearInterval(intervalRef.current);
+            intervalRef.current = null;
+          }
+        }}
+        onFocus={() => {
+          if (intervalRef.current) {
+            clearInterval(intervalRef.current);
+            intervalRef.current = null;
+          }
+        }}
         onSelect={() => {
           // Reset timer when user manually scrolls
           if (intervalRef.current) {
@@ -106,8 +118,14 @@ export default function FunFacts({ initialData }: Props) {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2" />
-        <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2" />
+        <CarouselPrevious
+          aria-label="Poprzednia ciekawostka"
+          className="absolute left-2 top-1/2 -translate-y-1/2"
+        />
+        <CarouselNext
+          aria-label="Następna ciekawostka"
+          className="absolute right-2 top-1/2 -translate-y-1/2"
+        />
       </Carousel>
     </div>
   );

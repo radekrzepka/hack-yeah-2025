@@ -10,7 +10,7 @@ export default function Header() {
       <div className="order-1 w-full overflow-hidden rounded-2xl lg:order-2 lg:w-auto lg:flex-shrink-0">
         <Image
           src="/man_with_glasses.jpg"
-          alt="man_with_glasses image"
+          alt="Man with glasses image"
           width={500}
           height={200}
           className="h-auto w-full rounded-2xl object-cover"
@@ -39,7 +39,12 @@ export default function Header() {
             className="border-primary text-primary border-spacing-1 border-y border-gray-300 bg-white p-3 shadow-lg hover:text-black lg:border-x"
             onClick={() => {
               const formSection = document.getElementById("form-section");
-              formSection?.scrollIntoView({ behavior: "smooth" });
+              const prefersReducedMotion = window.matchMedia(
+                "(prefers-reduced-motion: reduce)",
+              ).matches;
+              formSection?.scrollIntoView({
+                behavior: prefersReducedMotion ? "auto" : "smooth",
+              });
             }}
           >
             Oblicz moją emeryturę
@@ -49,7 +54,12 @@ export default function Header() {
             onClick={() => {
               const seeMoreSection =
                 document.getElementById("see-more-section");
-              seeMoreSection?.scrollIntoView({ behavior: "smooth" });
+              const prefersReducedMotion = window.matchMedia(
+                "(prefers-reduced-motion: reduce)",
+              ).matches;
+              seeMoreSection?.scrollIntoView({
+                behavior: prefersReducedMotion ? "auto" : "smooth",
+              });
             }}
           >
             Dowiedz się więcej

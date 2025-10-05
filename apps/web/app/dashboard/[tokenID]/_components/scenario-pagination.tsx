@@ -81,17 +81,22 @@ export function ScenarioPagination({
   };
 
   const handleRemoveScenario = (localId: string) => {
+    const scenarioToRemove = scenarios.find((s) => s.localId === localId);
+    const isRemovingCurrentScenario =
+      scenarioToRemove?.parameters.tokenID === currentTokenID;
     removeScenario(localId);
     const updatedStorage = getStoredScenarios();
     setScenarios(updatedStorage.scenarios);
     setCurrentScenarioId(updatedStorage.currentScenarioId);
-
-    // If we removed the current scenario, notify parent
-    if (currentScenarioId === localId) {
-      const newCurrent = updatedStorage.scenarios.find(
-        (s) => s.localId === updatedStorage.currentScenarioId,
-      );
-      onScenarioChange(newCurrent || null);
+    if (isRemovingCurrentScenario) {
+      if (updatedStorage.scenarios.length > 0) {
+        const newScenario = updatedStorage.scenarios[0];
+        if (newScenario) {
+          router.push(`/dashboard/${newScenario.parameters.tokenID}`);
+        }
+      } else {
+        router.push("/form");
+      }
     }
   };
 
