@@ -10,7 +10,7 @@ export default function Form() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!amount || isNaN(Number(amount))) {
       return;
     }
@@ -28,7 +28,7 @@ export default function Form() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4 max-w-md mx-auto p-6">
+    <form id="form-section" onSubmit={handleSubmit} className="flex flex-col gap-4 max-w-md mx-auto p-6">
       <div className="flex flex-col gap-2">
         <Label htmlFor="amount">Oczekiwana wysokość emerytury?</Label>
         <Input
@@ -41,9 +41,9 @@ export default function Form() {
           required
         />
       </div>
-      
-      <Button 
-        type="submit" 
+
+      <Button
+        type="submit"
         className="bg-primary text-white hover:bg-primary/90 p-3"
         disabled={!amount || isNaN(Number(amount))}
       >

@@ -1,18 +1,20 @@
+import Form from "./(landing)/_components/form";
 import FunFacts from "./(landing)/_components/fun-facts";
 import Header from "./(landing)/_components/header";
 import { SeeMore } from "./(landing)/_components/see-more";
 
 import { getLandingData } from "./(landing)/_api/get-landing-data";
-import Form from "./(landing)/_components/form";
 
 export default async function Dashboard() {
   const data = await getLandingData();
   return (
-    <div className="w-full">
+    <div className="w-[80vw] mx-auto">
       <Header />
-      <SeeMore />
-      <FunFacts initialData={data} />
-      <Form />
+      <div className="mx-auto">
+        <FunFacts initialData={data} />
+        <SeeMore initialData={data} />
+        <Form />
+      </div>
     </div>
   );
 }

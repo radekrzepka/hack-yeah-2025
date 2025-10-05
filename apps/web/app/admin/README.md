@@ -164,7 +164,6 @@ Proces wylogowania:
 - Skeleton loaders podczas ładowania
 - Mini wykres trendów (7 dni)
 - Status systemu z pulsującą kropką
-- Dark mode support
 
 ## 🔧 Development
 
@@ -253,7 +252,6 @@ app.enableCors({
 - ✅ JWT authentication
 - ✅ Middleware protection
 - ✅ Responsive design
-- ✅ Dark mode support
 - ✅ Real-time statistics
 
 ---

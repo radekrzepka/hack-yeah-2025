@@ -259,7 +259,6 @@ apps/web/
 
 - **Tailwind CSS** for styling
 - **Shadcn/ui components** via `@hackathon/ui`
-- **Dark/light theme** support
 - **Responsive design** patterns
 - **Lucide React icons**
 
