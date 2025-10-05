@@ -117,7 +117,7 @@ function CareerLeverageCard({
             <div className="pt-1 lg:pt-2">
               <Button
                 className="w-full rounded-md bg-green-600 p-2 text-xs font-medium text-white transition-colors hover:bg-green-700 lg:w-auto lg:text-sm"
-                onClick={() => window.open("/form", "_blank")}
+                onClick={() => window.open("/form", "_self")}
               >
                 Zobacz wpływ podwyżki o 10%
               </Button>
@@ -330,7 +330,7 @@ export function SeeMore({ initialData }: Props) {
               <div className="pt-1 lg:pt-2">
                 <Button
                   className="w-full rounded-md bg-green-600 p-2 text-xs font-medium text-white transition-colors hover:bg-green-700 lg:w-auto lg:text-sm"
-                  onClick={() => window.open("/form", "_blank")}
+                  onClick={() => window.open("/form", "_self")}
                 >
                   Sprawdź, jak wypadasz względem minimum
                 </Button>
@@ -423,7 +423,7 @@ export function SeeMore({ initialData }: Props) {
               <div className="pt-1 lg:pt-2">
                 <Button
                   className="w-full rounded-md bg-green-600 p-2 text-xs font-medium text-white transition-colors hover:bg-green-700 lg:w-auto lg:text-sm"
-                  onClick={() => window.open("/form", "_blank")}
+                  onClick={() => window.open("/form", "_self")}
                   aria-label="Sprawdź, ile daje +24 miesiące pracy (otwiera się w nowej karcie)"
                 >
                   Sprawdź, ile daje +24 miesiące pracy

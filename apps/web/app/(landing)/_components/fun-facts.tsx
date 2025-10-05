@@ -91,18 +91,6 @@ export default function FunFacts({ initialData }: Props) {
             intervalRef.current = null;
           }
         }}
-        onMouseEnter={() => {
-          if (intervalRef.current) {
-            clearInterval(intervalRef.current);
-            intervalRef.current = null;
-          }
-        }}
-        onFocus={() => {
-          if (intervalRef.current) {
-            clearInterval(intervalRef.current);
-            intervalRef.current = null;
-          }
-        }}
         onSelect={() => {
           // Reset timer when user manually scrolls
           if (intervalRef.current) {
