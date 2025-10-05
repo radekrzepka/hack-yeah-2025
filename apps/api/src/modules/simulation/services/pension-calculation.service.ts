@@ -61,7 +61,6 @@ export class PensionCalculationService {
 
     // Get contribution rates based on contract type
     const contributionRates = this.getContributionRates(input.contractType);
-    const totalContributionRate = contributionRates.total;
 
     let lastYearlySalary = input.grossSalary * 12;
     for (let year = workStartYear; year < retirementYear; year++) {

@@ -6,7 +6,7 @@ export interface PostalCodeApiResponse {
     gmina?: string;
     powiat: string;
     wojewodztwo: string;
-    numeracja?: string[];
+    numeracja?: Array<string>;
     ulica?: string;
     numer?: string;
     nazwa?: string;
@@ -16,7 +16,7 @@ export interface PostalCodeApiResponse {
 export class PostalCodeApiService {
     private readonly apiBaseUrl = "https://kodpocztowy.intami.pl/api";
 
-    async getPostalCodeData(postalCode: string): Promise<PostalCodeApiResponse[]> {
+    async getPostalCodeData(postalCode: string): Promise<Array<PostalCodeApiResponse>> {
         try {
             const response = await fetch(`${this.apiBaseUrl}/${postalCode}`, {
                 headers: {
@@ -28,8 +28,8 @@ export class PostalCodeApiService {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
 
-            const data = await response.json();
-            return data as PostalCodeApiResponse[];
+      const data = await response.json();
+      return data as Array<PostalCodeApiResponse>;
         } catch (error) {
             console.error(`Error fetching postal code data for ${postalCode}:`, error);
             return [];
