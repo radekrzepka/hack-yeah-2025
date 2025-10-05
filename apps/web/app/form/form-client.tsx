@@ -8,7 +8,6 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-  Checkbox,
   Input,
   Label,
   Select,
@@ -17,6 +16,7 @@ import {
   SelectTrigger,
   SelectValue,
   Separator,
+  Switch,
   Tooltip,
   TooltipContent,
   TooltipProvider,
@@ -507,22 +507,10 @@ export function FormClient() {
                 </div>
 
                 <div className="space-y-2 md:col-span-2">
-                  <div className="flex items-center space-x-2">
-                    <Checkbox
-                      id="sickLeave"
-                      checked={watchedValues.includeSickLeave}
-                      onCheckedChange={(checked: boolean) =>
-                        setValue("includeSickLeave", checked)
-                      }
-                      aria-describedby={
-                        watchedValues.includeSickLeave
-                          ? "sickLeave-info"
-                          : undefined
-                      }
-                    />
+                  <div className="flex items-center justify-between">
                     <Label
                       htmlFor="sickLeave"
-                      className="flex cursor-pointer items-center gap-2 text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                      className="flex items-center gap-2 text-sm font-medium leading-none"
                     >
                       Uwzględniaj możliwość zwolnień lekarskich
                       {watchedValues.includeSickLeave && (
@@ -545,6 +533,18 @@ export function FormClient() {
                         </TooltipProvider>
                       )}
                     </Label>
+                    <Switch
+                      id="sickLeave"
+                      checked={watchedValues.includeSickLeave}
+                      onCheckedChange={(checked: boolean) =>
+                        setValue("includeSickLeave", checked)
+                      }
+                      aria-describedby={
+                        watchedValues.includeSickLeave
+                          ? "sickLeave-info"
+                          : undefined
+                      }
+                    />
                   </div>
                 </div>
               </div>
@@ -564,36 +564,36 @@ export function FormClient() {
               </legend>
 
               <div className="space-y-4">
-                <div className="flex items-center space-x-2">
-                  <Checkbox
+                <div className="flex items-center justify-between">
+                  <Label
+                    htmlFor="wageGrowth"
+                    className="text-sm font-medium leading-none"
+                  >
+                    Uwzględniaj prognozowany wzrost wynagrodzeń (NBP/GUS)
+                  </Label>
+                  <Switch
                     id="wageGrowth"
                     checked={watchedValues.includeWageGrowth}
                     onCheckedChange={(checked: boolean) =>
                       setValue("includeWageGrowth", checked)
                     }
                   />
-                  <Label
-                    htmlFor="wageGrowth"
-                    className="cursor-pointer text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                  >
-                    Uwzględniaj prognozowany wzrost wynagrodzeń (NBP/GUS)
-                  </Label>
                 </div>
 
-                <div className="flex items-center space-x-2">
-                  <Checkbox
+                <div className="flex items-center justify-between">
+                  <Label
+                    htmlFor="indexation"
+                    className="text-sm font-medium leading-none"
+                  >
+                    Uwzględniaj indeksację świadczeń po przejściu na emeryturę
+                  </Label>
+                  <Switch
                     id="indexation"
                     checked={watchedValues.includeIndexation}
                     onCheckedChange={(checked: boolean) =>
                       setValue("includeIndexation", checked)
                     }
                   />
-                  <Label
-                    htmlFor="indexation"
-                    className="cursor-pointer text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                  >
-                    Uwzględniaj indeksację świadczeń po przejściu na emeryturę
-                  </Label>
                 </div>
               </div>
             </fieldset>

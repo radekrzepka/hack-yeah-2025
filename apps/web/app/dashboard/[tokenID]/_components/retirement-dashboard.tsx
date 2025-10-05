@@ -316,8 +316,9 @@ export function RetirementDashboard({ tokenID }: { tokenID: string }) {
           )}
 
           {/* Control Panel - Bottom */}
+
           <div id="control-panel" className="print:hidden">
-            <ControlPanel />
+            <ControlPanel tokenID={tokenID} />
           </div>
           <div className="print:hidden">
             <FAQ></FAQ>
