@@ -47,7 +47,7 @@ export class SimulationController {
   @ApiOperation({
     summary: "Send simulation request",
     description:
-      "Creates a new simulation request and returns a unique token ID",
+      "Creates a new simulation request and returns the token ID along with the complete request data",
   })
   @ApiBody({
     type: SendSimulationRequestDto,
