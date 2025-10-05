@@ -1,5 +1,111 @@
 import { ApiProperty } from "@nestjs/swagger";
 
+export enum SexEnum {
+  MALE = "male",
+  FEMALE = "female",
+}
+
+export enum ContractTypeEnum {
+  UOP = "uop",
+  B2B = "b2b",
+  ZLECENIE = "zlecenie",
+  DZIELO = "dzielo",
+}
+
+export class SimulationConfigDto {
+  @ApiProperty({
+    description: "Age of the person",
+    example: 30,
+  })
+  age: number;
+
+  @ApiProperty({
+    description: "Sex of the person",
+    enum: SexEnum,
+    example: SexEnum.MALE,
+  })
+  sex: SexEnum;
+
+  @ApiProperty({
+    description: "Gross salary amount",
+    example: 7500,
+  })
+  grossSalary: number;
+
+  @ApiProperty({
+    description: "Work start date in ISO 8601 format",
+    example: "2015-01-01",
+    format: "date",
+  })
+  workStartDate: string;
+
+  @ApiProperty({
+    description: "Planned retirement year",
+    example: 2060,
+  })
+  plannedRetirementYear: number;
+
+  @ApiProperty({
+    description: "Whether to include sick leave in calculation",
+    example: true,
+  })
+  includeSickLeave: boolean;
+
+  @ApiProperty({
+    description: "Expected pension amount",
+    example: 5000,
+  })
+  expectedPension: number;
+
+  @ApiProperty({
+    description: "Postal code",
+    example: "00-001",
+    required: false,
+  })
+  postalCode?: string | null;
+
+  @ApiProperty({
+    description: "Contract type",
+    enum: ContractTypeEnum,
+    example: ContractTypeEnum.UOP,
+  })
+  contractType: ContractTypeEnum;
+
+  @ApiProperty({
+    description: "Current ZUS funds amount",
+    example: 150000,
+    required: false,
+  })
+  currentFunds?: number;
+
+  @ApiProperty({
+    description: "Whether to include wage growth projection",
+    example: true,
+  })
+  includeWageGrowth: boolean;
+
+  @ApiProperty({
+    description: "Whether to include benefit indexation",
+    example: true,
+  })
+  includeIndexation: boolean;
+
+  constructor(data: SimulationConfigDto) {
+    this.age = data.age;
+    this.sex = data.sex;
+    this.grossSalary = data.grossSalary;
+    this.workStartDate = data.workStartDate;
+    this.plannedRetirementYear = data.plannedRetirementYear;
+    this.includeSickLeave = data.includeSickLeave;
+    this.expectedPension = data.expectedPension;
+    this.postalCode = data.postalCode;
+    this.contractType = data.contractType;
+    this.currentFunds = data.currentFunds;
+    this.includeWageGrowth = data.includeWageGrowth;
+    this.includeIndexation = data.includeIndexation;
+  }
+}
+
 export class PensionSummaryDto {
   @ApiProperty({
     description: "Projected monthly pension in PLN",
@@ -463,6 +569,12 @@ export class GetSimulationResultResponseDto {
   })
   expectedPension: number;
 
+  @ApiProperty({
+    description: "Original simulation configuration/request data",
+    type: SimulationConfigDto,
+  })
+  config: SimulationConfigDto;
+
   @ApiProperty({ description: "Summary of key pension metrics" })
   summary: PensionSummaryDto;
 
@@ -478,6 +590,7 @@ export class GetSimulationResultResponseDto {
     id: string;
     requestId: string;
     expectedPension: number;
+    config: SimulationConfigDto;
     summary: PensionSummaryDto;
     charts: PensionChartsDto;
     improvementScenarios: ImprovementScenariosDto;
@@ -485,6 +598,7 @@ export class GetSimulationResultResponseDto {
     this.id = data.id;
     this.requestId = data.requestId;
     this.expectedPension = data.expectedPension;
+    this.config = new SimulationConfigDto(data.config);
     this.summary = new PensionSummaryDto(data.summary);
     this.charts = new PensionChartsDto(data.charts);
     this.improvementScenarios = new ImprovementScenariosDto(
