@@ -157,6 +157,32 @@ export interface GetAllSimulationResultsResponseDto {
   postalCode: object | null;
 }
 
+export interface CustomExperiencePeriodDto {
+  /**
+   * Year when the custom experience period starts
+   * @min 1900
+   * @example 2025
+   */
+  yearStart: number;
+  /**
+   * Year when the custom experience period ends
+   * @min 1900
+   * @example 2026
+   */
+  yearEnd: number;
+  /**
+   * Monthly salary for this period
+   * @min 0
+   * @example 5000
+   */
+  monthlySalary: number;
+  /**
+   * Contract type for this period
+   * @example "uop"
+   */
+  contractType: "uop" | "b2b" | "zlecenie" | "dzielo";
+}
+
 export interface SendSimulationRequestDto {
   /**
    * Age of the person
@@ -225,6 +251,11 @@ export interface SendSimulationRequestDto {
    * @example true
    */
   includeIndexation: boolean;
+  /**
+   * Custom experience periods with specific salaries and contract types
+   * @example [{"yearStart":2025,"yearEnd":2026,"monthlySalary":5000,"contractType":"uop"}]
+   */
+  customExperience?: CustomExperiencePeriodDto[];
 }
 
 export interface SendSimulationResponseDto {
@@ -294,6 +325,72 @@ export interface SendSimulationResponseDto {
    * @example true
    */
   includeIndexation: boolean;
+}
+
+export interface SimulationConfigDto {
+  /**
+   * Age of the person
+   * @example 30
+   */
+  age: number;
+  /**
+   * Sex of the person
+   * @example "male"
+   */
+  sex: "male" | "female";
+  /**
+   * Gross salary amount
+   * @example 7500
+   */
+  grossSalary: number;
+  /**
+   * Work start date in ISO 8601 format
+   * @format date
+   * @example "2015-01-01"
+   */
+  workStartDate: string;
+  /**
+   * Planned retirement year
+   * @example 2060
+   */
+  plannedRetirementYear: number;
+  /**
+   * Whether to include sick leave in calculation
+   * @example true
+   */
+  includeSickLeave: boolean;
+  /**
+   * Expected pension amount
+   * @example 5000
+   */
+  expectedPension: number;
+  /**
+   * Postal code
+   * @example "00-001"
+   */
+  postalCode?: object;
+  /**
+   * Contract type
+   * @example "uop"
+   */
+  contractType: "uop" | "b2b" | "zlecenie" | "dzielo";
+  /**
+   * Current ZUS funds amount
+   * @example 150000
+   */
+  currentFunds?: number;
+  /**
+   * Whether to include wage growth projection
+   * @example true
+   */
+  includeWageGrowth: boolean;
+  /**
+   * Whether to include benefit indexation
+   * @example true
+   */
+  includeIndexation: boolean;
+  /** Custom experience periods with specific salaries and contract types */
+  customExperience?: CustomExperiencePeriodDto[];
 }
 
 export interface PensionSummaryDto {
@@ -621,6 +718,8 @@ export interface GetSimulationResultResponseDto {
    * @example 5000
    */
   expectedPension: number;
+  /** Original simulation configuration/request data */
+  config: SimulationConfigDto;
   /** Summary of key pension metrics */
   summary: PensionSummaryDto;
   /** Data for various charts and visualizations */
