@@ -8,12 +8,27 @@ import { getLandingData } from "./(landing)/_api/get-landing-data";
 export default async function Dashboard() {
   const data = await getLandingData();
   return (
-    <div className="w-[80vw] mx-auto">
-      <Header />
+    <div className="mx-auto w-[80vw]">
+      <section aria-labelledby="hero-heading">
+        <h1 id="hero-heading" className="sr-only">
+          Strona główna ZUSometr - Kalkulator emerytalny
+        </h1>
+        <Header />
+      </section>
       <div className="mx-auto">
-        <FunFacts initialData={data} />
+        <section aria-labelledby="fun-facts-heading">
+          <h2 id="fun-facts-heading" className="sr-only">
+            Ciekawostki emerytalne
+          </h2>
+          <FunFacts initialData={data} />
+        </section>
         <SeeMore initialData={data} />
-        <Form />
+        <section aria-labelledby="calculator-heading">
+          <h2 id="calculator-heading" className="sr-only">
+            Kalkulator emerytury
+          </h2>
+          <Form />
+        </section>
       </div>
     </div>
   );

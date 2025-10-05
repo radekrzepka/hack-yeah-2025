@@ -84,29 +84,29 @@ function CareerLeverageCard({
   return (
     <Card className="mb-6 border border-gray-200 bg-[#fefefe] shadow-sm">
       <CardHeader>
-        <CardTitle className="text-lg lg:text-xl font-bold text-gray-900">
+        <CardTitle className="text-lg font-bold text-gray-900 lg:text-xl">
           Waloryzacja pomaga, ale dźwignią jest kariera
         </CardTitle>
       </CardHeader>
       <CardContent>
         <div className="flex flex-col gap-6 lg:grid lg:grid-cols-2">
           {/* Left side - text content */}
-          <div className="space-y-3 lg:space-y-4 order-2 lg:order-1">
+          <div className="order-2 space-y-3 lg:order-1 lg:space-y-4">
             <div>
-              <p className="text-xs lg:text-sm font-semibold text-gray-700 mb-1 lg:mb-2">
+              <p className="mb-1 text-xs font-semibold text-gray-700 lg:mb-2 lg:text-sm">
                 Co widać:
               </p>
-              <p className="text-xs lg:text-sm text-gray-600">
+              <p className="text-xs text-gray-600 lg:text-sm">
                 Wskaźniki waloryzacji są zmienne (od ok. 3–5% do kilkunastu
                 procent), a średnia emerytura rośnie w czasie.
               </p>
             </div>
 
             <div>
-              <p className="text-xs lg:text-sm font-semibold text-gray-700 mb-1 lg:mb-2">
+              <p className="mb-1 text-xs font-semibold text-gray-700 lg:mb-2 lg:text-sm">
                 Co to znaczy dla Ciebie:
               </p>
-              <p className="text-xs lg:text-sm text-gray-600">
+              <p className="text-xs text-gray-600 lg:text-sm">
                 Waloryzacja chroni siłę nabywczą, ale to{" "}
                 <strong>Twoje decyzje zawodowe</strong> są główną dźwignią:
                 dłuższa aktywność, mniej przerw w karierze, wyższa pensja i
@@ -116,8 +116,9 @@ function CareerLeverageCard({
 
             <div className="pt-1 lg:pt-2">
               <Button
-                className="w-full lg:w-auto rounded-md bg-green-600 p-2 text-xs lg:text-sm font-medium text-white transition-colors hover:bg-green-700"
+                className="inline-flex w-full items-center gap-1 rounded-md bg-green-600 p-2 text-xs font-medium text-white transition-colors hover:bg-green-700 lg:w-auto lg:text-sm"
                 onClick={() => window.open("/form", "_blank")}
+                aria-label="Zobacz wpływ podwyżki o 10% (otwiera się w nowej karcie)"
               >
                 Zobacz wpływ podwyżki o 10%
               </Button>
@@ -146,6 +147,18 @@ function CareerLeverageCard({
                   intervalRef.current = null;
                 }
               }}
+              onMouseEnter={() => {
+                if (intervalRef.current) {
+                  clearInterval(intervalRef.current);
+                  intervalRef.current = null;
+                }
+              }}
+              onFocus={() => {
+                if (intervalRef.current) {
+                  clearInterval(intervalRef.current);
+                  intervalRef.current = null;
+                }
+              }}
               onSelect={() => {
                 if (intervalRef.current) {
                   clearInterval(intervalRef.current);
@@ -167,65 +180,83 @@ function CareerLeverageCard({
 
                   const isLineChart = chart.chartType === "line";
 
+                  const chartDataDescription = data
+                    .map((d) => `${d.label}: ${d.value}`)
+                    .join(", ");
+
                   return (
                     <CarouselItem key={chart.id}>
                       <div className="mt-4">
-                        <div className="mb-2 text-sm text-gray-600">
+                        <div className="mb-2 text-sm text-gray-700">
                           <strong>Wykres:</strong> {chart.chartName}
                         </div>
-                        <ChartContainer
-                          config={chartConfig}
-                          className="h-[250px] w-full"
+                        <div
+                          role="img"
+                          aria-label={`Wykres ${chart.chartName}. Dane: ${chartDataDescription}`}
                         >
-                          {isLineChart ? (
-                            <LineChart data={data}>
-                              <CartesianGrid strokeDasharray="3 3" />
-                              <XAxis dataKey="label" tick={{ fontSize: 12 }} />
-                              <YAxis tick={{ fontSize: 12 }} />
-                              <ChartTooltip
-                                content={<ChartTooltipContent />}
-                              />
-                              <Line
-                                type="monotone"
-                                dataKey="value"
-                                stroke="#1e40af"
-                                strokeWidth={3}
-                                dot={{
-                                  fill: "#1e40af",
-                                  strokeWidth: 2,
-                                  r: 4,
-                                }}
-                              />
-                            </LineChart>
-                          ) : (
-                            <BarChart data={data}>
-                              <CartesianGrid strokeDasharray="3 3" />
-                              <XAxis
-                                dataKey="label"
-                                tick={{ fontSize: 12 }}
-                                angle={-45}
-                                textAnchor="end"
-                                height={60}
-                              />
-                              <YAxis tick={{ fontSize: 12 }} />
-                              <ChartTooltip
-                                content={<ChartTooltipContent />}
-                              />
-                              <Bar
-                                dataKey="value"
-                                fill="#1e40af"
-                                radius={[4, 4, 0, 0]}
-                              />
-                            </BarChart>
-                          )}
-                        </ChartContainer>
+                          <ChartContainer
+                            config={chartConfig}
+                            className="h-[250px] w-full"
+                          >
+                            {isLineChart ? (
+                              <LineChart data={data} accessibilityLayer>
+                                <CartesianGrid strokeDasharray="3 3" />
+                                <XAxis
+                                  dataKey="label"
+                                  tick={{ fontSize: 12 }}
+                                />
+                                <YAxis tick={{ fontSize: 12 }} />
+                                <ChartTooltip
+                                  content={<ChartTooltipContent />}
+                                />
+                                <Line
+                                  type="monotone"
+                                  dataKey="value"
+                                  stroke="#1e40af"
+                                  strokeWidth={3}
+                                  dot={{
+                                    fill: "#1e40af",
+                                    strokeWidth: 2,
+                                    r: 4,
+                                  }}
+                                />
+                              </LineChart>
+                            ) : (
+                              <BarChart data={data} accessibilityLayer>
+                                <CartesianGrid strokeDasharray="3 3" />
+                                <XAxis
+                                  dataKey="label"
+                                  tick={{ fontSize: 12 }}
+                                  angle={-45}
+                                  textAnchor="end"
+                                  height={60}
+                                />
+                                <YAxis tick={{ fontSize: 12 }} />
+                                <ChartTooltip
+                                  content={<ChartTooltipContent />}
+                                />
+                                <Bar
+                                  dataKey="value"
+                                  fill="#1e40af"
+                                  radius={[4, 4, 0, 0]}
+                                />
+                              </BarChart>
+                            )}
+                          </ChartContainer>
+                        </div>
                       </div>
                     </CarouselItem>
                   );
                 })}
               </CarouselContent>
-              <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2" />
-              <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2" />
+              <CarouselPrevious
+                aria-label="Poprzedni wykres"
+                className="absolute left-2 top-1/2 -translate-y-1/2"
+              />
+              <CarouselNext
+                aria-label="Następny wykres"
+                className="absolute right-2 top-1/2 -translate-y-1/2"
+              />
             </Carousel>
           </div>
         </div>
@@ -277,29 +308,29 @@ export function SeeMore({ initialData }: Props) {
       {/* Card 3: Minimalna emerytura */}
       <Card className="mb-6 border border-gray-200 bg-[#fefefe] shadow-sm">
         <CardHeader>
-          <CardTitle className="text-lg lg:text-xl font-bold text-gray-900">
+          <CardTitle className="text-lg font-bold text-gray-900 lg:text-xl">
             Minimalna emerytura to bezpieczna baza — celuj wyżej
           </CardTitle>
         </CardHeader>
         <CardContent>
           <div className="flex flex-col gap-6 lg:grid lg:grid-cols-2">
             {/* Left side - text content */}
-            <div className="space-y-3 lg:space-y-4 order-2 lg:order-1">
+            <div className="order-2 space-y-3 lg:order-1 lg:space-y-4">
               <div>
-                <p className="text-xs lg:text-sm font-semibold text-gray-700 mb-1 lg:mb-2">
+                <p className="mb-1 text-xs font-semibold text-gray-700 lg:mb-2 lg:text-sm">
                   Co widać:
                 </p>
-                <p className="text-xs lg:text-sm text-gray-600">
+                <p className="text-xs text-gray-600 lg:text-sm">
                   Minimalna emerytura rośnie, ale traktuj ją jako{" "}
                   <strong>sieć bezpieczeństwa</strong>, nie cel.
                 </p>
               </div>
 
               <div>
-                <p className="text-xs lg:text-sm font-semibold text-gray-700 mb-1 lg:mb-2">
+                <p className="mb-1 text-xs font-semibold text-gray-700 lg:mb-2 lg:text-sm">
                   Co to znaczy dla Ciebie:
                 </p>
-                <ul className="list-disc list-inside space-y-1 lg:space-y-2 text-xs lg:text-sm text-gray-600">
+                <ul className="list-inside list-disc space-y-1 text-xs text-gray-600 lg:space-y-2 lg:text-sm">
                   <li>
                     Każda dodatkowa{" "}
                     <strong>umowa o pracę/zlecenie ze składkami</strong>, każdy
@@ -315,8 +346,9 @@ export function SeeMore({ initialData }: Props) {
 
               <div className="pt-1 lg:pt-2">
                 <Button
-                  className="w-full lg:w-auto rounded-md bg-green-600 p-2 text-xs lg:text-sm font-medium text-white transition-colors hover:bg-green-700"
+                  className="inline-flex w-full items-center gap-1 rounded-md bg-green-600 p-2 text-xs font-medium text-white transition-colors hover:bg-green-700 lg:w-auto lg:text-sm"
                   onClick={() => window.open("/form", "_blank")}
+                  aria-label="Sprawdź, jak wypadasz względem minimum (otwiera się w nowej karcie)"
                 >
                   Sprawdź, jak wypadasz względem minimum
                 </Button>
@@ -327,27 +359,32 @@ export function SeeMore({ initialData }: Props) {
             <div className="order-1 lg:order-2">
               {minimalPensionChart && (
                 <div>
-                  <div className="mb-2 text-sm text-gray-600">
+                  <div className="mb-2 text-sm text-gray-700">
                     <strong>Wykres:</strong> {minimalPensionChart.chartName}
                   </div>
-                  <ChartContainer
-                    config={chartConfig}
-                    className="h-[300px] w-full"
+                  <div
+                    role="img"
+                    aria-label={`Wykres ${minimalPensionChart.chartName}. Dane: ${minimalPensionData.map((d) => `${d.label}: ${d.value} PLN`).join(", ")}`}
                   >
-                    <LineChart data={minimalPensionData}>
-                      <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis dataKey="label" tick={{ fontSize: 12 }} />
-                      <YAxis tick={{ fontSize: 12 }} />
-                      <ChartTooltip content={<ChartTooltipContent />} />
-                      <Line
-                        type="monotone"
-                        dataKey="value"
-                        stroke="#1e40af"
-                        strokeWidth={3}
-                        dot={{ fill: "#1e40af", strokeWidth: 2, r: 4 }}
-                      />
-                    </LineChart>
-                  </ChartContainer>
+                    <ChartContainer
+                      config={chartConfig}
+                      className="h-[300px] w-full"
+                    >
+                      <LineChart data={minimalPensionData} accessibilityLayer>
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="label" tick={{ fontSize: 12 }} />
+                        <YAxis tick={{ fontSize: 12 }} />
+                        <ChartTooltip content={<ChartTooltipContent />} />
+                        <Line
+                          type="monotone"
+                          dataKey="value"
+                          stroke="#1e40af"
+                          strokeWidth={3}
+                          dot={{ fill: "#1e40af", strokeWidth: 2, r: 4 }}
+                        />
+                      </LineChart>
+                    </ChartContainer>
+                  </div>
                 </div>
               )}
             </div>
@@ -363,19 +400,19 @@ export function SeeMore({ initialData }: Props) {
       {/* Card 1: Luka po zakończeniu pracy */}
       <Card className="mb-6 border border-gray-200 bg-[#fefefe] shadow-sm">
         <CardHeader>
-          <CardTitle className="text-lg lg:text-xl font-bold text-gray-900">
+          <CardTitle className="text-lg font-bold text-gray-900 lg:text-xl">
             Luka po zakończeniu pracy: co naprawdę ją zmniejsza
           </CardTitle>
         </CardHeader>
         <CardContent>
           <div className="flex flex-col gap-6 lg:grid lg:grid-cols-2">
             {/* Left side - text content */}
-            <div className="space-y-3 lg:space-y-4 order-2 lg:order-1">
+            <div className="order-2 space-y-3 lg:order-1 lg:space-y-4">
               <div>
-                <p className="text-xs lg:text-sm font-semibold text-gray-700 mb-1 lg:mb-2">
+                <p className="mb-1 text-xs font-semibold text-gray-700 lg:mb-2 lg:text-sm">
                   Co widać:
                 </p>
-                <p className="text-xs lg:text-sm text-gray-600">
+                <p className="text-xs text-gray-600 lg:text-sm">
                   Niezależnie od poziomu zarobków, stopa zastąpienia oscyluje
                   wokół ~30%. To oznacza, że emerytura z systemu publicznego
                   jest wyraźnie niższa niż pensja.
@@ -383,10 +420,10 @@ export function SeeMore({ initialData }: Props) {
               </div>
 
               <div>
-                <p className="text-xs lg:text-sm font-semibold text-gray-700 mb-1 lg:mb-2">
+                <p className="mb-1 text-xs font-semibold text-gray-700 lg:mb-2 lg:text-sm">
                   Co to znaczy dla Ciebie:
                 </p>
-                <ul className="list-disc list-inside space-y-1 lg:space-y-2 text-xs lg:text-sm text-gray-600">
+                <ul className="list-inside list-disc space-y-1 text-xs text-gray-600 lg:space-y-2 lg:text-sm">
                   <li>
                     <strong>Wyższa podstawa = wyższa emerytura</strong> (nawet
                     przy podobnej stopie). Każdy awans, nowa kwalifikacja,
@@ -403,8 +440,9 @@ export function SeeMore({ initialData }: Props) {
 
               <div className="pt-1 lg:pt-2">
                 <Button
-                  className="w-full lg:w-auto rounded-md bg-green-600 p-2 text-xs lg:text-sm font-medium text-white transition-colors hover:bg-green-700"
+                  className="inline-flex w-full items-center gap-1 rounded-md bg-green-600 p-2 text-xs font-medium text-white transition-colors hover:bg-green-700 lg:w-auto lg:text-sm"
                   onClick={() => window.open("/form", "_blank")}
+                  aria-label="Sprawdź, ile daje +24 miesiące pracy (otwiera się w nowej karcie)"
                 >
                   Sprawdź, ile daje +24 miesiące pracy
                 </Button>
@@ -415,31 +453,36 @@ export function SeeMore({ initialData }: Props) {
             <div className="order-1 lg:order-2">
               {replacementRateChart && (
                 <div>
-                  <div className="mb-2 text-sm text-gray-600">
+                  <div className="mb-2 text-sm text-gray-700">
                     <strong>Wykres:</strong> {replacementRateChart.chartName}
                   </div>
-                  <ChartContainer
-                    config={chartConfig}
-                    className="h-[350px] w-full"
+                  <div
+                    role="img"
+                    aria-label={`Wykres ${replacementRateChart.chartName}. Dane: ${replacementRateData.map((d) => `${d.label}: ${d.value}%`).join(", ")}`}
                   >
-                    <BarChart data={replacementRateData}>
-                      <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis
-                        dataKey="label"
-                        tick={{ fontSize: 12 }}
-                        angle={-45}
-                        textAnchor="end"
-                        height={100}
-                      />
-                      <YAxis tick={{ fontSize: 12 }} />
-                      <ChartTooltip content={<ChartTooltipContent />} />
-                      <Bar
-                        dataKey="value"
-                        fill="#1e40af"
-                        radius={[4, 4, 0, 0]}
-                      />
-                    </BarChart>
-                  </ChartContainer>
+                    <ChartContainer
+                      config={chartConfig}
+                      className="h-[350px] w-full"
+                    >
+                      <BarChart data={replacementRateData} accessibilityLayer>
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis
+                          dataKey="label"
+                          tick={{ fontSize: 12 }}
+                          angle={-45}
+                          textAnchor="end"
+                          height={100}
+                        />
+                        <YAxis tick={{ fontSize: 12 }} />
+                        <ChartTooltip content={<ChartTooltipContent />} />
+                        <Bar
+                          dataKey="value"
+                          fill="#1e40af"
+                          radius={[4, 4, 0, 0]}
+                        />
+                      </BarChart>
+                    </ChartContainer>
+                  </div>
                 </div>
               )}
             </div>
