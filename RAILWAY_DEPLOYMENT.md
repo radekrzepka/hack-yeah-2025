@@ -145,8 +145,15 @@ railway logs --tail 100
 
 ```env
 FRONTEND_URL=http://localhost:3000
-# Puppeteer will download and use its own Chrome
+# No PUPPETEER_EXECUTABLE_PATH needed
+# Puppeteer will automatically download and use its bundled Chrome
 ```
+
+**How it works locally:**
+
+- First run: Puppeteer downloads Chrome (~300MB) to `~/.cache/puppeteer/`
+- Subsequent runs: Uses cached Chrome
+- No additional configuration needed
 
 ### Production (Railway)
 
@@ -155,6 +162,12 @@ FRONTEND_URL=https://your-frontend.railway.app
 PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
 PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
 ```
+
+**How it works in Docker:**
+
+- `PUPPETEER_EXECUTABLE_PATH` is set in Dockerfile
+- Uses Alpine's Chromium package
+- Adds container-specific browser flags automatically
 
 ## Cost Optimization
 

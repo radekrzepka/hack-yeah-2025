@@ -28,11 +28,26 @@ ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
 
 ### 2. Service Configuration
 
-The `PdfGeneratorService` has been updated to use the system Chromium:
+The `PdfGeneratorService` automatically detects the environment:
+
+**Development (Local):**
+
+- Uses Puppeteer's bundled Chrome (downloaded automatically)
+- No `PUPPETEER_EXECUTABLE_PATH` needed
+
+**Production (Docker):**
+
+- Uses system Chromium via `PUPPETEER_EXECUTABLE_PATH` environment variable
+- Adds container-specific flags (`--single-process`, `--no-zygote`)
 
 ```typescript
-executablePath: process.env.PUPPETEER_EXECUTABLE_PATH ||
-  "/usr/bin/chromium-browser";
+if (process.env.PUPPETEER_EXECUTABLE_PATH) {
+  // Production: Use system Chromium
+  launchOptions.executablePath = process.env.PUPPETEER_EXECUTABLE_PATH;
+} else {
+  // Development: Use Puppeteer's bundled Chrome
+  // No executablePath needed
+}
 ```
 
 ### 3. Railway Environment Variables

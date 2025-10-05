@@ -84,22 +84,31 @@ export class PdfGeneratorService {
   private async getBrowser(): Promise<Browser> {
     if (!this.browser || !this.browser.connected) {
       this.logger.log("Launching new browser instance...");
-      this.browser = await puppeteer.launch({
+      const launchOptions: Parameters<typeof puppeteer.launch>[0] = {
         headless: true,
-        executablePath:
-          process.env.PUPPETEER_EXECUTABLE_PATH || "/usr/bin/chromium-browser",
         args: [
           "--no-sandbox",
           "--disable-setuid-sandbox",
           "--disable-dev-shm-usage",
           "--disable-accelerated-2d-canvas",
           "--disable-gpu",
+        ],
+      };
+      if (process.env.PUPPETEER_EXECUTABLE_PATH) {
+        this.logger.log(
+          `Using custom Chromium path: ${process.env.PUPPETEER_EXECUTABLE_PATH}`,
+        );
+        launchOptions.executablePath = process.env.PUPPETEER_EXECUTABLE_PATH;
+        launchOptions.args = [
+          ...(launchOptions.args || []),
           "--disable-software-rasterizer",
-          "--disable-dev-shm-usage",
           "--no-zygote",
           "--single-process",
-        ],
-      });
+        ];
+      } else {
+        this.logger.log("Using Puppeteer's bundled Chrome");
+      }
+      this.browser = await puppeteer.launch(launchOptions);
     }
     return this.browser;
   }
