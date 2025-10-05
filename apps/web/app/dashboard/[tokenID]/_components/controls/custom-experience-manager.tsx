@@ -203,7 +203,7 @@ export function CustomExperienceManager({
 
   return (
     <>
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <CardTitle className="text-lg">
             Dodatkowe okresy doświadczenia
@@ -217,7 +217,7 @@ export function CustomExperienceManager({
           variant="outline"
           size="sm"
           onClick={addPeriod}
-          className="flex items-center gap-2"
+          className="flex w-full items-center gap-2 sm:w-auto"
         >
           <Plus className="h-4 w-4" />
           Dodaj okres
@@ -245,7 +245,7 @@ export function CustomExperienceManager({
                     </Button>
                   </div>
 
-                  <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
                     {/* Rok rozpoczęcia */}
                     <div className="space-y-2">
                       <Label htmlFor={`periods.${index}.yearStart`}>

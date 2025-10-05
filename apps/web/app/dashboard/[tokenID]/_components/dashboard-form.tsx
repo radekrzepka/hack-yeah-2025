@@ -268,7 +268,7 @@ export function DashboardForm({ config, initialData }: DashboardFormProps) {
               <Separator className="flex-1" />
             </div>
 
-            <div className="grid gap-4 md:grid-cols-2">
+            <div className="grid gap-4 sm:grid-cols-2">
               {/* Wiek */}
               <div className="space-y-2">
                 <Label htmlFor="age" className="text-sm font-medium">
@@ -330,7 +330,7 @@ export function DashboardForm({ config, initialData }: DashboardFormProps) {
               <Separator className="flex-1" />
             </div>
 
-            <div className="grid gap-4 md:grid-cols-2">
+            <div className="grid gap-4 sm:grid-cols-2">
               {/* Rodzaj umowy */}
               <div className="space-y-2">
                 <Label htmlFor="contractType" className="text-sm font-medium">
@@ -394,7 +394,7 @@ export function DashboardForm({ config, initialData }: DashboardFormProps) {
               </div>
             </div>
 
-            <div className="grid gap-4 md:grid-cols-2">
+            <div className="grid gap-4 sm:grid-cols-2">
               {/* Rok rozpoczęcia pracy */}
               <div className="space-y-2">
                 <Label htmlFor="startYear" className="text-sm font-medium">
@@ -450,7 +450,7 @@ export function DashboardForm({ config, initialData }: DashboardFormProps) {
               <Separator className="flex-1" />
             </div>
 
-            <div className="grid gap-4 md:grid-cols-2">
+            <div className="grid gap-4 sm:grid-cols-2">
               {/* Oczekiwana wysokość emerytury */}
               <div className="space-y-2">
                 <Label htmlFor="targetPension" className="text-sm font-medium">
@@ -605,7 +605,7 @@ export function DashboardForm({ config, initialData }: DashboardFormProps) {
             <Button
               type="submit"
               disabled={isSubmitting || simulationMutation.isPending}
-              className="w-full md:w-auto"
+              className="w-full sm:w-auto"
               size="lg"
             >
               {isSubmitting || simulationMutation.isPending
