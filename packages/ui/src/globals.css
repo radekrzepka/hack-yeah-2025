@@ -4,6 +4,11 @@
 
 html {
   scroll-behavior: smooth;
+  color-scheme: light;
+}
+
+body {
+  color-scheme: light;
 }
 
 @layer base {
@@ -72,6 +77,7 @@ html {
     --tracking-normal: 0em;
     --spacing: 0.25rem;
   }
+
   /*   
   .dark {
     --background: rgb(10, 10, 10);

@@ -204,6 +204,27 @@ export interface SendSimulationRequestDto {
    * @example "00-001"
    */
   postalCode?: string;
+  /**
+   * Contract type
+   * @example "uop"
+   */
+  contractType: "uop" | "b2b" | "zlecenie" | "dzielo";
+  /**
+   * Current ZUS funds amount
+   * @min 0
+   * @example 150000
+   */
+  currentFunds?: number;
+  /**
+   * Whether to include wage growth projection
+   * @example true
+   */
+  includeWageGrowth: boolean;
+  /**
+   * Whether to include benefit indexation
+   * @example true
+   */
+  includeIndexation: boolean;
 }
 
 export interface SendSimulationResponseDto {
@@ -534,6 +555,11 @@ export interface GetSimulationResultResponseDto {
    * @example "550e8400-e29b-41d4-a716-446655440000"
    */
   requestId: string;
+  /**
+   * Expected pension amount entered by user
+   * @example 5000
+   */
+  expectedPension: number;
   /** Summary of key pension metrics */
   summary: PensionSummaryDto;
   /** Data for various charts and visualizations */

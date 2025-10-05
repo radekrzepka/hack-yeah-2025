@@ -10,8 +10,7 @@ import { GetSimulationResultByIdQuery } from "./get-simulation-result-by-id.quer
 
 @QueryHandler(GetSimulationResultByIdQuery)
 export class GetSimulationResultByIdHandler
-  implements IQueryHandler<GetSimulationResultByIdQuery>
-{
+  implements IQueryHandler<GetSimulationResultByIdQuery> {
   private readonly logger: LoggerService;
 
   constructor(
@@ -50,6 +49,14 @@ export class GetSimulationResultByIdHandler
     this.logger.log(`Simulation result found with ID: ${id}`, {
       method: "execute",
     });
+    // Extract additional data from JSON field
+    const additionalData = request.additionalData as {
+      contractType?: "uop" | "b2b" | "zlecenie" | "dzielo";
+      currentFunds?: number;
+      includeWageGrowth?: boolean;
+      includeIndexation?: boolean;
+    } || {};
+
     const simulationInput = {
       age: request.age,
       sex: request.sex,
@@ -57,12 +64,17 @@ export class GetSimulationResultByIdHandler
       workStartDate: request.workStartDate,
       plannedRetirementYear: request.plannedRetirementYear,
       includeSickLeave: request.includeSickLeave,
+      contractType: additionalData.contractType || "uop",
+      currentFunds: additionalData.currentFunds,
+      includeWageGrowth: additionalData.includeWageGrowth || false,
+      includeIndexation: additionalData.includeIndexation || false,
     };
     const calculationResult =
       this.pensionCalculationService.calculatePension(simulationInput);
     const response = this.responseBuilderService.buildResponse({
       id: result.id,
       requestId: String(result.requestId),
+      expectedPension: request.expectedPension,
       calculationResult,
       simulationInput,
     });

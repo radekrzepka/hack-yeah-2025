@@ -10,8 +10,7 @@ import { CreateSimulationRequestCommand } from "./create-simulation-request.comm
 
 @CommandHandler(CreateSimulationRequestCommand)
 export class CreateSimulationRequestHandler
-  implements ICommandHandler<CreateSimulationRequestCommand>
-{
+  implements ICommandHandler<CreateSimulationRequestCommand> {
   private readonly logger: LoggerService;
 
   constructor(
@@ -34,6 +33,10 @@ export class CreateSimulationRequestHandler
       includeSickLeave,
       expectedPension,
       postalCode,
+      contractType,
+      currentFunds,
+      includeWageGrowth,
+      includeIndexation,
     } = command;
 
     this.logger.logCommandStart("CreateSimulationRequestCommand", "execute", {
@@ -45,6 +48,10 @@ export class CreateSimulationRequestHandler
       includeSickLeave,
       expectedPension,
       postalCode,
+      contractType,
+      currentFunds,
+      includeWageGrowth,
+      includeIndexation,
     });
 
     const createdRequest = await this.simulationRepository.create({
@@ -56,6 +63,12 @@ export class CreateSimulationRequestHandler
       includeSickLeave,
       expectedPension,
       postalCode,
+      additionalData: {
+        contractType,
+        currentFunds,
+        includeWageGrowth,
+        includeIndexation,
+      },
     });
 
     if (!createdRequest) {
@@ -79,6 +92,10 @@ export class CreateSimulationRequestHandler
       workStartDate,
       plannedRetirementYear,
       includeSickLeave,
+      contractType,
+      currentFunds,
+      includeWageGrowth,
+      includeIndexation,
     });
 
     const createdResult = await this.simulationRepository.createResult({

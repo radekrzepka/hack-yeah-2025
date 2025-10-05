@@ -283,7 +283,6 @@ Comprehensive UI component library built with React, Tailwind CSS, Radix UI prim
 - **Accessible components** built on Radix UI primitives
 - **Consistent design system** with Tailwind CSS
 - **Form components** with validation support
-- **Theme support** (light/dark mode)
 - **TypeScript-first** component API
 
 ### Structure
@@ -360,13 +359,12 @@ function LoginForm() {
 **Theme support:**
 
 ```typescript
-import { ThemeProvider, ModeToggle } from '@hackathon/ui';
+import { ThemeProvider } from '@hackathon/ui';
 
 function App() {
   return (
-    <ThemeProvider defaultTheme="system" enableSystem>
+    <ThemeProvider defaultTheme="light" enableSystem={false}>
       <div>
-        <ModeToggle />
         {/* Your app content */}
       </div>
     </ThemeProvider>

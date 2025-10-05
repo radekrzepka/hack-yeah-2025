@@ -8,12 +8,19 @@ import {
   IsOptional,
   IsString,
   Matches,
-  Min,
+  Min
 } from "class-validator";
 
 export enum SexEnum {
   MALE = "male",
   FEMALE = "female",
+}
+
+export enum ContractTypeEnum {
+  UOP = "uop",
+  B2B = "b2b",
+  ZLECENIE = "zlecenie",
+  DZIELO = "dzielo",
 }
 
 export class SendSimulationRequestDto {
@@ -98,4 +105,40 @@ export class SendSimulationRequestDto {
     message: "Postal code must be in format XX-XXX",
   })
   postalCode?: string;
+
+  @ApiProperty({
+    description: "Contract type",
+    enum: ContractTypeEnum,
+    example: ContractTypeEnum.UOP,
+  })
+  @IsEnum(ContractTypeEnum, { message: "Contract type must be a valid type" })
+  @IsNotEmpty({ message: "Contract type is required" })
+  contractType!: ContractTypeEnum;
+
+  @ApiProperty({
+    description: "Current ZUS funds amount",
+    example: 150000,
+    minimum: 0,
+    required: false,
+  })
+  @IsOptional()
+  @IsInt({ message: "Current funds must be an integer" })
+  @Min(0, { message: "Current funds must be at least 0" })
+  currentFunds?: number;
+
+  @ApiProperty({
+    description: "Whether to include wage growth projection",
+    example: true,
+  })
+  @IsBoolean({ message: "Include wage growth must be a boolean" })
+  @IsNotEmpty({ message: "Include wage growth is required" })
+  includeWageGrowth!: boolean;
+
+  @ApiProperty({
+    description: "Whether to include benefit indexation",
+    example: true,
+  })
+  @IsBoolean({ message: "Include indexation must be a boolean" })
+  @IsNotEmpty({ message: "Include indexation is required" })
+  includeIndexation!: boolean;
 }

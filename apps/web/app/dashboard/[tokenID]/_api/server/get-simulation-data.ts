@@ -4,6 +4,7 @@ import { serverFetch } from "@/_utils/fetch/server-fetch";
 export interface GetSimulationResultResponseDto {
   id: string;
   requestId: string;
+  expectedPension: number;
   summary: {
     projectedPension: number;
     currentSalary: number;

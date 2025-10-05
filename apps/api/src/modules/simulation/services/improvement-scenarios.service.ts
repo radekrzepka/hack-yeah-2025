@@ -25,7 +25,7 @@ interface CalculateImprovementScenariosInput {
 export class ImprovementScenariosService {
   constructor(
     private readonly pensionCalculationService: PensionCalculationService,
-  ) {}
+  ) { }
 
   calculateImprovementScenarios(
     input: CalculateImprovementScenariosInput,
@@ -69,6 +69,10 @@ export class ImprovementScenariosService {
           workStartDate: baseInput.workStartDate,
           plannedRetirementYear: baseInput.plannedRetirementYear,
           includeSickLeave: baseInput.includeSickLeave,
+          contractType: baseInput.contractType,
+          currentFunds: baseInput.currentFunds,
+          includeWageGrowth: baseInput.includeWageGrowth,
+          includeIndexation: baseInput.includeIndexation,
         });
         const newPension = newCalculation.monthlyPensionGross;
         const pensionImprovement = newPension - basePension;
@@ -108,6 +112,10 @@ export class ImprovementScenariosService {
           workStartDate: baseInput.workStartDate,
           plannedRetirementYear: newRetirementYear,
           includeSickLeave: baseInput.includeSickLeave,
+          contractType: baseInput.contractType,
+          currentFunds: baseInput.currentFunds,
+          includeWageGrowth: baseInput.includeWageGrowth,
+          includeIndexation: baseInput.includeIndexation,
         });
         const newPension = newCalculation.monthlyPensionGross;
         const pensionImprovement = newPension - basePension;
@@ -144,6 +152,10 @@ export class ImprovementScenariosService {
         workStartDate: baseInput.workStartDate,
         plannedRetirementYear: baseInput.plannedRetirementYear,
         includeSickLeave: false,
+        contractType: baseInput.contractType,
+        currentFunds: baseInput.currentFunds,
+        includeWageGrowth: baseInput.includeWageGrowth,
+        includeIndexation: baseInput.includeIndexation,
       });
       const newPension = newCalculation.monthlyPensionGross;
       const pensionImprovement = newPension - basePension;
