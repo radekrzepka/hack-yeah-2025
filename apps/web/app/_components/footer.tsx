@@ -6,7 +6,7 @@ export function Footer() {
       <div className="container mx-auto px-4 py-8">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
           <div>
-            <h3 className="mb-4 text-lg font-semibold">ZUS Symulator</h3>
+            <h3 className="mb-4 text-lg font-semibold">ZUSometr</h3>
             <p className="text-muted-foreground text-sm">
               Kalkulator prognozy emerytalnej ZUS - sprawdź orientacyjną
               wysokość swojej przyszłej emerytury.
@@ -46,7 +46,7 @@ export function Footer() {
 
         <div className="mt-8 border-t pt-8 text-center">
           <p className="text-muted-foreground text-sm">
-            © 2025 ZUS Symulator. Wszystkie prawa zastrzeżone.
+            © 2025 ZUSometr. Wszystkie prawa zastrzeżone.
           </p>
         </div>
       </div>
