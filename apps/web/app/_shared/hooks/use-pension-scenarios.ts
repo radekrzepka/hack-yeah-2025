@@ -13,15 +13,17 @@ const STORAGE_KEY = "pension-scenarios";
 const MAX_SCENARIOS = 10;
 
 export function usePensionScenarios() {
-  const [scenarios, setScenarios] = useState<PensionScenario[]>([]);
+  const [scenarios, setScenarios] = useState<Array<PensionScenario>>([]);
 
   // Ładowanie danych z localStorage przy inicjalizacji
   useEffect(() => {
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored) {
-        const parsed = JSON.parse(stored);
-        const scenarios = Array.isArray(parsed) ? parsed : [];
+        const parsed: unknown = JSON.parse(stored);
+        const scenarios: Array<PensionScenario> = Array.isArray(parsed)
+          ? (parsed as Array<PensionScenario>)
+          : [];
 
         // Sprawdź czy nie przekroczono limitu przy ładowaniu
         if (scenarios.length > MAX_SCENARIOS) {
@@ -46,7 +48,7 @@ export function usePensionScenarios() {
   }, []);
 
   // Zapisywanie danych do localStorage
-  const saveToStorage = useCallback((newScenarios: PensionScenario[]) => {
+  const saveToStorage = useCallback((newScenarios: Array<PensionScenario>) => {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(newScenarios));
       setScenarios(newScenarios);
