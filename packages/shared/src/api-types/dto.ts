@@ -233,6 +233,67 @@ export interface SendSimulationResponseDto {
    * @example "550e8400-e29b-41d4-a716-446655440000"
    */
   id: string;
+  /**
+   * Age of the person
+   * @example 30
+   */
+  age: number;
+  /**
+   * Sex of the person
+   * @example "male"
+   */
+  sex: "male" | "female";
+  /**
+   * Gross salary amount
+   * @example 7500
+   */
+  grossSalary: number;
+  /**
+   * Work start date in ISO 8601 format
+   * @format date
+   * @example "2015-01-01"
+   */
+  workStartDate: string;
+  /**
+   * Planned retirement year
+   * @example 2060
+   */
+  plannedRetirementYear: number;
+  /**
+   * Whether to include sick leave in calculation
+   * @example true
+   */
+  includeSickLeave: boolean;
+  /**
+   * Expected pension amount
+   * @example 5000
+   */
+  expectedPension: number;
+  /**
+   * Postal code
+   * @example "00-001"
+   */
+  postalCode?: object;
+  /**
+   * Contract type
+   * @example "uop"
+   */
+  contractType: "uop" | "b2b" | "zlecenie" | "dzielo";
+  /**
+   * Current ZUS funds amount
+   * @example 150000
+   */
+  currentFunds?: number;
+  /**
+   * Whether to include wage growth projection
+   * @example true
+   */
+  includeWageGrowth: boolean;
+  /**
+   * Whether to include benefit indexation
+   * @example true
+   */
+  includeIndexation: boolean;
 }
 
 export interface PensionSummaryDto {
@@ -609,103 +670,4 @@ export interface HealthCheckResponseDto {
    * @example 200
    */
   httpStatus: number;
-}
-
-export interface CreateTestTableRequestDto {
-  /**
-   * Valid email address (1-255 characters)
-   * @format email
-   * @maxLength 255
-   * @example "user@example.com"
-   */
-  email: string;
-  /**
-   * First name (1-128 characters)
-   * @maxLength 128
-   * @example "John"
-   */
-  firstName: string;
-}
-
-export interface CreateTestTableResponseDto {
-  /**
-   * Unique identifier
-   * @example "550e8400-e29b-41d4-a716-446655440000"
-   */
-  id: string;
-  /**
-   * Email address
-   * @example "user@example.com"
-   */
-  email: string;
-  /**
-   * First name
-   * @example "John"
-   */
-  firstName: string;
-}
-
-export interface GetTestTableResponseDto {
-  /**
-   * Unique identifier
-   * @example "550e8400-e29b-41d4-a716-446655440000"
-   */
-  id: string;
-  /**
-   * Email address
-   * @example "user@example.com"
-   */
-  email: string;
-  /**
-   * First name
-   * @example "John"
-   */
-  firstName: string;
-}
-
-export interface UpdateTestTableRequestDto {
-  /**
-   * Valid email address (1-255 characters)
-   * @format email
-   * @maxLength 255
-   * @example "user@example.com"
-   */
-  email?: string;
-  /**
-   * First name (1-128 characters)
-   * @maxLength 128
-   * @example "John"
-   */
-  firstName?: string;
-}
-
-export interface UpdateTestTableResponseDto {
-  /**
-   * Unique identifier
-   * @example "550e8400-e29b-41d4-a716-446655440000"
-   */
-  id: string;
-  /**
-   * Email address
-   * @example "user@example.com"
-   */
-  email: string;
-  /**
-   * First name
-   * @example "John"
-   */
-  firstName: string;
-}
-
-export interface DeleteTestTableResponseDto {
-  /**
-   * Whether the deletion was successful
-   * @example true
-   */
-  success: boolean;
-  /**
-   * Success message
-   * @example "Test table record deleted successfully"
-   */
-  message: string;
 }

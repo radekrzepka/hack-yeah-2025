@@ -13,7 +13,6 @@ import { EmailModule } from "./email/email.module";
 import { EncryptionModule } from "./encryption/encryption.module";
 import { HealthModule } from "./health/health.module";
 import { SimulationModule } from "./simulation/simulation.module";
-import { TestTableModule } from "./test-table/test-table.module";
 
 @Module({
   imports: [
@@ -34,7 +33,6 @@ import { TestTableModule } from "./test-table/test-table.module";
     EncryptionModule,
     HealthModule,
     SimulationModule,
-    TestTableModule,
   ],
   providers: [
     {
