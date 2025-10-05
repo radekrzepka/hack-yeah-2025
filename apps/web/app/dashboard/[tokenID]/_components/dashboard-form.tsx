@@ -26,6 +26,7 @@ import { useMutation } from "@tanstack/react-query";
 import { CircleAlert as AlertCircle, Calculator } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
+import { usePensionScenarios } from "../../../_shared/hooks/use-pension-scenarios";
 import { sendSimulationClient } from "../../../form/_api/send-simulation";
 import { pensionFormSchema, type PensionFormData } from "./schema";
 
@@ -68,6 +69,7 @@ interface DashboardFormProps {
 
 export function DashboardForm({ initialData }: DashboardFormProps) {
   const router = useRouter();
+  const { addScenario } = usePensionScenarios();
 
   const {
     register,
@@ -97,8 +99,16 @@ export function DashboardForm({ initialData }: DashboardFormProps) {
       const apiData = transformFormDataToApi(formData);
       return sendSimulationClient(apiData);
     },
-    onSuccess: (data) => {
+    onSuccess: (data, variables) => {
       console.log("Simulation sent successfully:", data);
+
+      // Zapisz dane do localStorage
+      addScenario({
+        id: data.id,
+        age: variables.age,
+        contractType: variables.contractType,
+      });
+
       // Przekieruj na dashboard z ID symulacji
       router.push(`/dashboard/${data.id}`);
     },

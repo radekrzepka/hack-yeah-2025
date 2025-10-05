@@ -2,10 +2,11 @@ import type {
   SendSimulationRequestDto,
   SendSimulationResponseDto,
 } from "@hackathon/shared";
-import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
+import { useMutation } from "@tanstack/react-query";
 
 import { sendSimulationClient } from "../_api/send-simulation";
+import { usePensionScenarios } from "../../_shared/hooks/use-pension-scenarios";
 import { type PensionFormData } from "../schema";
 
 // Transform form data to API format
@@ -40,6 +41,7 @@ function transformFormDataToApi(
 
 export function useSimulation() {
   const router = useRouter();
+  const { addScenario } = usePensionScenarios();
 
   return useMutation({
     mutationFn: async (
@@ -48,8 +50,16 @@ export function useSimulation() {
       const apiData = transformFormDataToApi(formData);
       return sendSimulationClient(apiData);
     },
-    onSuccess: (data) => {
+    onSuccess: (data, variables) => {
       console.log("Simulation sent successfully:", data);
+
+      // Zapisz dane do localStorage
+      addScenario({
+        id: data.id,
+        age: variables.age,
+        contractType: variables.contractType,
+      });
+
       // Przekieruj na dashboard z ID symulacji
       router.push(`/dashboard/${data.id}`);
     },
