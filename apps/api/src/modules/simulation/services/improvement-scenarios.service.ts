@@ -25,7 +25,7 @@ interface CalculateImprovementScenariosInput {
 export class ImprovementScenariosService {
   constructor(
     private readonly pensionCalculationService: PensionCalculationService,
-  ) { }
+  ) {}
 
   async calculateImprovementScenarios(
     input: CalculateImprovementScenariosInput,
@@ -57,24 +57,25 @@ export class ImprovementScenariosService {
   }): Promise<SalaryIncreaseScenarioDto> {
     const { baseInput, basePension } = params;
     const increasePercentages = [10, 20, 30];
-    const options: Array<SalaryIncreaseOptionDto> = await Promise.all(increasePercentages.map(
-      async (increasePercentage) => {
+    const options: Array<SalaryIncreaseOptionDto> = await Promise.all(
+      increasePercentages.map(async (increasePercentage) => {
         const newMonthlySalary =
           baseInput.grossSalary * (1 + increasePercentage / 100);
         const salaryDifference = newMonthlySalary - baseInput.grossSalary;
-        const newCalculation = await this.pensionCalculationService.calculatePension({
-          age: baseInput.age,
-          sex: baseInput.sex,
-          grossSalary: newMonthlySalary,
-          workStartDate: baseInput.workStartDate,
-          plannedRetirementYear: baseInput.plannedRetirementYear,
-          includeSickLeave: baseInput.includeSickLeave,
-          contractType: baseInput.contractType,
-          currentFunds: baseInput.currentFunds,
-          includeWageGrowth: baseInput.includeWageGrowth,
-          includeIndexation: baseInput.includeIndexation,
-          postalCode: baseInput.postalCode,
-        });
+        const newCalculation =
+          await this.pensionCalculationService.calculatePension({
+            age: baseInput.age,
+            sex: baseInput.sex,
+            grossSalary: newMonthlySalary,
+            workStartDate: baseInput.workStartDate,
+            plannedRetirementYear: baseInput.plannedRetirementYear,
+            includeSickLeave: baseInput.includeSickLeave,
+            contractType: baseInput.contractType,
+            currentFunds: baseInput.currentFunds,
+            includeWageGrowth: baseInput.includeWageGrowth,
+            includeIndexation: baseInput.includeIndexation,
+            postalCode: baseInput.postalCode,
+          });
         const newPension = newCalculation.monthlyPensionGross;
         const pensionImprovement = newPension - basePension;
         const improvementPercentage = (pensionImprovement / basePension) * 100;
@@ -86,7 +87,7 @@ export class ImprovementScenariosService {
           pensionImprovement: this.roundToTwoDecimals(pensionImprovement),
           improvementPercentage: this.roundToTwoDecimals(improvementPercentage),
         };
-      })
+      }),
     );
     return {
       currentPension: this.roundToTwoDecimals(basePension),
@@ -101,24 +102,25 @@ export class ImprovementScenariosService {
   }): Promise<WorkLongerScenarioDto> {
     const { baseInput, basePension, birthYear } = params;
     const additionalYearsOptions = [1, 2, 3];
-    const options: Array<WorkLongerOptionDto> = await Promise.all(additionalYearsOptions.map(
-      async (additionalYears) => {
+    const options: Array<WorkLongerOptionDto> = await Promise.all(
+      additionalYearsOptions.map(async (additionalYears) => {
         const newRetirementYear =
           baseInput.plannedRetirementYear + additionalYears;
         const newRetirementAge = newRetirementYear - birthYear;
-        const newCalculation = await this.pensionCalculationService.calculatePension({
-          age: baseInput.age,
-          sex: baseInput.sex,
-          grossSalary: baseInput.grossSalary,
-          workStartDate: baseInput.workStartDate,
-          plannedRetirementYear: newRetirementYear,
-          includeSickLeave: baseInput.includeSickLeave,
-          contractType: baseInput.contractType,
-          currentFunds: baseInput.currentFunds,
-          includeWageGrowth: baseInput.includeWageGrowth,
-          includeIndexation: baseInput.includeIndexation,
-          postalCode: baseInput.postalCode,
-        });
+        const newCalculation =
+          await this.pensionCalculationService.calculatePension({
+            age: baseInput.age,
+            sex: baseInput.sex,
+            grossSalary: baseInput.grossSalary,
+            workStartDate: baseInput.workStartDate,
+            plannedRetirementYear: newRetirementYear,
+            includeSickLeave: baseInput.includeSickLeave,
+            contractType: baseInput.contractType,
+            currentFunds: baseInput.currentFunds,
+            includeWageGrowth: baseInput.includeWageGrowth,
+            includeIndexation: baseInput.includeIndexation,
+            postalCode: baseInput.postalCode,
+          });
         const newPension = newCalculation.monthlyPensionGross;
         const pensionImprovement = newPension - basePension;
         const improvementPercentage = (pensionImprovement / basePension) * 100;
@@ -130,7 +132,7 @@ export class ImprovementScenariosService {
           pensionImprovement: this.roundToTwoDecimals(pensionImprovement),
           improvementPercentage: this.roundToTwoDecimals(improvementPercentage),
         };
-      })
+      }),
     );
     return {
       currentPension: this.roundToTwoDecimals(basePension),
@@ -147,19 +149,20 @@ export class ImprovementScenariosService {
     const averageSickDaysPerYear = 10;
     const options: Array<FewerSickDaysOptionDto> = [];
     if (currentlyIncludesSickLeave) {
-      const newCalculation = await this.pensionCalculationService.calculatePension({
-        age: baseInput.age,
-        sex: baseInput.sex,
-        grossSalary: baseInput.grossSalary,
-        workStartDate: baseInput.workStartDate,
-        plannedRetirementYear: baseInput.plannedRetirementYear,
-        includeSickLeave: false,
-        contractType: baseInput.contractType,
-        currentFunds: baseInput.currentFunds,
-        includeWageGrowth: baseInput.includeWageGrowth,
-        includeIndexation: baseInput.includeIndexation,
-        postalCode: baseInput.postalCode,
-      });
+      const newCalculation =
+        await this.pensionCalculationService.calculatePension({
+          age: baseInput.age,
+          sex: baseInput.sex,
+          grossSalary: baseInput.grossSalary,
+          workStartDate: baseInput.workStartDate,
+          plannedRetirementYear: baseInput.plannedRetirementYear,
+          includeSickLeave: false,
+          contractType: baseInput.contractType,
+          currentFunds: baseInput.currentFunds,
+          includeWageGrowth: baseInput.includeWageGrowth,
+          includeIndexation: baseInput.includeIndexation,
+          postalCode: baseInput.postalCode,
+        });
       const newPension = newCalculation.monthlyPensionGross;
       const pensionImprovement = newPension - basePension;
       const improvementPercentage = (pensionImprovement / basePension) * 100;
@@ -200,7 +203,7 @@ export class ImprovementScenariosService {
       });
     } else {
       options.push({
-        scenario: "Already optimal - no sick leave",
+        scenario: "Już optymalny - brak zwolnień lekarskich",
         reductionPercentage: 0,
         newPension: this.roundToTwoDecimals(basePension),
         pensionImprovement: 0,

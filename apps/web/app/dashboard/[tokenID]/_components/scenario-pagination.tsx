@@ -147,7 +147,7 @@ export function ScenarioPagination({
         {currentScenarios.map((scenario) => (
           <div
             key={scenario.localId}
-            className={`relative flex cursor-pointer flex-col gap-3 rounded-lg border-2 p-3 transition-all sm:p-4 ${
+            className={`relative flex cursor-pointer flex-col gap-3 rounded-xl border-2 p-3 transition-all sm:p-4 ${
               currentScenarioId === scenario.localId
                 ? "border-primary bg-primary/5 shadow-md"
                 : "border-muted hover:border-primary/50 hover:bg-muted/50"
