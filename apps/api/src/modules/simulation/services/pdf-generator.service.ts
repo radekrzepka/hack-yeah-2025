@@ -86,12 +86,18 @@ export class PdfGeneratorService {
       this.logger.log("Launching new browser instance...");
       this.browser = await puppeteer.launch({
         headless: true,
+        executablePath:
+          process.env.PUPPETEER_EXECUTABLE_PATH || "/usr/bin/chromium-browser",
         args: [
           "--no-sandbox",
           "--disable-setuid-sandbox",
           "--disable-dev-shm-usage",
           "--disable-accelerated-2d-canvas",
           "--disable-gpu",
+          "--disable-software-rasterizer",
+          "--disable-dev-shm-usage",
+          "--no-zygote",
+          "--single-process",
         ],
       });
     }
