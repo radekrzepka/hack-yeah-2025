@@ -179,10 +179,6 @@ function CareerLeverageCard({
 
                   const isLineChart = chart.chartType === "line";
 
-                  const chartDataDescription = data
-                    .map((d) => `${d.label}: ${d.value}`)
-                    .join(", ");
-
                   return (
                     <CarouselItem key={chart.id}>
                       <div className="mt-4">
