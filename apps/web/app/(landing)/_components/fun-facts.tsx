@@ -1,15 +1,15 @@
 "use client";
 
 import {
-    Card,
-    CardContent,
-    CardTitle,
-    Carousel,
-    CarouselContent,
-    CarouselItem,
-    CarouselNext,
-    CarouselPrevious,
-    TypographyP,
+  Card,
+  CardContent,
+  CardTitle,
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+  TypographyP,
 } from "@hackathon/ui";
 import { useMemo, useRef } from "react";
 import type { LandingPageData } from "../_api/get-landing-data";
@@ -87,6 +87,13 @@ export default function FunFacts({ initialData }: Props) {
             }, 10000);
           }
           if (!api && intervalRef.current) {
+            clearInterval(intervalRef.current);
+            intervalRef.current = null;
+          }
+        }}
+        onSelect={() => {
+          // Reset timer when user manually scrolls
+          if (intervalRef.current) {
             clearInterval(intervalRef.current);
             intervalRef.current = null;
           }

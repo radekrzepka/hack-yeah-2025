@@ -10,8 +10,17 @@ export interface FactData {
   source: string;
 }
 
+export interface ChartData {
+  id: string;
+  chartName: string;
+  chartType: string;
+  chartData: unknown;
+  source: string;
+}
+
 export interface LandingPageData {
   facts: Array<FactData>;
+  charts: Array<ChartData>;
 }
 
 export async function getLandingData(): Promise<LandingPageData> {
