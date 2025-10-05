@@ -4,11 +4,14 @@ import { Injectable } from "@nestjs/common";
 import {
   AccountBreakdownDto,
   AccumulationChartDataDto,
+  ContractTypeEnum,
   ContributionVsGrowthDto,
   DecadeSummaryDto,
   GetSimulationResultResponseDto,
   PensionChartsDto,
   PensionSummaryDto,
+  SexEnum,
+  SimulationConfigDto,
 } from "../dtos/get-simulation-result/get-simulation-result-response.dto";
 import { ImprovementScenariosService } from "./improvement-scenarios.service";
 import {
@@ -29,10 +32,22 @@ interface BuildResponseInput {
 export class ResponseBuilderService {
   constructor(
     private readonly improvementScenariosService: ImprovementScenariosService,
-  ) { }
+  ) {}
 
-  async buildResponse(input: BuildResponseInput): Promise<GetSimulationResultResponseDto> {
-    const { id, requestId, expectedPension, calculationResult, simulationInput } = input;
+  async buildResponse(
+    input: BuildResponseInput,
+  ): Promise<GetSimulationResultResponseDto> {
+    const {
+      id,
+      requestId,
+      expectedPension,
+      calculationResult,
+      simulationInput,
+    } = input;
+    const config = this.buildConfig({
+      simulationInput,
+      expectedPension,
+    });
     const summary = this.buildSummary({
       calculationResult,
       simulationInput,
@@ -51,10 +66,32 @@ export class ResponseBuilderService {
       id,
       requestId,
       expectedPension,
+      config,
       summary,
       charts,
       improvementScenarios,
     });
+  }
+
+  private buildConfig(params: {
+    simulationInput: SimulationInput;
+    expectedPension: number;
+  }): SimulationConfigDto {
+    const { simulationInput, expectedPension } = params;
+    return {
+      age: simulationInput.age,
+      sex: simulationInput.sex as SexEnum,
+      grossSalary: simulationInput.grossSalary,
+      workStartDate: simulationInput.workStartDate,
+      plannedRetirementYear: simulationInput.plannedRetirementYear,
+      includeSickLeave: simulationInput.includeSickLeave,
+      expectedPension,
+      postalCode: simulationInput.postalCode || null,
+      contractType: simulationInput.contractType as ContractTypeEnum,
+      currentFunds: simulationInput.currentFunds,
+      includeWageGrowth: simulationInput.includeWageGrowth,
+      includeIndexation: simulationInput.includeIndexation,
+    };
   }
 
   private buildSummary(params: {

@@ -79,7 +79,8 @@ export class SimulationController {
   @Get(":tokenId")
   @ApiOperation({
     summary: "Get simulation result by token ID",
-    description: "Retrieves the simulation result using the token ID",
+    description:
+      "Retrieves the simulation result including original request configuration and calculated data using the token ID",
   })
   @ApiParam({
     name: "tokenId",
