@@ -1,0 +1,2662 @@
+[
+  {
+    "lp": 1,
+    "nazwa": "powiat aleksandrowski",
+    "kod": "0401",
+    "absencjaKobiet": 38.12,
+    "absencjaMezczyzn": 32.81
+  },
+  {
+    "lp": 2,
+    "nazwa": "powiat augustowski",
+    "kod": "2001",
+    "absencjaKobiet": 33.87,
+    "absencjaMezczyzn": 30.49
+  },
+  {
+    "lp": 3,
+    "nazwa": "powiat bartoszycki",
+    "kod": "2801",
+    "absencjaKobiet": 37.35,
+    "absencjaMezczyzn": 34.71
+  },
+  {
+    "lp": 4,
+    "nazwa": "powiat bełchatowski",
+    "kod": "1001",
+    "absencjaKobiet": 40.83,
+    "absencjaMezczyzn": 36.47
+  },
+  {
+    "lp": 5,
+    "nazwa": "powiat będziński",
+    "kod": "2401",
+    "absencjaKobiet": 34.4,
+    "absencjaMezczyzn": 33.28
+  },
+  {
+    "lp": 6,
+    "nazwa": "powiat bialski",
+    "kod": "0601",
+    "absencjaKobiet": 33.83,
+    "absencjaMezczyzn": 31.06
+  },
+  {
+    "lp": 7,
+    "nazwa": "Biała Podlaska",
+    "kod": "0661",
+    "absencjaKobiet": 35.03,
+    "absencjaMezczyzn": 32.26
+  },
+  {
+    "lp": 8,
+    "nazwa": "powiat białobrzeski",
+    "kod": "1401",
+    "absencjaKobiet": 38.95,
+    "absencjaMezczyzn": 32.78
+  },
+  {
+    "lp": 9,
+    "nazwa": "powiat białogardzki",
+    "kod": "3201",
+    "absencjaKobiet": 36.07,
+    "absencjaMezczyzn": 31.88
+  },
+  {
+    "lp": 10,
+    "nazwa": "powiat białostocki",
+    "kod": "2002",
+    "absencjaKobiet": 33.57,
+    "absencjaMezczyzn": 30.3
+  },
+  {
+    "lp": 11,
+    "nazwa": "Białystok",
+    "kod": "2061",
+    "absencjaKobiet": 31.13,
+    "absencjaMezczyzn": 27.89
+  },
+  {
+    "lp": 12,
+    "nazwa": "powiat bielski",
+    "kod": "2003",
+    "absencjaKobiet": 34.85,
+    "absencjaMezczyzn": 35.78
+  },
+  {
+    "lp": 13,
+    "nazwa": "powiat bielski",
+    "kod": "2402",
+    "absencjaKobiet": 36.27,
+    "absencjaMezczyzn": 33.01
+  },
+  {
+    "lp": 14,
+    "nazwa": "Bielsko-Biała",
+    "kod": "2461",
+    "absencjaKobiet": 34.52,
+    "absencjaMezczyzn": 32.21
+  },
+  {
+    "lp": 15,
+    "nazwa": "powiat bieruńsko-lędziński",
+    "kod": "2414",
+    "absencjaKobiet": 36.87,
+    "absencjaMezczyzn": 34.13
+  },
+  {
+    "lp": 16,
+    "nazwa": "powiat bieszczadzki",
+    "kod": "1801",
+    "absencjaKobiet": 38.47,
+    "absencjaMezczyzn": 38.68
+  },
+  {
+    "lp": 17,
+    "nazwa": "powiat biłgorajski",
+    "kod": "0602",
+    "absencjaKobiet": 34.7,
+    "absencjaMezczyzn": 34.19
+  },
+  {
+    "lp": 18,
+    "nazwa": "powiat bocheński",
+    "kod": "1201",
+    "absencjaKobiet": 36.23,
+    "absencjaMezczyzn": 32.03
+  },
+  {
+    "lp": 19,
+    "nazwa": "powiat bolesławiecki",
+    "kod": "0201",
+    "absencjaKobiet": 35.01,
+    "absencjaMezczyzn": 30.36
+  },
+  {
+    "lp": 20,
+    "nazwa": "powiat braniewski",
+    "kod": "2802",
+    "absencjaKobiet": 35.29,
+    "absencjaMezczyzn": 34.51
+  },
+  {
+    "lp": 21,
+    "nazwa": "powiat brodnicki",
+    "kod": "0402",
+    "absencjaKobiet": 39.97,
+    "absencjaMezczyzn": 34.02
+  },
+  {
+    "lp": 22,
+    "nazwa": "powiat brzeski",
+    "kod": "1202",
+    "absencjaKobiet": 35.7,
+    "absencjaMezczyzn": 33.74
+  },
+  {
+    "lp": 23,
+    "nazwa": "powiat brzeski",
+    "kod": "1601",
+    "absencjaKobiet": 34.91,
+    "absencjaMezczyzn": 31.2
+  },
+  {
+    "lp": 24,
+    "nazwa": "powiat brzeziński",
+    "kod": "1021",
+    "absencjaKobiet": 39.18,
+    "absencjaMezczyzn": 35.11
+  },
+  {
+    "lp": 25,
+    "nazwa": "powiat brzozowski",
+    "kod": "1802",
+    "absencjaKobiet": 37.35,
+    "absencjaMezczyzn": 36.51
+  },
+  {
+    "lp": 26,
+    "nazwa": "powiat buski",
+    "kod": "2601",
+    "absencjaKobiet": 35.07,
+    "absencjaMezczyzn": 35.27
+  },
+  {
+    "lp": 27,
+    "nazwa": "powiat bydgoski",
+    "kod": "0403",
+    "absencjaKobiet": 36.71,
+    "absencjaMezczyzn": 32.4
+  },
+  {
+    "lp": 28,
+    "nazwa": "Bydgoszcz",
+    "kod": "0461",
+    "absencjaKobiet": 34.79,
+    "absencjaMezczyzn": 31.35
+  },
+  {
+    "lp": 29,
+    "nazwa": "Bytom",
+    "kod": "2462",
+    "absencjaKobiet": 34.07,
+    "absencjaMezczyzn": 31.81
+  },
+  {
+    "lp": 30,
+    "nazwa": "powiat bytowski",
+    "kod": "2201",
+    "absencjaKobiet": 40.9,
+    "absencjaMezczyzn": 37.19
+  },
+  {
+    "lp": 31,
+    "nazwa": "Chełm",
+    "kod": "0662",
+    "absencjaKobiet": 33.97,
+    "absencjaMezczyzn": 35
+  },
+  {
+    "lp": 32,
+    "nazwa": "powiat chełmiński",
+    "kod": "0404",
+    "absencjaKobiet": 38.55,
+    "absencjaMezczyzn": 34.27
+  },
+  {
+    "lp": 33,
+    "nazwa": "powiat chełmski",
+    "kod": "0603",
+    "absencjaKobiet": 36.11,
+    "absencjaMezczyzn": 33.48
+  },
+  {
+    "lp": 34,
+    "nazwa": "powiat chodzieski",
+    "kod": "3001",
+    "absencjaKobiet": 42.98,
+    "absencjaMezczyzn": 39.28
+  },
+  {
+    "lp": 35,
+    "nazwa": "powiat chojnicki",
+    "kod": "2202",
+    "absencjaKobiet": 40.94,
+    "absencjaMezczyzn": 35.6
+  },
+  {
+    "lp": 36,
+    "nazwa": "Chorzów",
+    "kod": "2463",
+    "absencjaKobiet": 34.31,
+    "absencjaMezczyzn": 32.54
+  },
+  {
+    "lp": 37,
+    "nazwa": "powiat choszczeński",
+    "kod": "3202",
+    "absencjaKobiet": 35.45,
+    "absencjaMezczyzn": 31.73
+  },
+  {
+    "lp": 38,
+    "nazwa": "powiat chrzanowski",
+    "kod": "1203",
+    "absencjaKobiet": 33.81,
+    "absencjaMezczyzn": 32
+  },
+  {
+    "lp": 39,
+    "nazwa": "powiat ciechanowski",
+    "kod": "1402",
+    "absencjaKobiet": 40.61,
+    "absencjaMezczyzn": 36.9
+  },
+  {
+    "lp": 40,
+    "nazwa": "powiat cieszyński",
+    "kod": "2403",
+    "absencjaKobiet": 34.06,
+    "absencjaMezczyzn": 30.58
+  },
+  {
+    "lp": 41,
+    "nazwa": "powiat czarnkowsko-trzcianecki",
+    "kod": "3002",
+    "absencjaKobiet": 41.65,
+    "absencjaMezczyzn": 37.36
+  },
+  {
+    "lp": 42,
+    "nazwa": "Częstochowa",
+    "kod": "2464",
+    "absencjaKobiet": 36.14,
+    "absencjaMezczyzn": 33.97
+  },
+  {
+    "lp": 43,
+    "nazwa": "powiat częstochowski",
+    "kod": "2404",
+    "absencjaKobiet": 38.21,
+    "absencjaMezczyzn": 36.03
+  },
+  {
+    "lp": 44,
+    "nazwa": "powiat człuchowski",
+    "kod": "2203",
+    "absencjaKobiet": 40.7,
+    "absencjaMezczyzn": 37.99
+  },
+  {
+    "lp": 45,
+    "nazwa": "Dąbrowa Górnicza",
+    "kod": "2465",
+    "absencjaKobiet": 35.66,
+    "absencjaMezczyzn": 34.92
+  },
+  {
+    "lp": 46,
+    "nazwa": "powiat dąbrowski",
+    "kod": "1204",
+    "absencjaKobiet": 37.15,
+    "absencjaMezczyzn": 34.64
+  },
+  {
+    "lp": 47,
+    "nazwa": "powiat dębicki",
+    "kod": "1803",
+    "absencjaKobiet": 37.44,
+    "absencjaMezczyzn": 35.6
+  },
+  {
+    "lp": 48,
+    "nazwa": "powiat drawski",
+    "kod": "3203",
+    "absencjaKobiet": 35.87,
+    "absencjaMezczyzn": 33.73
+  },
+  {
+    "lp": 49,
+    "nazwa": "powiat działdowski",
+    "kod": "2803",
+    "absencjaKobiet": 40.41,
+    "absencjaMezczyzn": 35.71
+  },
+  {
+    "lp": 50,
+    "nazwa": "powiat dzierżoniowski",
+    "kod": "0202",
+    "absencjaKobiet": 36.38,
+    "absencjaMezczyzn": 33.95
+  },
+  {
+    "lp": 51,
+    "nazwa": "Elbląg",
+    "kod": "2861",
+    "absencjaKobiet": 36.2,
+    "absencjaMezczyzn": 34.39
+  },
+  {
+    "lp": 52,
+    "nazwa": "powiat elbląski",
+    "kod": "2804",
+    "absencjaKobiet": 37.41,
+    "absencjaMezczyzn": 35.59
+  },
+  {
+    "lp": 53,
+    "nazwa": "powiat ełcki",
+    "kod": "2805",
+    "absencjaKobiet": 35.96,
+    "absencjaMezczyzn": 34.49
+  },
+  {
+    "lp": 54,
+    "nazwa": "powiat garwoliński",
+    "kod": "1403",
+    "absencjaKobiet": 34.85,
+    "absencjaMezczyzn": 30.38
+  },
+  {
+    "lp": 55,
+    "nazwa": "Gdańsk",
+    "kod": "2261",
+    "absencjaKobiet": 30.69,
+    "absencjaMezczyzn": 26.47
+  },
+  {
+    "lp": 56,
+    "nazwa": "powiat gdański",
+    "kod": "2204",
+    "absencjaKobiet": 31.92,
+    "absencjaMezczyzn": 28.56
+  },
+  {
+    "lp": 57,
+    "nazwa": "Gdynia",
+    "kod": "2262",
+    "absencjaKobiet": 31.84,
+    "absencjaMezczyzn": 27.71
+  },
+  {
+    "lp": 58,
+    "nazwa": "powiat giżycki",
+    "kod": "2806",
+    "absencjaKobiet": 31.07,
+    "absencjaMezczyzn": 29.28
+  },
+  {
+    "lp": 59,
+    "nazwa": "Gliwice",
+    "kod": "2466",
+    "absencjaKobiet": 33.69,
+    "absencjaMezczyzn": 30.61
+  },
+  {
+    "lp": 60,
+    "nazwa": "powiat gliwicki",
+    "kod": "2405",
+    "absencjaKobiet": 35.95,
+    "absencjaMezczyzn": 32.27
+  },
+  {
+    "lp": 61,
+    "nazwa": "powiat głogowski",
+    "kod": "0203",
+    "absencjaKobiet": 34.17,
+    "absencjaMezczyzn": 31.1
+  },
+  {
+    "lp": 62,
+    "nazwa": "powiat głubczycki",
+    "kod": "1602",
+    "absencjaKobiet": 40.54,
+    "absencjaMezczyzn": 40.25
+  },
+  {
+    "lp": 63,
+    "nazwa": "powiat gnieźnieński",
+    "kod": "3003",
+    "absencjaKobiet": 40,
+    "absencjaMezczyzn": 34.07
+  },
+  {
+    "lp": 64,
+    "nazwa": "powiat goleniowski",
+    "kod": "3204",
+    "absencjaKobiet": 36.93,
+    "absencjaMezczyzn": 32.31
+  },
+  {
+    "lp": 65,
+    "nazwa": "powiat golubsko-dobrzyński",
+    "kod": "0405",
+    "absencjaKobiet": 38.26,
+    "absencjaMezczyzn": 31.24
+  },
+  {
+    "lp": 66,
+    "nazwa": "powiat gołdapski",
+    "kod": "2818",
+    "absencjaKobiet": 41.08,
+    "absencjaMezczyzn": 42.62
+  },
+  {
+    "lp": 67,
+    "nazwa": "powiat gorlicki",
+    "kod": "1205",
+    "absencjaKobiet": 33.74,
+    "absencjaMezczyzn": 33.68
+  },
+  {
+    "lp": 68,
+    "nazwa": "powiat gorzowski",
+    "kod": "0801",
+    "absencjaKobiet": 37.08,
+    "absencjaMezczyzn": 33.41
+  },
+  {
+    "lp": 69,
+    "nazwa": "Gorzów Wielkopolski",
+    "kod": "0861",
+    "absencjaKobiet": 35.55,
+    "absencjaMezczyzn": 33.13
+  },
+  {
+    "lp": 70,
+    "nazwa": "powiat gostyniński",
+    "kod": "1404",
+    "absencjaKobiet": 37.79,
+    "absencjaMezczyzn": 35.1
+  },
+  {
+    "lp": 71,
+    "nazwa": "powiat gostyński",
+    "kod": "3004",
+    "absencjaKobiet": 38.74,
+    "absencjaMezczyzn": 30.35
+  },
+  {
+    "lp": 72,
+    "nazwa": "powiat górowski",
+    "kod": "0204",
+    "absencjaKobiet": 38.74,
+    "absencjaMezczyzn": 32.81
+  },
+  {
+    "lp": 73,
+    "nazwa": "powiat grajewski",
+    "kod": "2004",
+    "absencjaKobiet": 35.54,
+    "absencjaMezczyzn": 30.13
+  },
+  {
+    "lp": 74,
+    "nazwa": "powiat grodziski",
+    "kod": "1405",
+    "absencjaKobiet": 34.12,
+    "absencjaMezczyzn": 29.47
+  },
+  {
+    "lp": 75,
+    "nazwa": "powiat grodziski",
+    "kod": "3005",
+    "absencjaKobiet": 40.04,
+    "absencjaMezczyzn": 31.16
+  },
+  {
+    "lp": 76,
+    "nazwa": "powiat grójecki",
+    "kod": "1406",
+    "absencjaKobiet": 35.83,
+    "absencjaMezczyzn": 32.16
+  },
+  {
+    "lp": 77,
+    "nazwa": "Grudziądz",
+    "kod": "0462",
+    "absencjaKobiet": 36.47,
+    "absencjaMezczyzn": 33.1
+  },
+  {
+    "lp": 78,
+    "nazwa": "powiat grudziądzki",
+    "kod": "0406",
+    "absencjaKobiet": 37.68,
+    "absencjaMezczyzn": 34.29
+  },
+  {
+    "lp": 79,
+    "nazwa": "powiat gryficki",
+    "kod": "3205",
+    "absencjaKobiet": 40.61,
+    "absencjaMezczyzn": 36.64
+  },
+  {
+    "lp": 80,
+    "nazwa": "powiat gryfiński",
+    "kod": "3206",
+    "absencjaKobiet": 37.29,
+    "absencjaMezczyzn": 31.08
+  },
+  {
+    "lp": 81,
+    "nazwa": "powiat hajnowski",
+    "kod": "2005",
+    "absencjaKobiet": 34.87,
+    "absencjaMezczyzn": 35.74
+  },
+  {
+    "lp": 82,
+    "nazwa": "powiat hrubieszowski",
+    "kod": "0604",
+    "absencjaKobiet": 33.23,
+    "absencjaMezczyzn": 30.15
+  },
+  {
+    "lp": 83,
+    "nazwa": "powiat iławski",
+    "kod": "2807",
+    "absencjaKobiet": 41.04,
+    "absencjaMezczyzn": 36.51
+  },
+  {
+    "lp": 84,
+    "nazwa": "powiat inowrocławski",
+    "kod": "0407",
+    "absencjaKobiet": 35.28,
+    "absencjaMezczyzn": 32.3
+  },
+  {
+    "lp": 85,
+    "nazwa": "powiat janowski",
+    "kod": "0605",
+    "absencjaKobiet": 35.8,
+    "absencjaMezczyzn": 36.97
+  },
+  {
+    "lp": 86,
+    "nazwa": "powiat jarociński",
+    "kod": "3006",
+    "absencjaKobiet": 36.88,
+    "absencjaMezczyzn": 31.27
+  },
+  {
+    "lp": 87,
+    "nazwa": "powiat jarosławski",
+    "kod": "1804",
+    "absencjaKobiet": 38.86,
+    "absencjaMezczyzn": 37.44
+  },
+  {
+    "lp": 88,
+    "nazwa": "powiat jasielski",
+    "kod": "1805",
+    "absencjaKobiet": 37.07,
+    "absencjaMezczyzn": 37.4
+  },
+  {
+    "lp": 89,
+    "nazwa": "Jastrzębie-Zdrój",
+    "kod": "2467",
+    "absencjaKobiet": 36.29,
+    "absencjaMezczyzn": 35.36
+  },
+  {
+    "lp": 90,
+    "nazwa": "powiat jaworski",
+    "kod": "0205",
+    "absencjaKobiet": 35.63,
+    "absencjaMezczyzn": 32.47
+  },
+  {
+    "lp": 91,
+    "nazwa": "Jaworzno",
+    "kod": "2468",
+    "absencjaKobiet": 33.41,
+    "absencjaMezczyzn": 32.17
+  },
+  {
+    "lp": 92,
+    "nazwa": "Jelenia Góra",
+    "kod": "0261",
+    "absencjaKobiet": 35.41,
+    "absencjaMezczyzn": 33.84
+  },
+  {
+    "lp": 93,
+    "nazwa": "powiat jędrzejowski",
+    "kod": "2602",
+    "absencjaKobiet": 36.64,
+    "absencjaMezczyzn": 38.11
+  },
+  {
+    "lp": 94,
+    "nazwa": "powiat kaliski",
+    "kod": "3007",
+    "absencjaKobiet": 39.53,
+    "absencjaMezczyzn": 34.2
+  },
+  {
+    "lp": 95,
+    "nazwa": "Kalisz",
+    "kod": "3061",
+    "absencjaKobiet": 38.49,
+    "absencjaMezczyzn": 36.08
+  },
+  {
+    "lp": 96,
+    "nazwa": "powiat kamiennogórski",
+    "kod": "0207",
+    "absencjaKobiet": 36.41,
+    "absencjaMezczyzn": 35.92
+  },
+  {
+    "lp": 97,
+    "nazwa": "powiat kamieński",
+    "kod": "3207",
+    "absencjaKobiet": 34.17,
+    "absencjaMezczyzn": 32.61
+  },
+  {
+    "lp": 98,
+    "nazwa": "powiat karkonoski[e]",
+    "kod": "0206",
+    "absencjaKobiet": 35.46,
+    "absencjaMezczyzn": 35.02
+  },
+  {
+    "lp": 99,
+    "nazwa": "powiat kartuski",
+    "kod": "2205",
+    "absencjaKobiet": 36.85,
+    "absencjaMezczyzn": 29.98
+  },
+  {
+    "lp": 100,
+    "nazwa": "Katowice",
+    "kod": "2469",
+    "absencjaKobiet": 31.73,
+    "absencjaMezczyzn": 30.59
+  },
+  {
+    "lp": 101,
+    "nazwa": "powiat kazimierski",
+    "kod": "2603",
+    "absencjaKobiet": 34.64,
+    "absencjaMezczyzn": 33.5
+  },
+  {
+    "lp": 102,
+    "nazwa": "powiat kędzierzyńsko-kozielski",
+    "kod": "1603",
+    "absencjaKobiet": 35.12,
+    "absencjaMezczyzn": 34.02
+  },
+  {
+    "lp": 103,
+    "nazwa": "powiat kępiński",
+    "kod": "3008",
+    "absencjaKobiet": 33.89,
+    "absencjaMezczyzn": 29.55
+  },
+  {
+    "lp": 104,
+    "nazwa": "powiat kętrzyński",
+    "kod": "2808",
+    "absencjaKobiet": 35.86,
+    "absencjaMezczyzn": 34.14
+  },
+  {
+    "lp": 105,
+    "nazwa": "Kielce",
+    "kod": "2661",
+    "absencjaKobiet": 34.71,
+    "absencjaMezczyzn": 35.8
+  },
+  {
+    "lp": 106,
+    "nazwa": "powiat kielecki",
+    "kod": "2604",
+    "absencjaKobiet": 38.85,
+    "absencjaMezczyzn": 39.07
+  },
+  {
+    "lp": 107,
+    "nazwa": "powiat kluczborski",
+    "kod": "1604",
+    "absencjaKobiet": 33.69,
+    "absencjaMezczyzn": 32.52
+  },
+  {
+    "lp": 108,
+    "nazwa": "powiat kłobucki",
+    "kod": "2406",
+    "absencjaKobiet": 37.67,
+    "absencjaMezczyzn": 32.63
+  },
+  {
+    "lp": 109,
+    "nazwa": "powiat kłodzki",
+    "kod": "0208",
+    "absencjaKobiet": 36.73,
+    "absencjaMezczyzn": 36.58
+  },
+  {
+    "lp": 110,
+    "nazwa": "powiat kolbuszowski",
+    "kod": "1806",
+    "absencjaKobiet": 37.78,
+    "absencjaMezczyzn": 36.94
+  },
+  {
+    "lp": 111,
+    "nazwa": "powiat kolneński",
+    "kod": "2006",
+    "absencjaKobiet": 36.82,
+    "absencjaMezczyzn": 29.06
+  },
+  {
+    "lp": 112,
+    "nazwa": "powiat kolski",
+    "kod": "3009",
+    "absencjaKobiet": 42.02,
+    "absencjaMezczyzn": 38.76
+  },
+  {
+    "lp": 113,
+    "nazwa": "powiat kołobrzeski",
+    "kod": "3208",
+    "absencjaKobiet": 32.89,
+    "absencjaMezczyzn": 29.95
+  },
+  {
+    "lp": 114,
+    "nazwa": "powiat konecki",
+    "kod": "2605",
+    "absencjaKobiet": 45.73,
+    "absencjaMezczyzn": 47.51
+  },
+  {
+    "lp": 115,
+    "nazwa": "Konin",
+    "kod": "3062",
+    "absencjaKobiet": 35.22,
+    "absencjaMezczyzn": 34.77
+  },
+  {
+    "lp": 116,
+    "nazwa": "powiat koniński",
+    "kod": "3010",
+    "absencjaKobiet": 37.12,
+    "absencjaMezczyzn": 32.22
+  },
+  {
+    "lp": 117,
+    "nazwa": "Koszalin",
+    "kod": "3261",
+    "absencjaKobiet": 30.89,
+    "absencjaMezczyzn": 27.76
+  },
+  {
+    "lp": 118,
+    "nazwa": "powiat koszaliński",
+    "kod": "3209",
+    "absencjaKobiet": 33.82,
+    "absencjaMezczyzn": 30.34
+  },
+  {
+    "lp": 119,
+    "nazwa": "powiat kościański",
+    "kod": "3011",
+    "absencjaKobiet": 40.79,
+    "absencjaMezczyzn": 33.25
+  },
+  {
+    "lp": 120,
+    "nazwa": "powiat kościerski",
+    "kod": "2206",
+    "absencjaKobiet": 38.87,
+    "absencjaMezczyzn": 34.33
+  },
+  {
+    "lp": 121,
+    "nazwa": "powiat kozienicki",
+    "kod": "1407",
+    "absencjaKobiet": 34.93,
+    "absencjaMezczyzn": 32.15
+  },
+  {
+    "lp": 122,
+    "nazwa": "powiat krakowski",
+    "kod": "1206",
+    "absencjaKobiet": 32.17,
+    "absencjaMezczyzn": 30.04
+  },
+  {
+    "lp": 123,
+    "nazwa": "Kraków",
+    "kod": "1261",
+    "absencjaKobiet": 28.79,
+    "absencjaMezczyzn": 24.98
+  },
+  {
+    "lp": 124,
+    "nazwa": "powiat krapkowicki",
+    "kod": "1605",
+    "absencjaKobiet": 32.64,
+    "absencjaMezczyzn": 31.92
+  },
+  {
+    "lp": 125,
+    "nazwa": "powiat krasnostawski",
+    "kod": "0606",
+    "absencjaKobiet": 35,
+    "absencjaMezczyzn": 31.85
+  },
+  {
+    "lp": 126,
+    "nazwa": "powiat kraśnicki",
+    "kod": "0607",
+    "absencjaKobiet": 33.3,
+    "absencjaMezczyzn": 33.07
+  },
+  {
+    "lp": 127,
+    "nazwa": "Krosno",
+    "kod": "1861",
+    "absencjaKobiet": 36.62,
+    "absencjaMezczyzn": 36.18
+  },
+  {
+    "lp": 128,
+    "nazwa": "powiat krośnieński",
+    "kod": "0802",
+    "absencjaKobiet": 35.97,
+    "absencjaMezczyzn": 33.15
+  },
+  {
+    "lp": 129,
+    "nazwa": "powiat krośnieński",
+    "kod": "1807",
+    "absencjaKobiet": 41.39,
+    "absencjaMezczyzn": 39.22
+  },
+  {
+    "lp": 130,
+    "nazwa": "powiat krotoszyński",
+    "kod": "3012",
+    "absencjaKobiet": 36.85,
+    "absencjaMezczyzn": 32.37
+  },
+  {
+    "lp": 131,
+    "nazwa": "powiat kutnowski",
+    "kod": "1002",
+    "absencjaKobiet": 41.54,
+    "absencjaMezczyzn": 36.58
+  },
+  {
+    "lp": 132,
+    "nazwa": "powiat kwidzyński",
+    "kod": "2207",
+    "absencjaKobiet": 43,
+    "absencjaMezczyzn": 36.24
+  },
+  {
+    "lp": 133,
+    "nazwa": "powiat legionowski",
+    "kod": "1408",
+    "absencjaKobiet": 31.71,
+    "absencjaMezczyzn": 27.27
+  },
+  {
+    "lp": 134,
+    "nazwa": "Legnica",
+    "kod": "0262",
+    "absencjaKobiet": 35.21,
+    "absencjaMezczyzn": 29.56
+  },
+  {
+    "lp": 135,
+    "nazwa": "powiat legnicki",
+    "kod": "0209",
+    "absencjaKobiet": 36.41,
+    "absencjaMezczyzn": 32.07
+  },
+  {
+    "lp": 136,
+    "nazwa": "powiat leski",
+    "kod": "1821",
+    "absencjaKobiet": 38.1,
+    "absencjaMezczyzn": 37.03
+  },
+  {
+    "lp": 137,
+    "nazwa": "powiat leszczyński",
+    "kod": "3013",
+    "absencjaKobiet": 42.17,
+    "absencjaMezczyzn": 32.86
+  },
+  {
+    "lp": 138,
+    "nazwa": "Leszno",
+    "kod": "3063",
+    "absencjaKobiet": 38.44,
+    "absencjaMezczyzn": 33.18
+  },
+  {
+    "lp": 139,
+    "nazwa": "powiat leżajski",
+    "kod": "1808",
+    "absencjaKobiet": 38.26,
+    "absencjaMezczyzn": 37.63
+  },
+  {
+    "lp": 140,
+    "nazwa": "powiat lęborski",
+    "kod": "2208",
+    "absencjaKobiet": 36.35,
+    "absencjaMezczyzn": 34.58
+  },
+  {
+    "lp": 141,
+    "nazwa": "powiat lidzbarski",
+    "kod": "2809",
+    "absencjaKobiet": 36.06,
+    "absencjaMezczyzn": 33.65
+  },
+  {
+    "lp": 142,
+    "nazwa": "powiat limanowski",
+    "kod": "1207",
+    "absencjaKobiet": 37.62,
+    "absencjaMezczyzn": 33.15
+  },
+  {
+    "lp": 143,
+    "nazwa": "powiat lipnowski",
+    "kod": "0408",
+    "absencjaKobiet": 40.07,
+    "absencjaMezczyzn": 37.15
+  },
+  {
+    "lp": 144,
+    "nazwa": "powiat lipski",
+    "kod": "1409",
+    "absencjaKobiet": 35.05,
+    "absencjaMezczyzn": 34.71
+  },
+  {
+    "lp": 145,
+    "nazwa": "powiat lubaczowski",
+    "kod": "1809",
+    "absencjaKobiet": 33.47,
+    "absencjaMezczyzn": 36.58
+  },
+  {
+    "lp": 146,
+    "nazwa": "powiat lubański",
+    "kod": "0210",
+    "absencjaKobiet": 33.33,
+    "absencjaMezczyzn": 34.03
+  },
+  {
+    "lp": 147,
+    "nazwa": "powiat lubartowski",
+    "kod": "0608",
+    "absencjaKobiet": 37.05,
+    "absencjaMezczyzn": 32.79
+  },
+  {
+    "lp": 148,
+    "nazwa": "powiat lubelski",
+    "kod": "0609",
+    "absencjaKobiet": 34.34,
+    "absencjaMezczyzn": 31.07
+  },
+  {
+    "lp": 149,
+    "nazwa": "powiat lubiński",
+    "kod": "0211",
+    "absencjaKobiet": 36.13,
+    "absencjaMezczyzn": 31.8
+  },
+  {
+    "lp": 150,
+    "nazwa": "Lublin",
+    "kod": "0663",
+    "absencjaKobiet": 32.04,
+    "absencjaMezczyzn": 29.21
+  },
+  {
+    "lp": 151,
+    "nazwa": "powiat lubliniecki",
+    "kod": "2407",
+    "absencjaKobiet": 34.4,
+    "absencjaMezczyzn": 31.67
+  },
+  {
+    "lp": 152,
+    "nazwa": "powiat lwówecki",
+    "kod": "0212",
+    "absencjaKobiet": 34.59,
+    "absencjaMezczyzn": 35.42
+  },
+  {
+    "lp": 153,
+    "nazwa": "powiat łańcucki",
+    "kod": "1810",
+    "absencjaKobiet": 35.15,
+    "absencjaMezczyzn": 33.39
+  },
+  {
+    "lp": 154,
+    "nazwa": "powiat łaski",
+    "kod": "1003",
+    "absencjaKobiet": 40.41,
+    "absencjaMezczyzn": 39.35
+  },
+  {
+    "lp": 155,
+    "nazwa": "powiat łęczycki",
+    "kod": "1004",
+    "absencjaKobiet": 42,
+    "absencjaMezczyzn": 37.69
+  },
+  {
+    "lp": 156,
+    "nazwa": "powiat łęczyński",
+    "kod": "0610",
+    "absencjaKobiet": 37.37,
+    "absencjaMezczyzn": 37.59
+  },
+  {
+    "lp": 157,
+    "nazwa": "powiat łobeski",
+    "kod": "3218",
+    "absencjaKobiet": 37.07,
+    "absencjaMezczyzn": 32.49
+  },
+  {
+    "lp": 158,
+    "nazwa": "Łomża",
+    "kod": "2062",
+    "absencjaKobiet": 31.98,
+    "absencjaMezczyzn": 28.94
+  },
+  {
+    "lp": 159,
+    "nazwa": "powiat łomżyński",
+    "kod": "2007",
+    "absencjaKobiet": 36.24,
+    "absencjaMezczyzn": 26.72
+  },
+  {
+    "lp": 160,
+    "nazwa": "powiat łosicki",
+    "kod": "1410",
+    "absencjaKobiet": 33.81,
+    "absencjaMezczyzn": 29.69
+  },
+  {
+    "lp": 161,
+    "nazwa": "powiat łowicki",
+    "kod": "1005",
+    "absencjaKobiet": 37.2,
+    "absencjaMezczyzn": 32.41
+  },
+  {
+    "lp": 162,
+    "nazwa": "powiat łódzki wschodni",
+    "kod": "1006",
+    "absencjaKobiet": 39.75,
+    "absencjaMezczyzn": 37.12
+  },
+  {
+    "lp": 163,
+    "nazwa": "Łódź",
+    "kod": "1061",
+    "absencjaKobiet": 38.55,
+    "absencjaMezczyzn": 36.02
+  },
+  {
+    "lp": 164,
+    "nazwa": "powiat łukowski",
+    "kod": "0611",
+    "absencjaKobiet": 43.43,
+    "absencjaMezczyzn": 37.02
+  },
+  {
+    "lp": 165,
+    "nazwa": "powiat makowski",
+    "kod": "1411",
+    "absencjaKobiet": 38.81,
+    "absencjaMezczyzn": 35.72
+  },
+  {
+    "lp": 166,
+    "nazwa": "powiat malborski",
+    "kod": "2209",
+    "absencjaKobiet": 36.82,
+    "absencjaMezczyzn": 32.9
+  },
+  {
+    "lp": 167,
+    "nazwa": "powiat miechowski",
+    "kod": "1208",
+    "absencjaKobiet": 35.66,
+    "absencjaMezczyzn": 31.94
+  },
+  {
+    "lp": 168,
+    "nazwa": "powiat mielecki",
+    "kod": "1811",
+    "absencjaKobiet": 39.27,
+    "absencjaMezczyzn": 33.9
+  },
+  {
+    "lp": 169,
+    "nazwa": "powiat międzychodzki",
+    "kod": "3014",
+    "absencjaKobiet": 39.67,
+    "absencjaMezczyzn": 35.8
+  },
+  {
+    "lp": 170,
+    "nazwa": "powiat międzyrzecki",
+    "kod": "0803",
+    "absencjaKobiet": 37.45,
+    "absencjaMezczyzn": 33.57
+  },
+  {
+    "lp": 171,
+    "nazwa": "powiat mikołowski",
+    "kod": "2408",
+    "absencjaKobiet": 32.97,
+    "absencjaMezczyzn": 31.27
+  },
+  {
+    "lp": 172,
+    "nazwa": "powiat milicki",
+    "kod": "0213",
+    "absencjaKobiet": 34.77,
+    "absencjaMezczyzn": 33.32
+  },
+  {
+    "lp": 173,
+    "nazwa": "powiat miński",
+    "kod": "1412",
+    "absencjaKobiet": 31.48,
+    "absencjaMezczyzn": 28.68
+  },
+  {
+    "lp": 174,
+    "nazwa": "powiat mławski",
+    "kod": "1413",
+    "absencjaKobiet": 43.25,
+    "absencjaMezczyzn": 38.98
+  },
+  {
+    "lp": 175,
+    "nazwa": "powiat mogileński",
+    "kod": "0409",
+    "absencjaKobiet": 38.95,
+    "absencjaMezczyzn": 35.36
+  },
+  {
+    "lp": 176,
+    "nazwa": "powiat moniecki",
+    "kod": "2008",
+    "absencjaKobiet": 31.97,
+    "absencjaMezczyzn": 28.95
+  },
+  {
+    "lp": 177,
+    "nazwa": "powiat mrągowski",
+    "kod": "2810",
+    "absencjaKobiet": 33.81,
+    "absencjaMezczyzn": 33.13
+  },
+  {
+    "lp": 178,
+    "nazwa": "Mysłowice",
+    "kod": "2470",
+    "absencjaKobiet": 34.36,
+    "absencjaMezczyzn": 32.48
+  },
+  {
+    "lp": 179,
+    "nazwa": "powiat myszkowski",
+    "kod": "2409",
+    "absencjaKobiet": 36.93,
+    "absencjaMezczyzn": 35.5
+  },
+  {
+    "lp": 180,
+    "nazwa": "powiat myślenicki",
+    "kod": "1209",
+    "absencjaKobiet": 34.9,
+    "absencjaMezczyzn": 30.53
+  },
+  {
+    "lp": 181,
+    "nazwa": "powiat myśliborski",
+    "kod": "3210",
+    "absencjaKobiet": 38.65,
+    "absencjaMezczyzn": 35.53
+  },
+  {
+    "lp": 182,
+    "nazwa": "powiat nakielski",
+    "kod": "0410",
+    "absencjaKobiet": 35.8,
+    "absencjaMezczyzn": 33.99
+  },
+  {
+    "lp": 183,
+    "nazwa": "powiat namysłowski",
+    "kod": "1606",
+    "absencjaKobiet": 35.16,
+    "absencjaMezczyzn": 32.54
+  },
+  {
+    "lp": 184,
+    "nazwa": "powiat nidzicki",
+    "kod": "2811",
+    "absencjaKobiet": 43.21,
+    "absencjaMezczyzn": 38.77
+  },
+  {
+    "lp": 185,
+    "nazwa": "powiat niżański",
+    "kod": "1812",
+    "absencjaKobiet": 35.55,
+    "absencjaMezczyzn": 36.96
+  },
+  {
+    "lp": 186,
+    "nazwa": "powiat nowodworski",
+    "kod": "1414",
+    "absencjaKobiet": 34.29,
+    "absencjaMezczyzn": 30.84
+  },
+  {
+    "lp": 187,
+    "nazwa": "powiat nowodworski",
+    "kod": "2210",
+    "absencjaKobiet": 35.35,
+    "absencjaMezczyzn": 32.38
+  },
+  {
+    "lp": 188,
+    "nazwa": "powiat nowomiejski",
+    "kod": "2812",
+    "absencjaKobiet": 41.24,
+    "absencjaMezczyzn": 37.29
+  },
+  {
+    "lp": 189,
+    "nazwa": "powiat nowosądecki",
+    "kod": "1210",
+    "absencjaKobiet": 39.18,
+    "absencjaMezczyzn": 34.87
+  },
+  {
+    "lp": 190,
+    "nazwa": "powiat nowosolski",
+    "kod": "0804",
+    "absencjaKobiet": 36.38,
+    "absencjaMezczyzn": 30.07
+  },
+  {
+    "lp": 191,
+    "nazwa": "powiat nowotarski",
+    "kod": "1211",
+    "absencjaKobiet": 35.63,
+    "absencjaMezczyzn": 33.15
+  },
+  {
+    "lp": 192,
+    "nazwa": "powiat nowotomyski",
+    "kod": "3015",
+    "absencjaKobiet": 39.63,
+    "absencjaMezczyzn": 32
+  },
+  {
+    "lp": 193,
+    "nazwa": "Nowy Sącz",
+    "kod": "1262",
+    "absencjaKobiet": 35.59,
+    "absencjaMezczyzn": 34.48
+  },
+  {
+    "lp": 194,
+    "nazwa": "powiat nyski",
+    "kod": "1607",
+    "absencjaKobiet": 35.39,
+    "absencjaMezczyzn": 34.34
+  },
+  {
+    "lp": 195,
+    "nazwa": "powiat obornicki",
+    "kod": "3016",
+    "absencjaKobiet": 41.06,
+    "absencjaMezczyzn": 36.47
+  },
+  {
+    "lp": 196,
+    "nazwa": "powiat olecki",
+    "kod": "2813",
+    "absencjaKobiet": 38.1,
+    "absencjaMezczyzn": 37.59
+  },
+  {
+    "lp": 197,
+    "nazwa": "powiat oleski",
+    "kod": "1608",
+    "absencjaKobiet": 34.4,
+    "absencjaMezczyzn": 30.1
+  },
+  {
+    "lp": 198,
+    "nazwa": "powiat oleśnicki",
+    "kod": "0214",
+    "absencjaKobiet": 35.46,
+    "absencjaMezczyzn": 32.01
+  },
+  {
+    "lp": 199,
+    "nazwa": "powiat olkuski",
+    "kod": "1212",
+    "absencjaKobiet": 36.02,
+    "absencjaMezczyzn": 32.95
+  },
+  {
+    "lp": 200,
+    "nazwa": "Olsztyn",
+    "kod": "2862",
+    "absencjaKobiet": 30.65,
+    "absencjaMezczyzn": 27.9
+  },
+  {
+    "lp": 201,
+    "nazwa": "powiat olsztyński",
+    "kod": "2814",
+    "absencjaKobiet": 34.95,
+    "absencjaMezczyzn": 30.79
+  },
+  {
+    "lp": 202,
+    "nazwa": "powiat oławski",
+    "kod": "0215",
+    "absencjaKobiet": 35.96,
+    "absencjaMezczyzn": 30.87
+  },
+  {
+    "lp": 203,
+    "nazwa": "powiat opatowski",
+    "kod": "2606",
+    "absencjaKobiet": 35.36,
+    "absencjaMezczyzn": 32.06
+  },
+  {
+    "lp": 204,
+    "nazwa": "powiat opoczyński",
+    "kod": "1007",
+    "absencjaKobiet": 47.81,
+    "absencjaMezczyzn": 43.52
+  },
+  {
+    "lp": 205,
+    "nazwa": "Opole",
+    "kod": "1661",
+    "absencjaKobiet": 29.21,
+    "absencjaMezczyzn": 27.18
+  },
+  {
+    "lp": 206,
+    "nazwa": "powiat opolski",
+    "kod": "0612",
+    "absencjaKobiet": 36.12,
+    "absencjaMezczyzn": 35.5
+  },
+  {
+    "lp": 207,
+    "nazwa": "powiat opolski",
+    "kod": "1609",
+    "absencjaKobiet": 31.47,
+    "absencjaMezczyzn": 28.39
+  },
+  {
+    "lp": 208,
+    "nazwa": "powiat ostrołęcki",
+    "kod": "1415",
+    "absencjaKobiet": 36.55,
+    "absencjaMezczyzn": 30.22
+  },
+  {
+    "lp": 209,
+    "nazwa": "Ostrołęka",
+    "kod": "1461",
+    "absencjaKobiet": 32.23,
+    "absencjaMezczyzn": 29.74
+  },
+  {
+    "lp": 210,
+    "nazwa": "powiat ostrowiecki",
+    "kod": "2607",
+    "absencjaKobiet": 35.91,
+    "absencjaMezczyzn": 36.04
+  },
+  {
+    "lp": 211,
+    "nazwa": "powiat ostrowski",
+    "kod": "1416",
+    "absencjaKobiet": 37.62,
+    "absencjaMezczyzn": 34
+  },
+  {
+    "lp": 212,
+    "nazwa": "powiat ostrowski",
+    "kod": "3017",
+    "absencjaKobiet": 37.9,
+    "absencjaMezczyzn": 32.01
+  },
+  {
+    "lp": 213,
+    "nazwa": "powiat ostródzki",
+    "kod": "2815",
+    "absencjaKobiet": 37.32,
+    "absencjaMezczyzn": 34.43
+  },
+  {
+    "lp": 214,
+    "nazwa": "powiat ostrzeszowski",
+    "kod": "3018",
+    "absencjaKobiet": 36.34,
+    "absencjaMezczyzn": 30.89
+  },
+  {
+    "lp": 215,
+    "nazwa": "powiat oświęcimski",
+    "kod": "1213",
+    "absencjaKobiet": 36.63,
+    "absencjaMezczyzn": 33.55
+  },
+  {
+    "lp": 216,
+    "nazwa": "powiat otwocki",
+    "kod": "1417",
+    "absencjaKobiet": 32.42,
+    "absencjaMezczyzn": 28.13
+  },
+  {
+    "lp": 217,
+    "nazwa": "powiat pabianicki",
+    "kod": "1008",
+    "absencjaKobiet": 41.83,
+    "absencjaMezczyzn": 41.2
+  },
+  {
+    "lp": 218,
+    "nazwa": "powiat pajęczański",
+    "kod": "1009",
+    "absencjaKobiet": 39.92,
+    "absencjaMezczyzn": 36.13
+  },
+  {
+    "lp": 219,
+    "nazwa": "powiat parczewski",
+    "kod": "0613",
+    "absencjaKobiet": 38.68,
+    "absencjaMezczyzn": 34.34
+  },
+  {
+    "lp": 220,
+    "nazwa": "powiat piaseczyński",
+    "kod": "1418",
+    "absencjaKobiet": 31,
+    "absencjaMezczyzn": 27.56
+  },
+  {
+    "lp": 221,
+    "nazwa": "Piekary Śląskie",
+    "kod": "2471",
+    "absencjaKobiet": 35.04,
+    "absencjaMezczyzn": 32.55
+  },
+  {
+    "lp": 222,
+    "nazwa": "powiat pilski",
+    "kod": "3019",
+    "absencjaKobiet": 37.51,
+    "absencjaMezczyzn": 34.05
+  },
+  {
+    "lp": 223,
+    "nazwa": "powiat pińczowski",
+    "kod": "2608",
+    "absencjaKobiet": 38.18,
+    "absencjaMezczyzn": 36.97
+  },
+  {
+    "lp": 224,
+    "nazwa": "powiat piotrkowski",
+    "kod": "1010",
+    "absencjaKobiet": 46.45,
+    "absencjaMezczyzn": 41.23
+  },
+  {
+    "lp": 225,
+    "nazwa": "Piotrków Trybunalski",
+    "kod": "1062",
+    "absencjaKobiet": 44.47,
+    "absencjaMezczyzn": 40.14
+  },
+  {
+    "lp": 226,
+    "nazwa": "powiat piski",
+    "kod": "2816",
+    "absencjaKobiet": 36.85,
+    "absencjaMezczyzn": 36.18
+  },
+  {
+    "lp": 227,
+    "nazwa": "powiat pleszewski",
+    "kod": "3020",
+    "absencjaKobiet": 39.05,
+    "absencjaMezczyzn": 32.06
+  },
+  {
+    "lp": 228,
+    "nazwa": "Płock",
+    "kod": "1462",
+    "absencjaKobiet": 33.23,
+    "absencjaMezczyzn": 29.63
+  },
+  {
+    "lp": 229,
+    "nazwa": "powiat płocki",
+    "kod": "1419",
+    "absencjaKobiet": 37.11,
+    "absencjaMezczyzn": 30.6
+  },
+  {
+    "lp": 230,
+    "nazwa": "powiat płoński",
+    "kod": "1420",
+    "absencjaKobiet": 39.65,
+    "absencjaMezczyzn": 34.2
+  },
+  {
+    "lp": 231,
+    "nazwa": "powiat poddębicki",
+    "kod": "1011",
+    "absencjaKobiet": 42.3,
+    "absencjaMezczyzn": 33.07
+  },
+  {
+    "lp": 232,
+    "nazwa": "powiat policki",
+    "kod": "3211",
+    "absencjaKobiet": 34.46,
+    "absencjaMezczyzn": 28.88
+  },
+  {
+    "lp": 233,
+    "nazwa": "powiat polkowicki",
+    "kod": "0216",
+    "absencjaKobiet": 38.03,
+    "absencjaMezczyzn": 31.61
+  },
+  {
+    "lp": 234,
+    "nazwa": "Poznań",
+    "kod": "3064",
+    "absencjaKobiet": 31.93,
+    "absencjaMezczyzn": 28.13
+  },
+  {
+    "lp": 235,
+    "nazwa": "powiat poznański",
+    "kod": "3021",
+    "absencjaKobiet": 34.04,
+    "absencjaMezczyzn": 30.06
+  },
+  {
+    "lp": 236,
+    "nazwa": "powiat proszowicki",
+    "kod": "1214",
+    "absencjaKobiet": 33.88,
+    "absencjaMezczyzn": 32
+  },
+  {
+    "lp": 237,
+    "nazwa": "powiat prudnicki",
+    "kod": "1610",
+    "absencjaKobiet": 33.58,
+    "absencjaMezczyzn": 32.04
+  },
+  {
+    "lp": 238,
+    "nazwa": "powiat pruszkowski",
+    "kod": "1421",
+    "absencjaKobiet": 30.47,
+    "absencjaMezczyzn": 26.8
+  },
+  {
+    "lp": 239,
+    "nazwa": "powiat przasnyski",
+    "kod": "1422",
+    "absencjaKobiet": 38.87,
+    "absencjaMezczyzn": 34.56
+  },
+  {
+    "lp": 240,
+    "nazwa": "powiat przemyski",
+    "kod": "1813",
+    "absencjaKobiet": 33.69,
+    "absencjaMezczyzn": 34.63
+  },
+  {
+    "lp": 241,
+    "nazwa": "Przemyśl",
+    "kod": "1862",
+    "absencjaKobiet": 35.7,
+    "absencjaMezczyzn": 35.98
+  },
+  {
+    "lp": 242,
+    "nazwa": "powiat przeworski",
+    "kod": "1814",
+    "absencjaKobiet": 38.95,
+    "absencjaMezczyzn": 36.85
+  },
+  {
+    "lp": 243,
+    "nazwa": "powiat przysuski",
+    "kod": "1423",
+    "absencjaKobiet": 36.63,
+    "absencjaMezczyzn": 33.5
+  },
+  {
+    "lp": 244,
+    "nazwa": "powiat pszczyński",
+    "kod": "2410",
+    "absencjaKobiet": 34.3,
+    "absencjaMezczyzn": 32.01
+  },
+  {
+    "lp": 245,
+    "nazwa": "powiat pucki",
+    "kod": "2211",
+    "absencjaKobiet": 36.93,
+    "absencjaMezczyzn": 30.76
+  },
+  {
+    "lp": 246,
+    "nazwa": "powiat puławski",
+    "kod": "0614",
+    "absencjaKobiet": 32.7,
+    "absencjaMezczyzn": 31.6
+  },
+  {
+    "lp": 247,
+    "nazwa": "powiat pułtuski",
+    "kod": "1424",
+    "absencjaKobiet": 37.39,
+    "absencjaMezczyzn": 33.45
+  },
+  {
+    "lp": 248,
+    "nazwa": "powiat pyrzycki",
+    "kod": "3212",
+    "absencjaKobiet": 41.5,
+    "absencjaMezczyzn": 36.46
+  },
+  {
+    "lp": 249,
+    "nazwa": "powiat raciborski",
+    "kod": "2411",
+    "absencjaKobiet": 36.1,
+    "absencjaMezczyzn": 34.14
+  },
+  {
+    "lp": 250,
+    "nazwa": "Radom",
+    "kod": "1463",
+    "absencjaKobiet": 34.11,
+    "absencjaMezczyzn": 31.79
+  },
+  {
+    "lp": 251,
+    "nazwa": "powiat radomski",
+    "kod": "1425",
+    "absencjaKobiet": 37.65,
+    "absencjaMezczyzn": 33.31
+  },
+  {
+    "lp": 252,
+    "nazwa": "powiat radomszczański",
+    "kod": "1012",
+    "absencjaKobiet": 44,
+    "absencjaMezczyzn": 40.53
+  },
+  {
+    "lp": 253,
+    "nazwa": "powiat radziejowski",
+    "kod": "0411",
+    "absencjaKobiet": 39.91,
+    "absencjaMezczyzn": 34.07
+  },
+  {
+    "lp": 254,
+    "nazwa": "powiat radzyński",
+    "kod": "0615",
+    "absencjaKobiet": 37.49,
+    "absencjaMezczyzn": 36.78
+  },
+  {
+    "lp": 255,
+    "nazwa": "powiat rawicki",
+    "kod": "3022",
+    "absencjaKobiet": 39.02,
+    "absencjaMezczyzn": 31.89
+  },
+  {
+    "lp": 256,
+    "nazwa": "powiat rawski",
+    "kod": "1013",
+    "absencjaKobiet": 39.12,
+    "absencjaMezczyzn": 34.89
+  },
+  {
+    "lp": 257,
+    "nazwa": "powiat ropczycko-sędziszowski",
+    "kod": "1815",
+    "absencjaKobiet": 37.85,
+    "absencjaMezczyzn": 35.11
+  },
+  {
+    "lp": 258,
+    "nazwa": "Ruda Śląska",
+    "kod": "2472",
+    "absencjaKobiet": 34.47,
+    "absencjaMezczyzn": 33.44
+  },
+  {
+    "lp": 259,
+    "nazwa": "powiat rybnicki",
+    "kod": "2412",
+    "absencjaKobiet": 35.66,
+    "absencjaMezczyzn": 34.02
+  },
+  {
+    "lp": 260,
+    "nazwa": "Rybnik",
+    "kod": "2473",
+    "absencjaKobiet": 36.06,
+    "absencjaMezczyzn": 32.91
+  },
+  {
+    "lp": 261,
+    "nazwa": "powiat rycki",
+    "kod": "0616",
+    "absencjaKobiet": 33.34,
+    "absencjaMezczyzn": 31.05
+  },
+  {
+    "lp": 262,
+    "nazwa": "powiat rypiński",
+    "kod": "0412",
+    "absencjaKobiet": 42,
+    "absencjaMezczyzn": 40.78
+  },
+  {
+    "lp": 263,
+    "nazwa": "powiat rzeszowski",
+    "kod": "1816",
+    "absencjaKobiet": 35.49,
+    "absencjaMezczyzn": 31.73
+  },
+  {
+    "lp": 264,
+    "nazwa": "Rzeszów",
+    "kod": "1863",
+    "absencjaKobiet": 32.31,
+    "absencjaMezczyzn": 27.92
+  },
+  {
+    "lp": 265,
+    "nazwa": "powiat sandomierski",
+    "kod": "2609",
+    "absencjaKobiet": 35.46,
+    "absencjaMezczyzn": 33.96
+  },
+  {
+    "lp": 266,
+    "nazwa": "powiat sanocki",
+    "kod": "1817",
+    "absencjaKobiet": 38.81,
+    "absencjaMezczyzn": 38.98
+  },
+  {
+    "lp": 267,
+    "nazwa": "powiat sejneński",
+    "kod": "2009",
+    "absencjaKobiet": 32.49,
+    "absencjaMezczyzn": 34.44
+  },
+  {
+    "lp": 268,
+    "nazwa": "powiat sępoleński",
+    "kod": "0413",
+    "absencjaKobiet": 37.04,
+    "absencjaMezczyzn": 33.46
+  },
+  {
+    "lp": 269,
+    "nazwa": "Siedlce",
+    "kod": "1464",
+    "absencjaKobiet": 34.66,
+    "absencjaMezczyzn": 30.9
+  },
+  {
+    "lp": 270,
+    "nazwa": "powiat siedlecki",
+    "kod": "1426",
+    "absencjaKobiet": 40.5,
+    "absencjaMezczyzn": 33.92
+  },
+  {
+    "lp": 271,
+    "nazwa": "Siemianowice Śląskie",
+    "kod": "2474",
+    "absencjaKobiet": 33.65,
+    "absencjaMezczyzn": 30.82
+  },
+  {
+    "lp": 272,
+    "nazwa": "powiat siemiatycki",
+    "kod": "2010",
+    "absencjaKobiet": 34.78,
+    "absencjaMezczyzn": 31.91
+  },
+  {
+    "lp": 273,
+    "nazwa": "powiat sieradzki",
+    "kod": "1014",
+    "absencjaKobiet": 40.49,
+    "absencjaMezczyzn": 37.85
+  },
+  {
+    "lp": 274,
+    "nazwa": "powiat sierpecki",
+    "kod": "1427",
+    "absencjaKobiet": 36.96,
+    "absencjaMezczyzn": 33.33
+  },
+  {
+    "lp": 275,
+    "nazwa": "powiat skarżyski",
+    "kod": "2610",
+    "absencjaKobiet": 34.92,
+    "absencjaMezczyzn": 33.66
+  },
+  {
+    "lp": 276,
+    "nazwa": "Skierniewice",
+    "kod": "1063",
+    "absencjaKobiet": 33.9,
+    "absencjaMezczyzn": 32.57
+  },
+  {
+    "lp": 277,
+    "nazwa": "powiat skierniewicki",
+    "kod": "1015",
+    "absencjaKobiet": 40.5,
+    "absencjaMezczyzn": 33.44
+  },
+  {
+    "lp": 278,
+    "nazwa": "powiat sławieński",
+    "kod": "3213",
+    "absencjaKobiet": 38.57,
+    "absencjaMezczyzn": 33.36
+  },
+  {
+    "lp": 279,
+    "nazwa": "powiat słubicki",
+    "kod": "0805",
+    "absencjaKobiet": 35.36,
+    "absencjaMezczyzn": 32.15
+  },
+  {
+    "lp": 280,
+    "nazwa": "powiat słupecki",
+    "kod": "3023",
+    "absencjaKobiet": 38.53,
+    "absencjaMezczyzn": 31.95
+  },
+  {
+    "lp": 281,
+    "nazwa": "Słupsk",
+    "kod": "2263",
+    "absencjaKobiet": 35.69,
+    "absencjaMezczyzn": 34.73
+  },
+  {
+    "lp": 282,
+    "nazwa": "powiat słupski",
+    "kod": "2212",
+    "absencjaKobiet": 39.89,
+    "absencjaMezczyzn": 36.04
+  },
+  {
+    "lp": 283,
+    "nazwa": "powiat sochaczewski",
+    "kod": "1428",
+    "absencjaKobiet": 34.93,
+    "absencjaMezczyzn": 31.56
+  },
+  {
+    "lp": 284,
+    "nazwa": "powiat sokołowski",
+    "kod": "1429",
+    "absencjaKobiet": 36.07,
+    "absencjaMezczyzn": 32.45
+  },
+  {
+    "lp": 285,
+    "nazwa": "powiat sokólski",
+    "kod": "2011",
+    "absencjaKobiet": 33.6,
+    "absencjaMezczyzn": 31.3
+  },
+  {
+    "lp": 286,
+    "nazwa": "Sopot",
+    "kod": "2264",
+    "absencjaKobiet": 32,
+    "absencjaMezczyzn": 28.74
+  },
+  {
+    "lp": 287,
+    "nazwa": "Sosnowiec",
+    "kod": "2475",
+    "absencjaKobiet": 36.37,
+    "absencjaMezczyzn": 33.97
+  },
+  {
+    "lp": 288,
+    "nazwa": "powiat stalowowolski",
+    "kod": "1818",
+    "absencjaKobiet": 37.24,
+    "absencjaMezczyzn": 38.58
+  },
+  {
+    "lp": 289,
+    "nazwa": "powiat starachowicki",
+    "kod": "2611",
+    "absencjaKobiet": 40.84,
+    "absencjaMezczyzn": 40.34
+  },
+  {
+    "lp": 290,
+    "nazwa": "powiat stargardzki",
+    "kod": "3214",
+    "absencjaKobiet": 39.01,
+    "absencjaMezczyzn": 33.25
+  },
+  {
+    "lp": 291,
+    "nazwa": "powiat starogardzki",
+    "kod": "2213",
+    "absencjaKobiet": 39.6,
+    "absencjaMezczyzn": 35.15
+  },
+  {
+    "lp": 292,
+    "nazwa": "powiat staszowski",
+    "kod": "2612",
+    "absencjaKobiet": 39.54,
+    "absencjaMezczyzn": 39.52
+  },
+  {
+    "lp": 293,
+    "nazwa": "powiat strzelecki",
+    "kod": "1611",
+    "absencjaKobiet": 35.37,
+    "absencjaMezczyzn": 32.18
+  },
+  {
+    "lp": 294,
+    "nazwa": "powiat strzelecko-drezdenecki",
+    "kod": "0806",
+    "absencjaKobiet": 39.46,
+    "absencjaMezczyzn": 36.09
+  },
+  {
+    "lp": 295,
+    "nazwa": "powiat strzeliński",
+    "kod": "0217",
+    "absencjaKobiet": 36.21,
+    "absencjaMezczyzn": 32.35
+  },
+  {
+    "lp": 296,
+    "nazwa": "powiat strzyżowski",
+    "kod": "1819",
+    "absencjaKobiet": 34.88,
+    "absencjaMezczyzn": 33.55
+  },
+  {
+    "lp": 297,
+    "nazwa": "powiat sulęciński",
+    "kod": "0807",
+    "absencjaKobiet": 37.24,
+    "absencjaMezczyzn": 35.35
+  },
+  {
+    "lp": 298,
+    "nazwa": "powiat suski",
+    "kod": "1215",
+    "absencjaKobiet": 34.17,
+    "absencjaMezczyzn": 32.32
+  },
+  {
+    "lp": 299,
+    "nazwa": "powiat suwalski",
+    "kod": "2012",
+    "absencjaKobiet": 36.56,
+    "absencjaMezczyzn": 34.15
+  },
+  {
+    "lp": 300,
+    "nazwa": "Suwałki",
+    "kod": "2063",
+    "absencjaKobiet": 37.45,
+    "absencjaMezczyzn": 35.34
+  },
+  {
+    "lp": 301,
+    "nazwa": "powiat szamotulski",
+    "kod": "3024",
+    "absencjaKobiet": 38.66,
+    "absencjaMezczyzn": 33.37
+  },
+  {
+    "lp": 302,
+    "nazwa": "Szczecin",
+    "kod": "3262",
+    "absencjaKobiet": 33.5,
+    "absencjaMezczyzn": 28.51
+  },
+  {
+    "lp": 303,
+    "nazwa": "powiat szczecinecki",
+    "kod": "3215",
+    "absencjaKobiet": 35.24,
+    "absencjaMezczyzn": 31.68
+  },
+  {
+    "lp": 304,
+    "nazwa": "powiat szczycieński",
+    "kod": "2817",
+    "absencjaKobiet": 35.93,
+    "absencjaMezczyzn": 33.54
+  },
+  {
+    "lp": 305,
+    "nazwa": "powiat sztumski",
+    "kod": "2216",
+    "absencjaKobiet": 36.73,
+    "absencjaMezczyzn": 32.22
+  },
+  {
+    "lp": 306,
+    "nazwa": "powiat szydłowiecki",
+    "kod": "1430",
+    "absencjaKobiet": 35.78,
+    "absencjaMezczyzn": 33.82
+  },
+  {
+    "lp": 307,
+    "nazwa": "powiat średzki",
+    "kod": "0218",
+    "absencjaKobiet": 37.12,
+    "absencjaMezczyzn": 32.82
+  },
+  {
+    "lp": 308,
+    "nazwa": "powiat średzki",
+    "kod": "3025",
+    "absencjaKobiet": 38.29,
+    "absencjaMezczyzn": 33.35
+  },
+  {
+    "lp": 309,
+    "nazwa": "powiat śremski",
+    "kod": "3026",
+    "absencjaKobiet": 39.68,
+    "absencjaMezczyzn": 32.31
+  },
+  {
+    "lp": 310,
+    "nazwa": "powiat świdnicki",
+    "kod": "0219",
+    "absencjaKobiet": 34.88,
+    "absencjaMezczyzn": 32.49
+  },
+  {
+    "lp": 311,
+    "nazwa": "powiat świdnicki",
+    "kod": "0617",
+    "absencjaKobiet": 32.86,
+    "absencjaMezczyzn": 29.88
+  },
+  {
+    "lp": 312,
+    "nazwa": "powiat świdwiński",
+    "kod": "3216",
+    "absencjaKobiet": 33.58,
+    "absencjaMezczyzn": 31.79
+  },
+  {
+    "lp": 313,
+    "nazwa": "powiat świebodziński",
+    "kod": "0808",
+    "absencjaKobiet": 40.72,
+    "absencjaMezczyzn": 31.48
+  },
+  {
+    "lp": 314,
+    "nazwa": "powiat świecki",
+    "kod": "0414",
+    "absencjaKobiet": 39.38,
+    "absencjaMezczyzn": 35.18
+  },
+  {
+    "lp": 315,
+    "nazwa": "Świętochłowice",
+    "kod": "2476",
+    "absencjaKobiet": 33.59,
+    "absencjaMezczyzn": 31.38
+  },
+  {
+    "lp": 316,
+    "nazwa": "Świnoujście",
+    "kod": "3263",
+    "absencjaKobiet": 33.44,
+    "absencjaMezczyzn": 29.64
+  },
+  {
+    "lp": 317,
+    "nazwa": "Tarnobrzeg",
+    "kod": "1864",
+    "absencjaKobiet": 33.24,
+    "absencjaMezczyzn": 37.06
+  },
+  {
+    "lp": 318,
+    "nazwa": "powiat tarnobrzeski",
+    "kod": "1820",
+    "absencjaKobiet": 39.81,
+    "absencjaMezczyzn": 36.68
+  },
+  {
+    "lp": 319,
+    "nazwa": "powiat tarnogórski",
+    "kod": "2413",
+    "absencjaKobiet": 33.21,
+    "absencjaMezczyzn": 32.19
+  },
+  {
+    "lp": 320,
+    "nazwa": "powiat tarnowski",
+    "kod": "1216",
+    "absencjaKobiet": 33.68,
+    "absencjaMezczyzn": 31.04
+  },
+  {
+    "lp": 321,
+    "nazwa": "Tarnów",
+    "kod": "1263",
+    "absencjaKobiet": 35.07,
+    "absencjaMezczyzn": 33.14
+  },
+  {
+    "lp": 322,
+    "nazwa": "powiat tatrzański",
+    "kod": "1217",
+    "absencjaKobiet": 35.67,
+    "absencjaMezczyzn": 31.89
+  },
+  {
+    "lp": 323,
+    "nazwa": "powiat tczewski",
+    "kod": "2214",
+    "absencjaKobiet": 35.92,
+    "absencjaMezczyzn": 32.33
+  },
+  {
+    "lp": 324,
+    "nazwa": "powiat tomaszowski",
+    "kod": "0618",
+    "absencjaKobiet": 32.66,
+    "absencjaMezczyzn": 32.33
+  },
+  {
+    "lp": 325,
+    "nazwa": "powiat tomaszowski",
+    "kod": "1016",
+    "absencjaKobiet": 42.47,
+    "absencjaMezczyzn": 39.68
+  },
+  {
+    "lp": 326,
+    "nazwa": "Toruń",
+    "kod": "0463",
+    "absencjaKobiet": 33.41,
+    "absencjaMezczyzn": 30.11
+  },
+  {
+    "lp": 327,
+    "nazwa": "powiat toruński",
+    "kod": "0415",
+    "absencjaKobiet": 37.38,
+    "absencjaMezczyzn": 33.07
+  },
+  {
+    "lp": 328,
+    "nazwa": "powiat trzebnicki",
+    "kod": "0220",
+    "absencjaKobiet": 32.67,
+    "absencjaMezczyzn": 29.83
+  },
+  {
+    "lp": 329,
+    "nazwa": "powiat tucholski",
+    "kod": "0416",
+    "absencjaKobiet": 40.07,
+    "absencjaMezczyzn": 37.47
+  },
+  {
+    "lp": 330,
+    "nazwa": "powiat turecki",
+    "kod": "3027",
+    "absencjaKobiet": 40.95,
+    "absencjaMezczyzn": 37.56
+  },
+  {
+    "lp": 331,
+    "nazwa": "Tychy",
+    "kod": "2477",
+    "absencjaKobiet": 35.13,
+    "absencjaMezczyzn": 31.98
+  },
+  {
+    "lp": 332,
+    "nazwa": "powiat wadowicki",
+    "kod": "1218",
+    "absencjaKobiet": 37.88,
+    "absencjaMezczyzn": 32.02
+  },
+  {
+    "lp": 333,
+    "nazwa": "Wałbrzych",
+    "kod": "0265",
+    "absencjaKobiet": 36.32,
+    "absencjaMezczyzn": 35.86
+  },
+  {
+    "lp": 334,
+    "nazwa": "powiat wałbrzyski",
+    "kod": "0221",
+    "absencjaKobiet": 37.5,
+    "absencjaMezczyzn": 36.09
+  },
+  {
+    "lp": 335,
+    "nazwa": "powiat wałecki",
+    "kod": "3217",
+    "absencjaKobiet": 38.08,
+    "absencjaMezczyzn": 35.68
+  },
+  {
+    "lp": 336,
+    "nazwa": "Warszawa",
+    "kod": "1465",
+    "absencjaKobiet": 29.08,
+    "absencjaMezczyzn": 24.26
+  },
+  {
+    "lp": 337,
+    "nazwa": "powiat warszawski zachodni",
+    "kod": "1432",
+    "absencjaKobiet": 31.07,
+    "absencjaMezczyzn": 26.29
+  },
+  {
+    "lp": 338,
+    "nazwa": "powiat wąbrzeski",
+    "kod": "0417",
+    "absencjaKobiet": 39.38,
+    "absencjaMezczyzn": 33.78
+  },
+  {
+    "lp": 339,
+    "nazwa": "powiat wągrowiecki",
+    "kod": "3028",
+    "absencjaKobiet": 42.04,
+    "absencjaMezczyzn": 36.19
+  },
+  {
+    "lp": 340,
+    "nazwa": "powiat wejherowski",
+    "kod": "2215",
+    "absencjaKobiet": 35.91,
+    "absencjaMezczyzn": 30.44
+  },
+  {
+    "lp": 341,
+    "nazwa": "powiat węgorzewski",
+    "kod": "2819",
+    "absencjaKobiet": 35.52,
+    "absencjaMezczyzn": 32.49
+  },
+  {
+    "lp": 342,
+    "nazwa": "powiat węgrowski",
+    "kod": "1433",
+    "absencjaKobiet": 37.07,
+    "absencjaMezczyzn": 30.35
+  },
+  {
+    "lp": 343,
+    "nazwa": "powiat wielicki",
+    "kod": "1219",
+    "absencjaKobiet": 33.41,
+    "absencjaMezczyzn": 29.02
+  },
+  {
+    "lp": 344,
+    "nazwa": "powiat wieluński",
+    "kod": "1017",
+    "absencjaKobiet": 36.08,
+    "absencjaMezczyzn": 32.64
+  },
+  {
+    "lp": 345,
+    "nazwa": "powiat wieruszowski",
+    "kod": "1018",
+    "absencjaKobiet": 36.13,
+    "absencjaMezczyzn": 31.12
+  },
+  {
+    "lp": 346,
+    "nazwa": "Włocławek",
+    "kod": "0464",
+    "absencjaKobiet": 40.76,
+    "absencjaMezczyzn": 37.95
+  },
+  {
+    "lp": 347,
+    "nazwa": "powiat włocławski",
+    "kod": "0418",
+    "absencjaKobiet": 38.47,
+    "absencjaMezczyzn": 33.02
+  },
+  {
+    "lp": 348,
+    "nazwa": "powiat włodawski",
+    "kod": "0619",
+    "absencjaKobiet": 37.93,
+    "absencjaMezczyzn": 37.42
+  },
+  {
+    "lp": 349,
+    "nazwa": "powiat włoszczowski",
+    "kod": "2613",
+    "absencjaKobiet": 41.38,
+    "absencjaMezczyzn": 40.57
+  },
+  {
+    "lp": 350,
+    "nazwa": "powiat wodzisławski",
+    "kod": "2415",
+    "absencjaKobiet": 35.31,
+    "absencjaMezczyzn": 32.71
+  },
+  {
+    "lp": 351,
+    "nazwa": "powiat wolsztyński",
+    "kod": "3029",
+    "absencjaKobiet": 39.13,
+    "absencjaMezczyzn": 32.07
+  },
+  {
+    "lp": 352,
+    "nazwa": "powiat wołomiński",
+    "kod": "1434",
+    "absencjaKobiet": 32.54,
+    "absencjaMezczyzn": 29.08
+  },
+  {
+    "lp": 353,
+    "nazwa": "powiat wołowski",
+    "kod": "0222",
+    "absencjaKobiet": 34,
+    "absencjaMezczyzn": 31.23
+  },
+  {
+    "lp": 354,
+    "nazwa": "Wrocław",
+    "kod": "0264",
+    "absencjaKobiet": 29.77,
+    "absencjaMezczyzn": 25.76
+  },
+  {
+    "lp": 355,
+    "nazwa": "powiat wrocławski",
+    "kod": "0223",
+    "absencjaKobiet": 32.32,
+    "absencjaMezczyzn": 27.87
+  },
+  {
+    "lp": 356,
+    "nazwa": "powiat wrzesiński",
+    "kod": "3030",
+    "absencjaKobiet": 39.55,
+    "absencjaMezczyzn": 33.37
+  },
+  {
+    "lp": 357,
+    "nazwa": "powiat wschowski",
+    "kod": "0812",
+    "absencjaKobiet": 40.2,
+    "absencjaMezczyzn": 33.27
+  },
+  {
+    "lp": 358,
+    "nazwa": "powiat wysokomazowiecki",
+    "kod": "2013",
+    "absencjaKobiet": 37.06,
+    "absencjaMezczyzn": 34.5
+  },
+  {
+    "lp": 359,
+    "nazwa": "powiat wyszkowski",
+    "kod": "1435",
+    "absencjaKobiet": 40.08,
+    "absencjaMezczyzn": 36.98
+  },
+  {
+    "lp": 360,
+    "nazwa": "Zabrze",
+    "kod": "2478",
+    "absencjaKobiet": 34.44,
+    "absencjaMezczyzn": 32.73
+  },
+  {
+    "lp": 361,
+    "nazwa": "powiat zambrowski",
+    "kod": "2014",
+    "absencjaKobiet": 35.17,
+    "absencjaMezczyzn": 30.34
+  },
+  {
+    "lp": 362,
+    "nazwa": "powiat zamojski",
+    "kod": "0620",
+    "absencjaKobiet": 32.1,
+    "absencjaMezczyzn": 31.5
+  },
+  {
+    "lp": 363,
+    "nazwa": "Zamość",
+    "kod": "0664",
+    "absencjaKobiet": 33.09,
+    "absencjaMezczyzn": 32.71
+  },
+  {
+    "lp": 364,
+    "nazwa": "powiat zawierciański",
+    "kod": "2416",
+    "absencjaKobiet": 37.98,
+    "absencjaMezczyzn": 36.92
+  },
+  {
+    "lp": 365,
+    "nazwa": "powiat ząbkowicki",
+    "kod": "0224",
+    "absencjaKobiet": 36.03,
+    "absencjaMezczyzn": 35.05
+  },
+  {
+    "lp": 366,
+    "nazwa": "powiat zduńskowolski",
+    "kod": "1019",
+    "absencjaKobiet": 42.2,
+    "absencjaMezczyzn": 39.88
+  },
+  {
+    "lp": 367,
+    "nazwa": "powiat zgierski",
+    "kod": "1020",
+    "absencjaKobiet": 39.44,
+    "absencjaMezczyzn": 38.15
+  },
+  {
+    "lp": 368,
+    "nazwa": "powiat zgorzelecki",
+    "kod": "0225",
+    "absencjaKobiet": 36.81,
+    "absencjaMezczyzn": 36.67
+  },
+  {
+    "lp": 369,
+    "nazwa": "Zielona Góra",
+    "kod": "0862",
+    "absencjaKobiet": 31.88,
+    "absencjaMezczyzn": 28.4
+  },
+  {
+    "lp": 370,
+    "nazwa": "powiat zielonogórski",
+    "kod": "0809",
+    "absencjaKobiet": 37.69,
+    "absencjaMezczyzn": 31.03
+  },
+  {
+    "lp": 371,
+    "nazwa": "powiat złotoryjski",
+    "kod": "0226",
+    "absencjaKobiet": 34.22,
+    "absencjaMezczyzn": 32.15
+  },
+  {
+    "lp": 372,
+    "nazwa": "powiat złotowski",
+    "kod": "3031",
+    "absencjaKobiet": 38.04,
+    "absencjaMezczyzn": 33.03
+  },
+  {
+    "lp": 373,
+    "nazwa": "powiat zwoleński",
+    "kod": "1436",
+    "absencjaKobiet": 36.01,
+    "absencjaMezczyzn": 32.25
+  },
+  {
+    "lp": 374,
+    "nazwa": "powiat żagański",
+    "kod": "0810",
+    "absencjaKobiet": 38.34,
+    "absencjaMezczyzn": 34.72
+  },
+  {
+    "lp": 375,
+    "nazwa": "powiat żarski",
+    "kod": "0811",
+    "absencjaKobiet": 35.98,
+    "absencjaMezczyzn": 32.73
+  },
+  {
+    "lp": 376,
+    "nazwa": "powiat żniński",
+    "kod": "0419",
+    "absencjaKobiet": 36.51,
+    "absencjaMezczyzn": 32.81
+  },
+  {
+    "lp": 377,
+    "nazwa": "Żory",
+    "kod": "2479",
+    "absencjaKobiet": 34.22,
+    "absencjaMezczyzn": 31.8
+  },
+  {
+    "lp": 378,
+    "nazwa": "powiat żuromiński",
+    "kod": "1437",
+    "absencjaKobiet": 41.02,
+    "absencjaMezczyzn": 37.34
+  },
+  {
+    "lp": 379,
+    "nazwa": "powiat żyrardowski",
+    "kod": "1438",
+    "absencjaKobiet": 37.25,
+    "absencjaMezczyzn": 33.12
+  },
+  {
+    "lp": 380,
+    "nazwa": "powiat żywiecki",
+    "kod": "2417",
+    "absencjaKobiet": 40.89,
+    "absencjaMezczyzn": 37.28
+  }
+]

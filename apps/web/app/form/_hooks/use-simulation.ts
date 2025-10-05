@@ -2,8 +2,8 @@ import type {
   SendSimulationRequestDto,
   SendSimulationResponseDto,
 } from "@hackathon/shared";
-import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
+import { useRouter } from "next/navigation";
 
 import { sendSimulationClient } from "../_api/send-simulation";
 import { type PensionFormData } from "../schema";
@@ -20,11 +20,19 @@ function transformFormDataToApi(
     plannedRetirementYear: formData.endYear,
     includeSickLeave: formData.includeSickLeave,
     expectedPension: formData.targetPension,
+    contractType: formData.contractType,
+    includeWageGrowth: formData.includeWageGrowth,
+    includeIndexation: formData.includeIndexation,
   };
 
   // Dodaj postalCode tylko jeśli jest wypełniony
   if (formData.postalCode && formData.postalCode.trim() !== "") {
     apiData.postalCode = formData.postalCode.trim();
+  }
+
+  // Dodaj currentFunds tylko jeśli jest wypełniony
+  if (formData.currentFunds !== undefined && formData.currentFunds > 0) {
+    apiData.currentFunds = formData.currentFunds;
   }
 
   return apiData;

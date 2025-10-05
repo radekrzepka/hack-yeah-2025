@@ -8,5 +8,9 @@ export class CreateSimulationRequestCommand {
     public readonly includeSickLeave: boolean,
     public readonly expectedPension: number,
     public readonly postalCode?: string,
-  ) {}
+    public readonly contractType: "uop" | "b2b" | "zlecenie" | "dzielo" = "uop",
+    public readonly currentFunds?: number,
+    public readonly includeWageGrowth: boolean = false,
+    public readonly includeIndexation: boolean = false,
+  ) { }
 }

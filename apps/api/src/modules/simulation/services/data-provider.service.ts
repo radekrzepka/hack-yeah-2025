@@ -1,7 +1,9 @@
 import { Injectable } from "@nestjs/common";
 
 import yearlyParametersData from "../data/data.json";
+import powiatyData from "../data/powiaty.json";
 import lifeExpectancyDataRaw from "../data/sdtz_prognoza.json";
+import { PostalCodeApiService } from "./postal-code-api.service";
 
 export interface YearlyParametersRaw {
   rok: number;
@@ -26,6 +28,14 @@ export interface LifeExpectancyDataRaw {
   [year: string]: number;
 }
 
+export interface PowiatData {
+  lp: number;
+  nazwa: string;
+  kod: string;
+  absencjaKobiet: number;
+  absencjaMezczyzn: number;
+}
+
 @Injectable()
 export class DataProviderService {
   private readonly yearlyParameters: Array<YearlyParameters> =
@@ -48,6 +58,10 @@ export class DataProviderService {
 
   private readonly lifeExpectancyData: Array<LifeExpectancyDataRaw> =
     lifeExpectancyDataRaw as Array<LifeExpectancyDataRaw>;
+
+  private readonly powiatyData: Array<PowiatData> = powiatyData as Array<PowiatData>;
+
+  constructor(private readonly postalCodeApiService: PostalCodeApiService) { }
 
   private readonly futureWageGrowthRate = 1.04;
   private readonly futureMainAccountValorization = 1.05;
@@ -165,5 +179,37 @@ export class DataProviderService {
       }
     }
     return estimatedSalary;
+  }
+
+  async getAbsenceDataForPostalCode(postalCode: string, sex: "male" | "female"): Promise<number> {
+    if (!postalCode) {
+      // Domyślne wartości jeśli brak kodu pocztowego
+      return sex === "female" ? 35.0 : 30.0;
+    }
+
+    try {
+      const countyName = await this.postalCodeApiService.getCountyFromPostalCode(postalCode);
+      if (!countyName) {
+        // Domyślne wartości jeśli nie znaleziono powiatu
+        return sex === "female" ? 35.0 : 30.0;
+      }
+
+      // Szukaj powiatu w danych - porównaj nazwy (case insensitive)
+      const powiat = this.powiatyData.find(p =>
+        p.nazwa.toLowerCase().includes(countyName.toLowerCase()) ||
+        countyName.toLowerCase().includes(p.nazwa.toLowerCase())
+      );
+
+      if (!powiat) {
+        // Domyślne wartości jeśli nie znaleziono danych powiatu
+        return sex === "female" ? 35.0 : 30.0;
+      }
+
+      return sex === "female" ? powiat.absencjaKobiet : powiat.absencjaMezczyzn;
+    } catch (error) {
+      console.error(`Error getting absence data for postal code ${postalCode}:`, error);
+      // Domyślne wartości w przypadku błędu
+      return sex === "female" ? 35.0 : 30.0;
+    }
   }
 }

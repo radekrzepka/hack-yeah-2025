@@ -25,22 +25,22 @@ interface CalculateImprovementScenariosInput {
 export class ImprovementScenariosService {
   constructor(
     private readonly pensionCalculationService: PensionCalculationService,
-  ) {}
+  ) { }
 
-  calculateImprovementScenarios(
+  async calculateImprovementScenarios(
     input: CalculateImprovementScenariosInput,
-  ): ImprovementScenariosDto {
+  ): Promise<ImprovementScenariosDto> {
     const { baseInput, basePension, birthYear } = input;
-    const salaryIncrease = this.calculateSalaryIncreaseScenario({
+    const salaryIncrease = await this.calculateSalaryIncreaseScenario({
       baseInput,
       basePension,
     });
-    const workLonger = this.calculateWorkLongerScenario({
+    const workLonger = await this.calculateWorkLongerScenario({
       baseInput,
       basePension,
       birthYear,
     });
-    const fewerSickDays = this.calculateFewerSickDaysScenario({
+    const fewerSickDays = await this.calculateFewerSickDaysScenario({
       baseInput,
       basePension,
     });
@@ -51,24 +51,29 @@ export class ImprovementScenariosService {
     };
   }
 
-  private calculateSalaryIncreaseScenario(params: {
+  private async calculateSalaryIncreaseScenario(params: {
     baseInput: SimulationInput;
     basePension: number;
-  }): SalaryIncreaseScenarioDto {
+  }): Promise<SalaryIncreaseScenarioDto> {
     const { baseInput, basePension } = params;
     const increasePercentages = [10, 20, 30];
-    const options: Array<SalaryIncreaseOptionDto> = increasePercentages.map(
-      (increasePercentage) => {
+    const options: Array<SalaryIncreaseOptionDto> = await Promise.all(increasePercentages.map(
+      async (increasePercentage) => {
         const newMonthlySalary =
           baseInput.grossSalary * (1 + increasePercentage / 100);
         const salaryDifference = newMonthlySalary - baseInput.grossSalary;
-        const newCalculation = this.pensionCalculationService.calculatePension({
+        const newCalculation = await this.pensionCalculationService.calculatePension({
           age: baseInput.age,
           sex: baseInput.sex,
           grossSalary: newMonthlySalary,
           workStartDate: baseInput.workStartDate,
           plannedRetirementYear: baseInput.plannedRetirementYear,
           includeSickLeave: baseInput.includeSickLeave,
+          contractType: baseInput.contractType,
+          currentFunds: baseInput.currentFunds,
+          includeWageGrowth: baseInput.includeWageGrowth,
+          includeIndexation: baseInput.includeIndexation,
+          postalCode: baseInput.postalCode,
         });
         const newPension = newCalculation.monthlyPensionGross;
         const pensionImprovement = newPension - basePension;
@@ -81,7 +86,7 @@ export class ImprovementScenariosService {
           pensionImprovement: this.roundToTwoDecimals(pensionImprovement),
           improvementPercentage: this.roundToTwoDecimals(improvementPercentage),
         };
-      },
+      })
     );
     return {
       currentPension: this.roundToTwoDecimals(basePension),
@@ -89,25 +94,30 @@ export class ImprovementScenariosService {
     };
   }
 
-  private calculateWorkLongerScenario(params: {
+  private async calculateWorkLongerScenario(params: {
     baseInput: SimulationInput;
     basePension: number;
     birthYear: number;
-  }): WorkLongerScenarioDto {
+  }): Promise<WorkLongerScenarioDto> {
     const { baseInput, basePension, birthYear } = params;
     const additionalYearsOptions = [1, 2, 3];
-    const options: Array<WorkLongerOptionDto> = additionalYearsOptions.map(
-      (additionalYears) => {
+    const options: Array<WorkLongerOptionDto> = await Promise.all(additionalYearsOptions.map(
+      async (additionalYears) => {
         const newRetirementYear =
           baseInput.plannedRetirementYear + additionalYears;
         const newRetirementAge = newRetirementYear - birthYear;
-        const newCalculation = this.pensionCalculationService.calculatePension({
+        const newCalculation = await this.pensionCalculationService.calculatePension({
           age: baseInput.age,
           sex: baseInput.sex,
           grossSalary: baseInput.grossSalary,
           workStartDate: baseInput.workStartDate,
           plannedRetirementYear: newRetirementYear,
           includeSickLeave: baseInput.includeSickLeave,
+          contractType: baseInput.contractType,
+          currentFunds: baseInput.currentFunds,
+          includeWageGrowth: baseInput.includeWageGrowth,
+          includeIndexation: baseInput.includeIndexation,
+          postalCode: baseInput.postalCode,
         });
         const newPension = newCalculation.monthlyPensionGross;
         const pensionImprovement = newPension - basePension;
@@ -120,7 +130,7 @@ export class ImprovementScenariosService {
           pensionImprovement: this.roundToTwoDecimals(pensionImprovement),
           improvementPercentage: this.roundToTwoDecimals(improvementPercentage),
         };
-      },
+      })
     );
     return {
       currentPension: this.roundToTwoDecimals(basePension),
@@ -128,22 +138,27 @@ export class ImprovementScenariosService {
     };
   }
 
-  private calculateFewerSickDaysScenario(params: {
+  private async calculateFewerSickDaysScenario(params: {
     baseInput: SimulationInput;
     basePension: number;
-  }): FewerSickDaysScenarioDto {
+  }): Promise<FewerSickDaysScenarioDto> {
     const { baseInput, basePension } = params;
     const currentlyIncludesSickLeave = baseInput.includeSickLeave;
     const averageSickDaysPerYear = 10;
     const options: Array<FewerSickDaysOptionDto> = [];
     if (currentlyIncludesSickLeave) {
-      const newCalculation = this.pensionCalculationService.calculatePension({
+      const newCalculation = await this.pensionCalculationService.calculatePension({
         age: baseInput.age,
         sex: baseInput.sex,
         grossSalary: baseInput.grossSalary,
         workStartDate: baseInput.workStartDate,
         plannedRetirementYear: baseInput.plannedRetirementYear,
         includeSickLeave: false,
+        contractType: baseInput.contractType,
+        currentFunds: baseInput.currentFunds,
+        includeWageGrowth: baseInput.includeWageGrowth,
+        includeIndexation: baseInput.includeIndexation,
+        postalCode: baseInput.postalCode,
       });
       const newPension = newCalculation.monthlyPensionGross;
       const pensionImprovement = newPension - basePension;

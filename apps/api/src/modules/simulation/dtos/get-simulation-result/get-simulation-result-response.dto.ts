@@ -457,6 +457,12 @@ export class GetSimulationResultResponseDto {
   })
   requestId: string;
 
+  @ApiProperty({
+    description: "Expected pension amount entered by user",
+    example: 5000,
+  })
+  expectedPension: number;
+
   @ApiProperty({ description: "Summary of key pension metrics" })
   summary: PensionSummaryDto;
 
@@ -471,12 +477,14 @@ export class GetSimulationResultResponseDto {
   constructor(data: {
     id: string;
     requestId: string;
+    expectedPension: number;
     summary: PensionSummaryDto;
     charts: PensionChartsDto;
     improvementScenarios: ImprovementScenariosDto;
   }) {
     this.id = data.id;
     this.requestId = data.requestId;
+    this.expectedPension = data.expectedPension;
     this.summary = new PensionSummaryDto(data.summary);
     this.charts = new PensionChartsDto(data.charts);
     this.improvementScenarios = new ImprovementScenariosDto(

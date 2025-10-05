@@ -20,6 +20,7 @@ import {
 interface BuildResponseInput {
   id: string;
   requestId: string;
+  expectedPension: number;
   calculationResult: PensionCalculationResult;
   simulationInput: SimulationInput;
 }
@@ -28,10 +29,10 @@ interface BuildResponseInput {
 export class ResponseBuilderService {
   constructor(
     private readonly improvementScenariosService: ImprovementScenariosService,
-  ) {}
+  ) { }
 
-  buildResponse(input: BuildResponseInput): GetSimulationResultResponseDto {
-    const { id, requestId, calculationResult, simulationInput } = input;
+  async buildResponse(input: BuildResponseInput): Promise<GetSimulationResultResponseDto> {
+    const { id, requestId, expectedPension, calculationResult, simulationInput } = input;
     const summary = this.buildSummary({
       calculationResult,
       simulationInput,
@@ -40,7 +41,7 @@ export class ResponseBuilderService {
       calculationResult,
     });
     const improvementScenarios =
-      this.improvementScenariosService.calculateImprovementScenarios({
+      await this.improvementScenariosService.calculateImprovementScenarios({
         baseInput: simulationInput,
         basePension: calculationResult.monthlyPensionGross,
         birthYear: calculationResult.birthYear,
@@ -49,6 +50,7 @@ export class ResponseBuilderService {
     return new GetSimulationResultResponseDto({
       id,
       requestId,
+      expectedPension,
       summary,
       charts,
       improvementScenarios,
