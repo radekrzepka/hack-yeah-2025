@@ -2,11 +2,13 @@ import {
   Body,
   Controller,
   Get,
+  Header,
   InternalServerErrorException,
   NotFoundException,
   Param,
   ParseUUIDPipe,
   Post,
+  Res,
 } from "@nestjs/common";
 import {
   ApiBadRequestResponse,
@@ -18,6 +20,7 @@ import {
   ApiParam,
   ApiTags,
 } from "@nestjs/swagger";
+import { Response } from "express";
 
 import { ApiServerErrorResponse } from "../../../common/decorators/api-server-error-response.decorator";
 import { Public } from "../../../common/decorators/public.decorator";
@@ -28,12 +31,16 @@ import {
   SimulationCreationException,
   SimulationNotFoundException,
 } from "../exceptions/simulation.exceptions";
+import { PdfGeneratorService } from "../services/pdf-generator.service";
 import { SimulationService } from "../services/simulation.service";
 
 @ApiTags("Simulation")
 @Controller({ version: "1", path: "simulation" })
 export class SimulationController {
-  constructor(private readonly simulationService: SimulationService) {}
+  constructor(
+    private readonly simulationService: SimulationService,
+    private readonly pdfGeneratorService: PdfGeneratorService,
+  ) {}
 
   @Public()
   @Post("send")
@@ -101,6 +108,61 @@ export class SimulationController {
       }
 
       throw error;
+    }
+  }
+
+  @Public()
+  @Get(":tokenId/report")
+  @Header("Content-Type", "application/pdf")
+  @ApiOperation({
+    summary: "Generate PDF report for simulation",
+    description:
+      "Generates a PDF report for the simulation result based on the dashboard view",
+  })
+  @ApiParam({
+    name: "tokenId",
+    description: "Simulation token ID",
+    example: "550e8400-e29b-41d4-a716-446655440000",
+  })
+  @ApiOkResponse({
+    description: "PDF report generated successfully",
+    content: {
+      "application/pdf": {
+        schema: {
+          type: "string",
+          format: "binary",
+        },
+      },
+    },
+  })
+  @ApiBadRequestResponse({
+    description: "Invalid UUID format",
+  })
+  @ApiNotFoundResponse({
+    description: "Simulation not found",
+  })
+  @ApiServerErrorResponse()
+  async generateReport(
+    @Param("tokenId", ParseUUIDPipe) tokenId: string,
+    @Res() response: Response,
+  ): Promise<void> {
+    try {
+      await this.simulationService.getSimulationResult(tokenId);
+      const pdfBuffer = await this.pdfGeneratorService.generatePensionReport({
+        tokenId,
+      });
+      response.setHeader(
+        "Content-Disposition",
+        `attachment; filename="pension-report-${tokenId}.pdf"`,
+      );
+      response.setHeader("Content-Type", "application/pdf");
+      response.setHeader("Content-Length", pdfBuffer.length);
+      response.send(pdfBuffer);
+    } catch (error: unknown) {
+      if (error instanceof SimulationNotFoundException) {
+        throw new NotFoundException(error.message);
+      }
+      throw new InternalServerErrorException("Failed to generate PDF report");
     }
   }
 }

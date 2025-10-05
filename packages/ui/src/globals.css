@@ -177,4 +177,45 @@ body {
   .skip-link:focus {
     top: 6px;
   }
+
+  /* Print styles for PDF generation */
+  @media print {
+    @page {
+      size: A4;
+      margin: 1cm;
+    }
+
+    body {
+      print-color-adjust: exact;
+      -webkit-print-color-adjust: exact;
+    }
+
+    /* Ensure charts render properly */
+    canvas {
+      max-width: 100% !important;
+      height: auto !important;
+    }
+
+    /* Better page breaks */
+    .card {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    /* Remove shadows and effects for cleaner print */
+    * {
+      box-shadow: none !important;
+      text-shadow: none !important;
+    }
+
+    /* Center chart legends */
+    .recharts-legend-wrapper {
+      text-align: center !important;
+      width: 100% !important;
+    }
+
+    .recharts-legend-item-text {
+      text-align: center !important;
+    }
+  }
 }

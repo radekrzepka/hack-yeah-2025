@@ -1,11 +1,11 @@
 "use client";
 
-import { Bar, BarChart, CartesianGrid, XAxis, YAxis, Legend } from "recharts";
 import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
 } from "@hackathon/ui";
+import { Bar, BarChart, CartesianGrid, Legend, XAxis, YAxis } from "recharts";
 
 interface SalaryIncreaseOption {
   increasePercentage: number;
@@ -70,7 +70,10 @@ export function SalaryIncreaseChart({ data }: SalaryIncreaseChartProps) {
             name,
           ]}
         />
-        <Legend wrapperStyle={{ paddingTop: "20px" }} iconType="rect" />
+        <Legend
+          wrapperStyle={{ paddingTop: "20px", textAlign: "center" }}
+          iconType="rect"
+        />
         <Bar
           dataKey="currentPension"
           fill="hsl(0, 70%, 50%)"

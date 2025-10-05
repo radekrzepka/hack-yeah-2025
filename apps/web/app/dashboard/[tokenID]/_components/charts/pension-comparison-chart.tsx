@@ -1,11 +1,11 @@
 "use client";
 
-import { Bar, BarChart, CartesianGrid, XAxis, YAxis, Legend } from "recharts";
 import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
 } from "@hackathon/ui";
+import { Bar, BarChart, CartesianGrid, Legend, XAxis, YAxis } from "recharts";
 
 interface PensionComparisonChartProps {
   data: Array<{ name: string; projected: number; expected: number }>;
@@ -46,7 +46,10 @@ export function PensionComparisonChart({ data }: PensionComparisonChartProps) {
           content={<ChartTooltipContent />}
           formatter={(value: number) => [`${value.toLocaleString()} zł`, ""]}
         />
-        <Legend wrapperStyle={{ paddingTop: "20px" }} iconType="rect" />
+        <Legend
+          wrapperStyle={{ paddingTop: "20px", textAlign: "center" }}
+          iconType="rect"
+        />
         <Bar
           dataKey="projected"
           fill="hsl(160, 60%, 45%)"
