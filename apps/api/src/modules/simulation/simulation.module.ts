@@ -7,6 +7,7 @@ import { GetSimulationResultByIdHandler } from "./queries/get-simulation-result-
 import { SimulationRepository } from "./repositories/simulation.repository";
 import { DataProviderService } from "./services/data-provider.service";
 import { ImprovementScenariosService } from "./services/improvement-scenarios.service";
+import { PdfGeneratorService } from "./services/pdf-generator.service";
 import { PensionCalculationService } from "./services/pension-calculation.service";
 import { PostalCodeApiService } from "./services/postal-code-api.service";
 import { ResponseBuilderService } from "./services/response-builder.service";
@@ -29,7 +30,8 @@ const SimulationQueryHandlers = [GetSimulationResultByIdHandler];
     PensionCalculationService,
     ImprovementScenariosService,
     ResponseBuilderService,
+    PdfGeneratorService,
   ],
   exports: [SimulationService, SimulationRepository],
 })
-export class SimulationModule { }
+export class SimulationModule {}

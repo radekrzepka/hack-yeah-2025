@@ -1,38 +1,36 @@
 "use client";
 
 import {
+  Button,
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@hackathon/ui";
-import { Button } from "@hackathon/ui";
-import {
-  PensionProjectionChart,
-  PensionComparisonChart,
-  SalaryIncreaseChart,
-  WorkLongerChart,
-  FewerSickDaysChart,
-} from "./charts";
-import { TopKpiCards } from "./layout";
-import { ControlPanel } from "./controls";
-import { usePensionData } from "../_hooks/use-pension-data";
-import {
-  Download,
-  Info,
-  Settings,
-  TrendingUp,
-  Calendar,
-  Target,
-} from "lucide-react";
-import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@hackathon/ui";
+import {
+  Calendar,
+  Download,
+  Info,
+  Settings,
+  Target,
+  TrendingUp,
+} from "lucide-react";
+import { useGeneratePdfReport, usePensionData } from "../_hooks";
+import {
+  FewerSickDaysChart,
+  PensionComparisonChart,
+  PensionProjectionChart,
+  SalaryIncreaseChart,
+  WorkLongerChart,
+} from "./charts";
+import { ControlPanel } from "./controls";
 import { FAQ } from "./faq";
+import { TopKpiCards } from "./layout";
 import { TipsAndRecommendations } from "./tips-and-recommendations";
 
 export function RetirementDashboard({ tokenID }: { tokenID: string }) {
@@ -44,9 +42,10 @@ export function RetirementDashboard({ tokenID }: { tokenID: string }) {
     isLoading,
     isError,
   } = usePensionData(tokenID);
+  const { mutate: generatePdfReport, isPending: isGeneratingPdf } =
+    useGeneratePdfReport();
   const handleDownloadReport = () => {
-    // Placeholder for PDF generation
-    console.log("Downloading report...");
+    generatePdfReport({ tokenID });
   };
   const scrollToControlPanel = () => {
     const controlPanel = document.getElementById("control-panel");
@@ -56,9 +55,12 @@ export function RetirementDashboard({ tokenID }: { tokenID: string }) {
   };
 
   return (
-    <div className="bg-background min-h-screen">
+    <div
+      className="bg-background min-h-screen"
+      data-testid="retirement-dashboard"
+    >
       {/* Header */}
-      <header className="border-border bg-card border-b">
+      <header className="border-border bg-card border-b print:hidden">
         <div className="container mx-auto w-[80%] px-4 py-6">
           <div className="flex items-center justify-between">
             <div>
@@ -83,9 +85,10 @@ export function RetirementDashboard({ tokenID }: { tokenID: string }) {
                 onClick={handleDownloadReport}
                 variant="outline"
                 size="lg"
+                disabled={isGeneratingPdf}
               >
                 <Download className="mr-2 h-5 w-5" />
-                Pobierz Raport
+                {isGeneratingPdf ? "Generowanie..." : "Pobierz Raport"}
               </Button>
             </div>
           </div>
@@ -301,10 +304,10 @@ export function RetirementDashboard({ tokenID }: { tokenID: string }) {
           )}
 
           {/* Control Panel - Bottom */}
-          <div id="control-panel">
+          <div id="control-panel" className="print:hidden">
             <ControlPanel />
           </div>
-          <div>
+          <div className="print:hidden">
             <FAQ></FAQ>
           </div>
         </div>

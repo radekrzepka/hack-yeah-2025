@@ -1,11 +1,11 @@
 "use client";
 
-import { Line, LineChart, CartesianGrid, XAxis, YAxis, Legend } from "recharts";
 import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
 } from "@hackathon/ui";
+import { CartesianGrid, Legend, Line, LineChart, XAxis, YAxis } from "recharts";
 interface PensionProjectionChartProps {
   data: Array<{
     year: number;
@@ -54,7 +54,10 @@ export function PensionProjectionChart({ data }: PensionProjectionChartProps) {
           content={<ChartTooltipContent />}
           formatter={(value: number) => [`${value.toLocaleString()} zł`, ""]}
         />
-        <Legend wrapperStyle={{ paddingTop: "20px" }} iconType="line" />
+        <Legend
+          wrapperStyle={{ paddingTop: "20px", textAlign: "center" }}
+          iconType="line"
+        />
         <Line
           type="monotone"
           dataKey="totalBalance"

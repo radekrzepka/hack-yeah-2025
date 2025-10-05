@@ -47,14 +47,18 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <QueryClientProvider>
-            <Menu />
-            <a href="#main-content" className="skip-link">
+            <div className="print:hidden">
+              <Menu />
+            </div>
+            <a href="#main-content" className="skip-link print:hidden">
               Przejdź do głównej zawartości
             </a>
             <main role="main" id="main-content" className="flex-1">
               {children}
             </main>
-            <Footer />
+            <div className="print:hidden">
+              <Footer />
+            </div>
             <ReactQueryDevtools initialIsOpen={false} />
           </QueryClientProvider>
           <Toaster richColors position="top-center" />
