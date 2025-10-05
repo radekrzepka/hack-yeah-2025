@@ -6,6 +6,7 @@ import {
   AccumulationChartDataDto,
   ContractTypeEnum,
   ContributionVsGrowthDto,
+  CustomExperiencePeriodDto,
   DecadeSummaryDto,
   GetSimulationResultResponseDto,
   PensionChartsDto,
@@ -91,6 +92,14 @@ export class ResponseBuilderService {
       currentFunds: simulationInput.currentFunds,
       includeWageGrowth: simulationInput.includeWageGrowth,
       includeIndexation: simulationInput.includeIndexation,
+      customExperience: simulationInput.customExperience?.map(
+        (period): CustomExperiencePeriodDto => ({
+          yearStart: period.yearStart,
+          yearEnd: period.yearEnd,
+          monthlySalary: period.monthlySalary,
+          contractType: period.contractType as ContractTypeEnum,
+        }),
+      ),
     };
   }
 

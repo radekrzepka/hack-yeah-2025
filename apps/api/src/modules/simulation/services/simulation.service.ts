@@ -12,7 +12,7 @@ export class SimulationService {
   constructor(
     private readonly commandBus: CommandBus,
     private readonly queryBus: QueryBus,
-  ) { }
+  ) {}
 
   async sendSimulation(
     dto: SendSimulationRequestDto,
@@ -30,6 +30,7 @@ export class SimulationService {
       dto.currentFunds,
       dto.includeWageGrowth,
       dto.includeIndexation,
+      dto.customExperience,
     );
     return this.commandBus.execute(command);
   }

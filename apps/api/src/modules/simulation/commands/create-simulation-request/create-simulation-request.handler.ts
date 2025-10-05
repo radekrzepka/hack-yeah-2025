@@ -10,7 +10,8 @@ import { CreateSimulationRequestCommand } from "./create-simulation-request.comm
 
 @CommandHandler(CreateSimulationRequestCommand)
 export class CreateSimulationRequestHandler
-  implements ICommandHandler<CreateSimulationRequestCommand> {
+  implements ICommandHandler<CreateSimulationRequestCommand>
+{
   private readonly logger: LoggerService;
 
   constructor(
@@ -37,6 +38,7 @@ export class CreateSimulationRequestHandler
       currentFunds,
       includeWageGrowth,
       includeIndexation,
+      customExperience,
     } = command;
 
     this.logger.logCommandStart("CreateSimulationRequestCommand", "execute", {
@@ -52,6 +54,7 @@ export class CreateSimulationRequestHandler
       currentFunds,
       includeWageGrowth,
       includeIndexation,
+      customExperience,
     });
 
     const createdRequest = await this.simulationRepository.create({
@@ -68,6 +71,7 @@ export class CreateSimulationRequestHandler
         currentFunds,
         includeWageGrowth,
         includeIndexation,
+        customExperience,
       },
     });
 
@@ -85,19 +89,21 @@ export class CreateSimulationRequestHandler
       "execute",
     );
 
-    const calculationResult = await this.pensionCalculationService.calculatePension({
-      age,
-      sex,
-      grossSalary,
-      workStartDate,
-      plannedRetirementYear,
-      includeSickLeave,
-      contractType,
-      currentFunds,
-      includeWageGrowth,
-      includeIndexation,
-      postalCode,
-    });
+    const calculationResult =
+      await this.pensionCalculationService.calculatePension({
+        age,
+        sex,
+        grossSalary,
+        workStartDate,
+        plannedRetirementYear,
+        includeSickLeave,
+        contractType,
+        currentFunds,
+        includeWageGrowth,
+        includeIndexation,
+        postalCode,
+        customExperience,
+      });
 
     const createdResult = await this.simulationRepository.createResult({
       id: createdRequest.id,
