@@ -8,7 +8,7 @@ import { getLandingData } from "./(landing)/_api/get-landing-data";
 export default async function Dashboard() {
   const data = await getLandingData();
   return (
-    <div className="mx-auto w-[80vw]">
+    <div className="mx-auto md:w-[80vw]">
       <section aria-labelledby="hero-heading">
         <h1 id="hero-heading" className="sr-only">
           Strona główna ZUSometr - Kalkulator emerytalny

@@ -13,6 +13,7 @@ export function ControlPanel({ tokenID }: ControlPanelProps) {
   return (
     <div className="space-y-6">
       <DashboardForm
+        config={simulationData?.config}
         initialData={{
           expectedPension: simulationData?.expectedPension,
         }}

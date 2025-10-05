@@ -116,9 +116,8 @@ function CareerLeverageCard({
 
             <div className="pt-1 lg:pt-2">
               <Button
-                className="inline-flex w-full items-center gap-1 rounded-md bg-green-600 p-2 text-xs font-medium text-white transition-colors hover:bg-green-700 lg:w-auto lg:text-sm"
+                className="w-full rounded-md bg-green-600 p-2 text-xs font-medium text-white transition-colors hover:bg-green-700 lg:w-auto lg:text-sm"
                 onClick={() => window.open("/form", "_blank")}
-                aria-label="Zobacz wpływ podwyżki o 10% (otwiera się w nowej karcie)"
               >
                 Zobacz wpływ podwyżki o 10%
               </Button>
@@ -190,60 +189,48 @@ function CareerLeverageCard({
                         <div className="mb-2 text-sm text-gray-700">
                           <strong>Wykres:</strong> {chart.chartName}
                         </div>
-                        <div
-                          role="img"
-                          aria-label={`Wykres ${chart.chartName}. Dane: ${chartDataDescription}`}
+                        <ChartContainer
+                          config={chartConfig}
+                          className="h-[250px] w-full"
                         >
-                          <ChartContainer
-                            config={chartConfig}
-                            className="h-[250px] w-full"
-                          >
-                            {isLineChart ? (
-                              <LineChart data={data} accessibilityLayer>
-                                <CartesianGrid strokeDasharray="3 3" />
-                                <XAxis
-                                  dataKey="label"
-                                  tick={{ fontSize: 12 }}
-                                />
-                                <YAxis tick={{ fontSize: 12 }} />
-                                <ChartTooltip
-                                  content={<ChartTooltipContent />}
-                                />
-                                <Line
-                                  type="monotone"
-                                  dataKey="value"
-                                  stroke="#1e40af"
-                                  strokeWidth={3}
-                                  dot={{
-                                    fill: "#1e40af",
-                                    strokeWidth: 2,
-                                    r: 4,
-                                  }}
-                                />
-                              </LineChart>
-                            ) : (
-                              <BarChart data={data} accessibilityLayer>
-                                <CartesianGrid strokeDasharray="3 3" />
-                                <XAxis
-                                  dataKey="label"
-                                  tick={{ fontSize: 12 }}
-                                  angle={-45}
-                                  textAnchor="end"
-                                  height={60}
-                                />
-                                <YAxis tick={{ fontSize: 12 }} />
-                                <ChartTooltip
-                                  content={<ChartTooltipContent />}
-                                />
-                                <Bar
-                                  dataKey="value"
-                                  fill="#1e40af"
-                                  radius={[4, 4, 0, 0]}
-                                />
-                              </BarChart>
-                            )}
-                          </ChartContainer>
-                        </div>
+                          {isLineChart ? (
+                            <LineChart data={data}>
+                              <CartesianGrid strokeDasharray="3 3" />
+                              <XAxis dataKey="label" tick={{ fontSize: 12 }} />
+                              <YAxis tick={{ fontSize: 12 }} />
+                              <ChartTooltip content={<ChartTooltipContent />} />
+                              <Line
+                                type="monotone"
+                                dataKey="value"
+                                stroke="#1e40af"
+                                strokeWidth={3}
+                                dot={{
+                                  fill: "#1e40af",
+                                  strokeWidth: 2,
+                                  r: 4,
+                                }}
+                              />
+                            </LineChart>
+                          ) : (
+                            <BarChart data={data}>
+                              <CartesianGrid strokeDasharray="3 3" />
+                              <XAxis
+                                dataKey="label"
+                                tick={{ fontSize: 12 }}
+                                angle={-45}
+                                textAnchor="end"
+                                height={60}
+                              />
+                              <YAxis tick={{ fontSize: 12 }} />
+                              <ChartTooltip content={<ChartTooltipContent />} />
+                              <Bar
+                                dataKey="value"
+                                fill="#1e40af"
+                                radius={[4, 4, 0, 0]}
+                              />
+                            </BarChart>
+                          )}
+                        </ChartContainer>
                       </div>
                     </CarouselItem>
                   );
@@ -346,9 +333,8 @@ export function SeeMore({ initialData }: Props) {
 
               <div className="pt-1 lg:pt-2">
                 <Button
-                  className="inline-flex w-full items-center gap-1 rounded-md bg-green-600 p-2 text-xs font-medium text-white transition-colors hover:bg-green-700 lg:w-auto lg:text-sm"
+                  className="w-full rounded-md bg-green-600 p-2 text-xs font-medium text-white transition-colors hover:bg-green-700 lg:w-auto lg:text-sm"
                   onClick={() => window.open("/form", "_blank")}
-                  aria-label="Sprawdź, jak wypadasz względem minimum (otwiera się w nowej karcie)"
                 >
                   Sprawdź, jak wypadasz względem minimum
                 </Button>
@@ -440,7 +426,7 @@ export function SeeMore({ initialData }: Props) {
 
               <div className="pt-1 lg:pt-2">
                 <Button
-                  className="inline-flex w-full items-center gap-1 rounded-md bg-green-600 p-2 text-xs font-medium text-white transition-colors hover:bg-green-700 lg:w-auto lg:text-sm"
+                  className="w-full rounded-md bg-green-600 p-2 text-xs font-medium text-white transition-colors hover:bg-green-700 lg:w-auto lg:text-sm"
                   onClick={() => window.open("/form", "_blank")}
                   aria-label="Sprawdź, ile daje +24 miesiące pracy (otwiera się w nowej karcie)"
                 >

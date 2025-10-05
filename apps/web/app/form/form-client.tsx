@@ -474,10 +474,7 @@ export function FormClient() {
                     aria-describedby={
                       errors.currentFunds ? "currentFunds-error" : undefined
                     }
-                    {...register("currentFunds", {
-                      setValueAs: (value) =>
-                        value === "" ? undefined : Number(value),
-                    })}
+                    {...register("currentFunds", { valueAsNumber: true })}
                   />
                   <FormError
                     error={errors.currentFunds?.message}
