@@ -20,7 +20,7 @@ export function Menu() {
           <Link href="/" className="text-primary text-xl font-bold">
             <Image
               src="/logo_zus_darker_with_text.svg"
-              alt="ZUS Symulator"
+              alt="ZUSometr"
               width={150}
               height={40}
               className="h-8"

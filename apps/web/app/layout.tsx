@@ -12,7 +12,7 @@ import { QueryClientProvider } from "./_providers/query-client-provider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "ZUS - Symulator przyszłej emerytury",
+  title: "ZUSometr - kalkulator przyszłej emerytury",
   description:
     "Kalkulator prognozy emerytalnej ZUS - sprawdź orientacyjną wysokość swojej przyszłej emerytury",
   keywords: [
