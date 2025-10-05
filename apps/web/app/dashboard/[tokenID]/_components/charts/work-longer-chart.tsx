@@ -35,15 +35,15 @@ export function WorkLongerChart({ data }: WorkLongerChartProps) {
   const chartConfig = {
     currentPension: {
       label: "Aktualna Emerytura",
-      color: "hsl(0, 70%, 50%)",
+      color: "rgb(255,179,79)",
     },
     newPension: {
       label: "Nowa Emerytura",
-      color: "hsl(160, 60%, 45%)",
+      color: "rgb(0, 120, 52)",
     },
     improvement: {
       label: "Poprawa",
-      color: "hsl(220, 70%, 50%)",
+      color: "rgb(0, 65, 110)",
     },
   };
 
@@ -68,9 +68,9 @@ export function WorkLongerChart({ data }: WorkLongerChartProps) {
           content={<ChartTooltipContent />}
           formatter={(value: number, name: string) => {
             if (name === "improvement") {
-              return [`${value.toLocaleString()} zł`, "Poprawa"];
+              return [`${value.toLocaleString()} zł `, "Poprawa"];
             }
-            return [`${value.toLocaleString()} zł`, name];
+            return [`${value.toLocaleString()} zł `, name];
           }}
         />
         <Legend
@@ -79,19 +79,19 @@ export function WorkLongerChart({ data }: WorkLongerChartProps) {
         />
         <Bar
           dataKey="currentPension"
-          fill="hsl(0, 70%, 50%)"
+          fill={chartConfig.currentPension.color}
           name="Aktualna Emerytura"
           radius={[4, 4, 0, 0]}
         />
         <Bar
           dataKey="newPension"
-          fill="hsl(160, 60%, 45%)"
+          fill={chartConfig.newPension.color}
           name="Nowa Emerytura"
           radius={[4, 4, 0, 0]}
         />
         <Bar
           dataKey="improvement"
-          fill="hsl(220, 70%, 50%)"
+          fill={chartConfig.improvement.color}
           name="Poprawa"
           radius={[4, 4, 0, 0]}
         />

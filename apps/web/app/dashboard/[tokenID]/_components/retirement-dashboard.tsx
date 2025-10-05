@@ -20,7 +20,10 @@ import {
   Target,
   TrendingUp,
 } from "lucide-react";
+import { useState } from "react";
 import { useGeneratePdfReport, usePensionData } from "../_hooks";
+import { useAutoSaveScenario } from "../_hooks/use-auto-save-scenario";
+import type { StoredScenario } from "../_types/scenario-storage";
 import {
   FewerSickDaysChart,
   PensionComparisonChart,
@@ -31,11 +34,18 @@ import {
 import { ControlPanel } from "./controls";
 import { FAQ } from "./faq";
 import { TopKpiCards } from "./layout";
+import { ScenarioPagination } from "./scenario-pagination";
 import { TipsAndRecommendations } from "./tips-and-recommendations";
 
 export function RetirementDashboard({ tokenID }: { tokenID: string }) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [currentScenario, setCurrentScenario] = useState<StoredScenario | null>(
+    null,
+  );
+
   const {
     kpiData,
+    expected,
     projectionData,
     comparisonData,
     improvementScenarios,
@@ -44,10 +54,20 @@ export function RetirementDashboard({ tokenID }: { tokenID: string }) {
   } = usePensionData(tokenID);
   const { mutate: generatePdfReport, isPending: isGeneratingPdf } =
     useGeneratePdfReport();
+
+  // Auto-save current dashboard as scenario if it doesn't exist
+  useAutoSaveScenario(tokenID);
   const handleDownloadReport = () => {
     generatePdfReport({ tokenID });
   };
   const scrollToControlPanel = () => {
+    const controlPanel = document.getElementById("control-panel");
+    if (controlPanel) {
+      controlPanel.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const handleCreateNewScenario = () => {
     const controlPanel = document.getElementById("control-panel");
     if (controlPanel) {
       controlPanel.scrollIntoView({ behavior: "smooth" });
@@ -109,6 +129,13 @@ export function RetirementDashboard({ tokenID }: { tokenID: string }) {
 
       <div className="container mx-auto w-[80%] px-4 py-8">
         <div className="space-y-6">
+          {/* Scenario Pagination */}
+          <ScenarioPagination
+            onScenarioChange={setCurrentScenario}
+            onCreateNew={handleCreateNewScenario}
+            currentTokenID={tokenID}
+          />
+
           {/* Main Visualization Area */}
           {isLoading ? (
             <div className="flex h-32 items-center justify-center">
@@ -121,7 +148,7 @@ export function RetirementDashboard({ tokenID }: { tokenID: string }) {
               </div>
             </div>
           ) : kpiData ? (
-            <TopKpiCards kpiData={kpiData} />
+            <TopKpiCards kpiData={{ ...kpiData, expectedPension: expected }} />
           ) : null}
 
           <div className="grid gap-6 lg:grid-cols-[1fr_2fr]">
@@ -139,9 +166,11 @@ export function RetirementDashboard({ tokenID }: { tokenID: string }) {
                       <TrendingUp className="text-primary h-4 w-4" />
                     </div>
                     <div>
-                      <h4 className="text-sm font-medium">Zwiększ składki</h4>
+                      <h4 className="text-sm font-medium">
+                        Zwiększenie wynagrodzenia
+                      </h4>
                       <p className="text-muted-foreground text-xs">
-                        Rozważ dodatkowe składki do OFE lub IKE
+                        Zwiększenie wynagrodzenia zwiększa emeryturę
                       </p>
                     </div>
                   </div>
@@ -161,9 +190,11 @@ export function RetirementDashboard({ tokenID }: { tokenID: string }) {
                       <Target className="text-primary h-4 w-4" />
                     </div>
                     <div>
-                      <h4 className="text-sm font-medium">Inwestuj mądrze</h4>
+                      <h4 className="text-sm font-medium">
+                        Zredukuj ilość dni chorobowych
+                      </h4>
                       <p className="text-muted-foreground text-xs">
-                        Rozważ długoterminowe inwestycje
+                        Zmniejszenie ilości dni chorobowych zwiększa emeryturę
                       </p>
                     </div>
                   </div>
@@ -193,7 +224,8 @@ export function RetirementDashboard({ tokenID }: { tokenID: string }) {
                       <TooltipContent className="max-w-xs">
                         <p className="text-sm">
                           Porównanie prognozowanej emerytury z oczekiwaną kwotą
-                          4500 zł.
+                          {""} {""}
+                          {expected.toLocaleString("pl-PL")} zł.
                         </p>
                       </TooltipContent>
                     </Tooltip>
@@ -214,7 +246,6 @@ export function RetirementDashboard({ tokenID }: { tokenID: string }) {
             </Card>
           </div>
 
-          <TipsAndRecommendations></TipsAndRecommendations>
           {/* Main Projection Chart */}
           <Card>
             <CardHeader>
@@ -262,10 +293,10 @@ export function RetirementDashboard({ tokenID }: { tokenID: string }) {
           {/* Improvement Scenarios */}
           {improvementScenarios && (
             <div className="space-y-6">
-              <h2 className="text-2xl font-bold">
+              <h2 className="text-center text-3xl font-bold">
                 Scenariusze Poprawy Emerytury
               </h2>
-
+              <TipsAndRecommendations></TipsAndRecommendations>
               {/* Salary Increase Chart */}
               <Card>
                 <CardHeader>

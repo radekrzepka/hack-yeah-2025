@@ -26,8 +26,8 @@ import { useMutation } from "@tanstack/react-query";
 import { CircleAlert as AlertCircle, Calculator } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
-import { usePensionScenarios } from "../../../_shared/hooks/use-pension-scenarios";
 import { sendSimulationClient } from "../../../form/_api/send-simulation";
+import { addScenario } from "../_utils/scenario-storage";
 import { pensionFormSchema, type PensionFormData } from "./schema";
 
 // Transform form data to API format
@@ -69,7 +69,6 @@ interface DashboardFormProps {
 
 export function DashboardForm({ initialData }: DashboardFormProps) {
   const router = useRouter();
-  const { addScenario } = usePensionScenarios();
 
   const {
     register,
@@ -104,9 +103,15 @@ export function DashboardForm({ initialData }: DashboardFormProps) {
 
       // Zapisz dane do localStorage
       addScenario({
-        id: data.id,
-        age: variables.age,
-        contractType: variables.contractType,
+        actualId: data.id,
+        name: `Scenariusz ${new Date().toLocaleDateString("pl-PL")}`,
+        description: `Symulacja dla ${variables.age}-letniego ${variables.gender === "male" ? "mężczyzny" : "kobiety"}`,
+        parameters: {
+          age: variables.age,
+          expectedPension: variables.targetPension,
+          tokenID: data.id,
+          typeOfEmployment: variables.contractType,
+        },
       });
 
       // Przekieruj na dashboard z ID symulacji

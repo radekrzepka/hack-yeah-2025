@@ -18,20 +18,20 @@ export function usePensionData(tokenID: string) {
 
   const simulationData = simulationQuery.data;
 
-  // Transform contributionVsGrowth data for the comparison chart
-  const comparisonData = simulationData?.charts.contributionVsGrowth
+  const comparisonData = simulationData?.summary
     ? [
-      {
-        name: "Prognozowana",
-        projected: simulationData.charts.contributionVsGrowth.totalCapital,
-        expected: simulationData.expectedPension, // Expected pension amount from user input
-      },
-    ]
+        {
+          name: "Prognozowana",
+          projected: simulationData.summary.projectedPension,
+          expected: simulationData.expectedPension,
+        },
+      ]
     : undefined;
 
   return {
     simulationData,
     kpiData: simulationData?.summary,
+    expected: simulationData?.expectedPension || 5000,
     projectionData: simulationData?.charts.accumulationOverTime,
     comparisonData,
     improvementScenarios: simulationData?.improvementScenarios,

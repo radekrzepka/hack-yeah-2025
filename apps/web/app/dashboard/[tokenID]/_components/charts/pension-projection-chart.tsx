@@ -21,7 +21,7 @@ export function PensionProjectionChart({ data }: PensionProjectionChartProps) {
   const chartConfig = {
     totalBalance: {
       label: "Całkowity Kapitał",
-      color: "rgb(26, 78, 218)",
+      color: "rgb(255,179,79)",
     },
     mainAccountBalance: {
       label: "Konto Główne",
@@ -52,7 +52,10 @@ export function PensionProjectionChart({ data }: PensionProjectionChartProps) {
         />
         <ChartTooltip
           content={<ChartTooltipContent />}
-          formatter={(value: number) => [`${value.toLocaleString()} zł`, ""]}
+          formatter={(value: number, name: string) => [
+            `${value.toLocaleString()} zł `,
+            name,
+          ]}
         />
         <Legend
           wrapperStyle={{ paddingTop: "20px", textAlign: "center" }}
@@ -61,7 +64,7 @@ export function PensionProjectionChart({ data }: PensionProjectionChartProps) {
         <Line
           type="monotone"
           dataKey="totalBalance"
-          stroke="hsl(220, 70%, 50%)"
+          stroke={chartConfig.totalBalance.color}
           strokeWidth={3}
           dot={{ r: 4 }}
           name="Całkowity Kapitał"
@@ -70,7 +73,7 @@ export function PensionProjectionChart({ data }: PensionProjectionChartProps) {
         <Line
           type="monotone"
           dataKey="mainAccountBalance"
-          stroke="hsl(160, 60%, 45%)"
+          stroke={chartConfig.mainAccountBalance.color}
           strokeWidth={3}
           dot={{ r: 4 }}
           name="Konto Główne"
@@ -79,7 +82,7 @@ export function PensionProjectionChart({ data }: PensionProjectionChartProps) {
         <Line
           type="monotone"
           dataKey="subAccountBalance"
-          stroke="hsl(0, 70%, 50%)"
+          stroke={chartConfig.subAccountBalance.color}
           strokeWidth={3}
           dot={{ r: 4 }}
           name="Konto Podrzędne"
