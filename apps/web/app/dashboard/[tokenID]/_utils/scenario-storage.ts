@@ -14,20 +14,24 @@ export function getStoredScenarios(): ScenarioStorage {
     const stored = localStorage.getItem(STORAGE_KEY);
     if (stored) {
       const parsed = JSON.parse(stored) as {
-        scenarios: Array<
+        scenarios?: Array<
           Omit<StoredScenario, "createdAt"> & { createdAt: string }
         >;
-        currentScenarioId: string;
+        currentScenarioId?: string;
       };
-      // Convert date strings back to Date objects
-      const convertedScenarios = parsed.scenarios.map((scenario) => ({
-        ...scenario,
-        createdAt: new Date(scenario.createdAt),
-      }));
-      return {
-        scenarios: convertedScenarios,
-        currentScenarioId: parsed.currentScenarioId,
-      };
+
+      // Validate that parsed data has the expected structure
+      if (parsed && Array.isArray(parsed.scenarios)) {
+        // Convert date strings back to Date objects
+        const convertedScenarios = parsed.scenarios.map((scenario) => ({
+          ...scenario,
+          createdAt: new Date(scenario.createdAt),
+        }));
+        return {
+          scenarios: convertedScenarios,
+          currentScenarioId: parsed.currentScenarioId || "",
+        };
+      }
     }
   } catch (error) {
     console.error("Error reading scenarios from localStorage:", error);
@@ -41,6 +45,8 @@ export function saveStoredScenarios(storage: ScenarioStorage): void {
 
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(storage));
+    // Dispatch custom event to notify components of the update
+    window.dispatchEvent(new CustomEvent("scenariosUpdated"));
   } catch (error) {
     console.error("Error saving scenarios to localStorage:", error);
   }

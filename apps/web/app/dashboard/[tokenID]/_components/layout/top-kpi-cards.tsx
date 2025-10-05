@@ -17,7 +17,6 @@ export function TopKpiCards({ kpiData }: TopKpiCardsProps) {
   const {
     projectedPension,
     expectedPension,
-    currentSalary,
     replacementRate,
     yearsToRetirement,
   } = kpiData;
@@ -46,7 +45,6 @@ export function TopKpiCards({ kpiData }: TopKpiCardsProps) {
             <p className={`${colorClass} my-auto text-lg opacity-40`}>
               {"("}
               {(projectedPension - expectedPension).toLocaleString("pl-PL")} zł
-              {/* {(projectedPension - currentSalary).toLocaleString("pl-PL")} zł */}
               {")"}
             </p>
           </div>

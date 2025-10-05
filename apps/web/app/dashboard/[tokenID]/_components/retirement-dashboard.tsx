@@ -2,7 +2,6 @@
 
 import {
   Button,
-  Button,
   Card,
   CardContent,
   CardDescription,
@@ -12,24 +11,18 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
 } from "@hackathon/ui";
 import {
-  Calendar,
   Calendar,
   Download,
   Info,
   Settings,
   Target,
-  Target,
   TrendingUp,
 } from "lucide-react";
-import { useGeneratePdfReport, usePensionData } from "../_hooks";
 import { useState } from "react";
-import { usePensionData } from "../_hooks/use-pension-data";
+import { useGeneratePdfReport, usePensionData } from "../_hooks";
+import { useAutoSaveScenario } from "../_hooks/use-auto-save-scenario";
 import type { StoredScenario } from "../_types/scenario-storage";
 import {
   FewerSickDaysChart,
@@ -39,24 +32,16 @@ import {
   WorkLongerChart,
 } from "./charts";
 import { ControlPanel } from "./controls";
-  FewerSickDaysChart,
-  PensionComparisonChart,
-  PensionProjectionChart,
-  SalaryIncreaseChart,
-  WorkLongerChart,
-} from "./charts";
-import { ControlPanel } from "./controls";
 import { FAQ } from "./faq";
-import { TopKpiCards } from "./layout";
 import { TopKpiCards } from "./layout";
 import { ScenarioPagination } from "./scenario-pagination";
 import { TipsAndRecommendations } from "./tips-and-recommendations";
 
 export function RetirementDashboard({ tokenID }: { tokenID: string }) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [currentScenario, setCurrentScenario] = useState<StoredScenario | null>(
     null,
   );
-  const [showControlPanel, setShowControlPanel] = useState(false);
 
   const {
     kpiData,
@@ -69,11 +54,13 @@ export function RetirementDashboard({ tokenID }: { tokenID: string }) {
   } = usePensionData(tokenID);
   const { mutate: generatePdfReport, isPending: isGeneratingPdf } =
     useGeneratePdfReport();
+
+  // Auto-save current dashboard as scenario if it doesn't exist
+  useAutoSaveScenario(tokenID);
   const handleDownloadReport = () => {
     generatePdfReport({ tokenID });
   };
   const scrollToControlPanel = () => {
-    setShowControlPanel(true);
     const controlPanel = document.getElementById("control-panel");
     if (controlPanel) {
       controlPanel.scrollIntoView({ behavior: "smooth" });
@@ -81,7 +68,6 @@ export function RetirementDashboard({ tokenID }: { tokenID: string }) {
   };
 
   const handleCreateNewScenario = () => {
-    setShowControlPanel(true);
     const controlPanel = document.getElementById("control-panel");
     if (controlPanel) {
       controlPanel.scrollIntoView({ behavior: "smooth" });
@@ -147,6 +133,7 @@ export function RetirementDashboard({ tokenID }: { tokenID: string }) {
           <ScenarioPagination
             onScenarioChange={setCurrentScenario}
             onCreateNew={handleCreateNewScenario}
+            currentTokenID={tokenID}
           />
 
           {/* Main Visualization Area */}
@@ -237,7 +224,8 @@ export function RetirementDashboard({ tokenID }: { tokenID: string }) {
                       <TooltipContent className="max-w-xs">
                         <p className="text-sm">
                           Porównanie prognozowanej emerytury z oczekiwaną kwotą
-                          4500 zł.
+                          {""} {""}
+                          {expected.toLocaleString("pl-PL")} zł.
                         </p>
                       </TooltipContent>
                     </Tooltip>
@@ -246,12 +234,7 @@ export function RetirementDashboard({ tokenID }: { tokenID: string }) {
               </CardHeader>
               <CardContent>
                 {comparisonData ? (
-                  <PensionComparisonChart
-                    data={comparisonData.map((item) => ({
-                      ...item,
-                      expected: expected,
-                    }))}
-                  />
+                  <PensionComparisonChart data={comparisonData} />
                 ) : (
                   <div className="flex h-64 items-center justify-center">
                     <div className="text-muted-foreground">

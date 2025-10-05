@@ -9,39 +9,66 @@ import {
   Plus,
   X,
 } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useCallback, useEffect, useState } from "react";
 import type { StoredScenario } from "../_types/scenario-storage";
-import {
-  getStoredScenarios,
-  removeScenario,
-  setCurrentScenario,
-} from "../_utils/scenario-storage";
+import { getStoredScenarios, removeScenario } from "../_utils/scenario-storage";
 
 interface ScenarioPaginationProps {
   onScenarioChange: (scenario: StoredScenario | null) => void;
   onCreateNew: () => void;
+  currentTokenID: string;
 }
 
 export function ScenarioPagination({
   onScenarioChange,
   onCreateNew,
+  currentTokenID,
 }: ScenarioPaginationProps) {
+  const router = useRouter();
   const [scenarios, setScenarios] = useState<Array<StoredScenario>>([]);
   const [currentScenarioId, setCurrentScenarioId] = useState<string>("");
   const [currentPage, setCurrentPage] = useState(0);
   const scenariosPerPage = 3;
 
-  useEffect(() => {
+  const loadScenarios = useCallback(() => {
     const storage = getStoredScenarios();
     setScenarios(storage.scenarios);
-    setCurrentScenarioId(storage.currentScenarioId);
 
-    // Find current scenario and notify parent
+    // Find the scenario that matches the current tokenID
     const currentScenario = storage.scenarios.find(
-      (s) => s.localId === storage.currentScenarioId,
+      (s) => s.parameters.tokenID === currentTokenID,
     );
-    onScenarioChange(currentScenario || null);
-  }, [onScenarioChange]);
+
+    if (currentScenario) {
+      setCurrentScenarioId(currentScenario.localId);
+      onScenarioChange(currentScenario);
+    } else {
+      setCurrentScenarioId("");
+      onScenarioChange(null);
+    }
+  }, [onScenarioChange, currentTokenID]);
+
+  useEffect(() => {
+    loadScenarios();
+  }, [loadScenarios]);
+
+  // Refresh scenarios when localStorage changes
+  useEffect(() => {
+    const handleStorageChange = () => {
+      loadScenarios();
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+
+    // Also listen for custom events (for same-tab updates)
+    window.addEventListener("scenariosUpdated", handleStorageChange);
+
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+      window.removeEventListener("scenariosUpdated", handleStorageChange);
+    };
+  }, [loadScenarios]);
 
   const totalPages = Math.ceil(scenarios.length / scenariosPerPage);
   const startIndex = currentPage * scenariosPerPage;
@@ -49,9 +76,8 @@ export function ScenarioPagination({
   const currentScenarios = scenarios.slice(startIndex, endIndex);
 
   const handleScenarioSelect = (scenario: StoredScenario) => {
-    setCurrentScenario(scenario.localId);
-    setCurrentScenarioId(scenario.localId);
-    onScenarioChange(scenario);
+    // Navigate to the scenario's dashboard
+    router.push(`/dashboard/${scenario.parameters.tokenID}`);
   };
 
   const handleRemoveScenario = (localId: string) => {
@@ -112,23 +138,36 @@ export function ScenarioPagination({
       </div>
 
       {/* Scenario Cards */}
-      <div className="grid gap-3">
+      <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
         {currentScenarios.map((scenario) => (
           <div
             key={scenario.localId}
-            className={`relative flex cursor-pointer items-center gap-3 rounded-lg border-2 p-3 transition-all ${
+            className={`relative flex cursor-pointer flex-col gap-3 rounded-lg border-2 p-4 transition-all ${
               currentScenarioId === scenario.localId
                 ? "border-primary bg-primary/5 shadow-md"
                 : "border-muted hover:border-primary/50 hover:bg-muted/50"
             }`}
             onClick={() => handleScenarioSelect(scenario)}
           >
-            <div className="bg-primary/10 rounded-full p-2">
-              <Calendar className="text-primary h-4 w-4" />
+            <div className="flex items-center justify-between">
+              <div className="bg-primary/10 rounded-full p-2">
+                <Calendar className="text-primary h-4 w-4" />
+              </div>
+              <Button
+                variant="ghost"
+                size="sm"
+                className="hover:bg-destructive/10 hover:text-destructive h-6 w-6 p-0"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleRemoveScenario(scenario.localId);
+                }}
+              >
+                <X className="h-3 w-3" />
+              </Button>
             </div>
 
             <div className="min-w-0 flex-1">
-              <div className="mb-1 flex items-center gap-2">
+              <div className="mb-2 flex items-center gap-2">
                 <h3 className="truncate text-sm font-medium">
                   {scenario.name}
                 </h3>
@@ -139,7 +178,7 @@ export function ScenarioPagination({
                 )}
               </div>
 
-              <div className="text-muted-foreground flex items-center gap-4 text-xs">
+              <div className="text-muted-foreground space-y-1 text-xs">
                 <div className="flex items-center gap-1">
                   <span>👤</span>
                   {scenario.parameters.age} lat
@@ -157,25 +196,7 @@ export function ScenarioPagination({
                   {formatDate(scenario.createdAt)}
                 </div>
               </div>
-
-              {scenario.description && (
-                <p className="text-muted-foreground mt-1 truncate text-xs">
-                  {scenario.description}
-                </p>
-              )}
             </div>
-
-            <Button
-              variant="ghost"
-              size="sm"
-              className="hover:bg-destructive/10 hover:text-destructive h-6 w-6 p-0"
-              onClick={(e) => {
-                e.stopPropagation();
-                handleRemoveScenario(scenario.localId);
-              }}
-            >
-              <X className="h-3 w-3" />
-            </Button>
           </div>
         ))}
       </div>
