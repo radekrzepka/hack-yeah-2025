@@ -28,8 +28,8 @@ export class PostalCodeApiService {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
 
-      const data = await response.json();
-      return data as Array<PostalCodeApiResponse>;
+            const data = await response.json();
+            return data as Array<PostalCodeApiResponse>;
         } catch (error) {
             console.error(`Error fetching postal code data for ${postalCode}:`, error);
             return [];
