@@ -16,24 +16,26 @@ export function TipsAndRecommendations() {
   return (
     <section className="space-y-6">
       <Tabs defaultValue="salary-increase" className="w-full">
-        <TabsList className="mb-6 grid w-full grid-cols-3">
+        <TabsList className="mb-6 grid w-full grid-cols-1 sm:grid-cols-3">
           <TabsTrigger
             value="salary-increase"
-            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground text-xs sm:text-sm"
           >
-            Zwiększenie Zarobków
+            <span className="hidden sm:inline">Zwiększenie Zarobków</span>
+            <span className="sm:hidden">Zarobki</span>
           </TabsTrigger>
           <TabsTrigger
             value="work-longer"
-            className="data-[state=active]:bg-secondary data-[state=active]:text-secondary-foreground"
+            className="data-[state=active]:bg-secondary data-[state=active]:text-secondary-foreground text-xs sm:text-sm"
           >
             Praca Dłużej
           </TabsTrigger>
           <TabsTrigger
             value="fewer-sick-days"
-            className="data-[state=active]:bg-destructive data-[state=active]:text-destructive-foreground"
+            className="data-[state=active]:bg-destructive data-[state=active]:text-destructive-foreground text-xs sm:text-sm"
           >
-            Redukcja Dni Chorobowych
+            <span className="hidden sm:inline">Redukcja Dni Chorobowych</span>
+            <span className="sm:hidden">Zdrowie</span>
           </TabsTrigger>
         </TabsList>
 
@@ -48,7 +50,7 @@ export function TipsAndRecommendations() {
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
-              <ul className="list-inside list-disc space-y-3">
+              <ul className="list-inside list-disc space-y-2 text-sm sm:space-y-3 sm:text-base">
                 <li className="text-foreground">
                   <strong>Negocjuj podwyżki wynagrodzenia</strong> - zwiększenie
                   pensji o 10-20% znacząco podniesie emeryturę
@@ -85,7 +87,7 @@ export function TipsAndRecommendations() {
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
-              <ul className="list-inside list-disc space-y-3">
+              <ul className="list-inside list-disc space-y-2 text-sm sm:space-y-3 sm:text-base">
                 <li className="text-foreground">
                   <strong>Przedłuż pracę o 1-2 lata</strong> - każdy dodatkowy
                   rok pracy znacząco zwiększa emeryturę
@@ -122,7 +124,7 @@ export function TipsAndRecommendations() {
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
-              <ul className="list-inside list-disc space-y-3">
+              <ul className="list-inside list-disc space-y-2 text-sm sm:space-y-3 sm:text-base">
                 <li className="text-foreground">
                   <strong>Zadbaj o zdrowie</strong> - profilaktyka i zdrowy tryb
                   życia zmniejszają absencję w pracy

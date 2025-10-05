@@ -112,9 +112,9 @@ export function ScenarioPagination({
   if (scenarios.length === 0) {
     return (
       <div className="space-y-4">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <h2 className="text-lg font-semibold">Scenariusze Symulacji</h2>
-          <Button onClick={onCreateNew} size="sm">
+          <Button onClick={onCreateNew} size="sm" className="w-full sm:w-auto">
             <Plus className="mr-2 h-4 w-4" />
             Utwórz Scenariusz
           </Button>
@@ -129,34 +129,43 @@ export function ScenarioPagination({
 
   return (
     <div className="space-y-4">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h2 className="text-lg font-semibold">Scenariusze Symulacji</h2>
           <p className="text-muted-foreground text-sm">
             {scenarios.length} scenariusz{scenarios.length !== 1 ? "y" : ""}
           </p>
         </div>
-        <Button onClick={onCreateNew} size="sm">
+        <Button onClick={onCreateNew} size="sm" className="w-full sm:w-auto">
           <Plus className="mr-2 h-4 w-4" />
           Nowy Scenariusz
         </Button>
       </div>
 
       {/* Scenario Cards */}
-      <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {currentScenarios.map((scenario) => (
           <div
             key={scenario.localId}
-            className={`relative flex cursor-pointer flex-col gap-3 rounded-lg border-2 p-4 transition-all ${
+            className={`relative flex cursor-pointer flex-col gap-3 rounded-lg border-2 p-3 transition-all sm:p-4 ${
               currentScenarioId === scenario.localId
                 ? "border-primary bg-primary/5 shadow-md"
                 : "border-muted hover:border-primary/50 hover:bg-muted/50"
             }`}
             onClick={() => handleScenarioSelect(scenario)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                handleScenarioSelect(scenario);
+              }
+            }}
+            tabIndex={0}
+            role="button"
+            aria-label={`Wybierz scenariusz: ${scenario.name}, utworzony ${formatDate(scenario.createdAt)}`}
           >
             <div className="flex items-center justify-between">
               <div className="bg-primary/10 rounded-full p-2">
-                <Calendar className="text-primary h-4 w-4" />
+                <Calendar className="text-primary h-4 w-4" aria-hidden="true" />
               </div>
               <Button
                 variant="ghost"
@@ -166,8 +175,9 @@ export function ScenarioPagination({
                   e.stopPropagation();
                   handleRemoveScenario(scenario.localId);
                 }}
+                aria-label={`Usuń scenariusz: ${scenario.name}`}
               >
-                <X className="h-3 w-3" />
+                <X className="h-3 w-3" aria-hidden="true" />
               </Button>
             </div>
 
@@ -185,19 +195,23 @@ export function ScenarioPagination({
 
               <div className="text-muted-foreground space-y-1 text-xs">
                 <div className="flex items-center gap-1">
-                  <span>👤</span>
+                  <span aria-hidden="true">👤</span>
+                  <span className="sr-only">Wiek: </span>
                   {scenario.parameters.age} lat
                 </div>
                 <div className="flex items-center gap-1">
-                  <span>💰</span>
+                  <span aria-hidden="true">💰</span>
+                  <span className="sr-only">Oczekiwana emerytura: </span>
                   {scenario.parameters.expectedPension.toLocaleString()} zł
                 </div>
                 <div className="flex items-center gap-1">
-                  <span>💼</span>
+                  <span aria-hidden="true">💼</span>
+                  <span className="sr-only">Typ zatrudnienia: </span>
                   {scenario.parameters.typeOfEmployment}
                 </div>
                 <div className="flex items-center gap-1">
-                  <Clock className="h-3 w-3" />
+                  <Clock className="h-3 w-3" aria-hidden="true" />
+                  <span className="sr-only">Data utworzenia: </span>
                   {formatDate(scenario.createdAt)}
                 </div>
               </div>
@@ -208,11 +222,11 @@ export function ScenarioPagination({
 
       {/* Pagination Controls */}
       {totalPages > 1 && (
-        <div className="flex items-center justify-between">
-          <div className="text-muted-foreground text-sm">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div className="text-muted-foreground text-center text-sm sm:text-left">
             Strona {currentPage + 1} z {totalPages}
           </div>
-          <div className="flex gap-2">
+          <div className="flex justify-center gap-2 sm:justify-end">
             <Button
               variant="outline"
               size="sm"

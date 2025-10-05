@@ -3,10 +3,34 @@
 import { clientFetch } from "@/_utils/fetch/client-fetch";
 
 // Import types directly from source until shared package is built
+export interface CustomExperiencePeriodDto {
+  yearStart: number;
+  yearEnd: number;
+  monthlySalary: number;
+  contractType: "uop" | "b2b" | "zlecenie" | "dzielo";
+}
+
+export interface SimulationConfigDto {
+  age: number;
+  sex: "male" | "female";
+  grossSalary: number;
+  workStartDate: string;
+  plannedRetirementYear: number;
+  includeSickLeave: boolean;
+  expectedPension: number;
+  postalCode?: string | null;
+  contractType: "uop" | "b2b" | "zlecenie" | "dzielo";
+  currentFunds?: number;
+  includeWageGrowth: boolean;
+  includeIndexation: boolean;
+  customExperience?: Array<CustomExperiencePeriodDto>;
+}
+
 export interface GetSimulationResultResponseDto {
   id: string;
   requestId: string;
   expectedPension: number;
+  config: SimulationConfigDto;
   summary: {
     projectedPension: number;
     currentSalary: number;

@@ -29,7 +29,7 @@ export function PensionProjectionChart({ data }: PensionProjectionChartProps) {
     },
     subAccountBalance: {
       label: "Konto Podrzędne",
-      color: "rgb(255, 100, 103)",
+      color: "rgb(0, 65, 110)",
     },
   };
 

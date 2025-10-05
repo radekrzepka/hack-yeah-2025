@@ -81,25 +81,28 @@ export function RetirementDashboard({ tokenID }: { tokenID: string }) {
     >
       {/* Header */}
       <header className="border-border bg-card border-b print:hidden">
-        <div className="container mx-auto w-[80%] px-4 py-6">
-          <div className="flex items-center justify-between">
+        <div className="container mx-auto px-4 py-6 sm:w-[80%]">
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
             <div>
-              <h1 className="text-foreground text-balance text-3xl font-bold">
+              <h1 className="text-foreground text-balance text-2xl font-bold sm:text-3xl">
                 Twoja Prognoza Emerytalna
               </h1>
-              <p className="text-muted-foreground ml-1 mt-2 text-pretty">
+              <p className="text-muted-foreground ml-1 mt-2 text-pretty text-sm sm:text-base">
                 Dashboard symulacji - dostosuj parametry i obserwuj zmiany w
                 czasie rzeczywistym
               </p>
             </div>
-            <div className="flex gap-3">
+            <div className="flex flex-col gap-2 sm:flex-row sm:gap-3">
               <Button
                 onClick={scrollToControlPanel}
                 variant="outline"
                 size="lg"
+                className="w-full sm:w-auto"
+                aria-label="Przewiń do panelu kontrolnego"
               >
-                <Settings className="mr-2 h-5 w-5" />
-                Panel Kontrolny
+                <Settings className="mr-2 h-5 w-5" aria-hidden="true" />
+                <span className="hidden sm:inline">Panel Kontrolny</span>
+                <span className="sm:hidden">Panel</span>
               </Button>
               <TooltipProvider>
                 <Tooltip>
@@ -109,8 +112,14 @@ export function RetirementDashboard({ tokenID }: { tokenID: string }) {
                       variant="outline"
                       size="lg"
                       disabled={isGeneratingPdf}
+                      className="w-full sm:w-auto"
+                      aria-label={
+                        isGeneratingPdf
+                          ? "Generowanie raportu PDF"
+                          : "Pobierz raport PDF"
+                      }
                     >
-                      <Download className="mr-2 h-5 w-5" />
+                      <Download className="mr-2 h-5 w-5" aria-hidden="true" />
                       {isGeneratingPdf ? "Generowanie..." : "Pobierz Raport"}
                     </Button>
                   </TooltipTrigger>
@@ -127,7 +136,7 @@ export function RetirementDashboard({ tokenID }: { tokenID: string }) {
         </div>
       </header>
 
-      <div className="container mx-auto w-[80%] px-4 py-8">
+      <div className="container mx-auto px-4 py-8 sm:w-[80%]">
         <div className="space-y-6">
           {/* Scenario Pagination */}
           <ScenarioPagination
@@ -151,10 +160,12 @@ export function RetirementDashboard({ tokenID }: { tokenID: string }) {
             <TopKpiCards kpiData={{ ...kpiData, expectedPension: expected }} />
           ) : null}
 
-          <div className="grid gap-6 lg:grid-cols-[1fr_2fr]">
+          <div className="grid gap-6 xl:grid-cols-[1fr_2fr]">
             <Card>
               <CardHeader>
-                <CardTitle className="text-xl">Wskazówki Emerytalne</CardTitle>
+                <CardTitle className="text-lg sm:text-xl">
+                  Wskazówki Emerytalne
+                </CardTitle>
                 <CardDescription>
                   Praktyczne porady dla lepszej przyszłości emerytalnej
                 </CardDescription>
@@ -162,10 +173,13 @@ export function RetirementDashboard({ tokenID }: { tokenID: string }) {
               <CardContent className="space-y-4">
                 <div className="space-y-3">
                   <div className="flex items-start gap-3">
-                    <div className="bg-primary/10 rounded-full p-2">
-                      <TrendingUp className="text-primary h-4 w-4" />
+                    <div className="bg-primary/10 flex-shrink-0 rounded-full p-2">
+                      <TrendingUp
+                        className="text-primary h-4 w-4"
+                        aria-hidden="true"
+                      />
                     </div>
-                    <div>
+                    <div className="min-w-0">
                       <h4 className="text-sm font-medium">
                         Zwiększenie wynagrodzenia
                       </h4>
@@ -175,10 +189,13 @@ export function RetirementDashboard({ tokenID }: { tokenID: string }) {
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <div className="bg-primary/10 rounded-full p-2">
-                      <Calendar className="text-primary h-4 w-4" />
+                    <div className="bg-primary/10 flex-shrink-0 rounded-full p-2">
+                      <Calendar
+                        className="text-primary h-4 w-4"
+                        aria-hidden="true"
+                      />
                     </div>
-                    <div>
+                    <div className="min-w-0">
                       <h4 className="text-sm font-medium">Pracuj dłużej</h4>
                       <p className="text-muted-foreground text-xs">
                         Każdy dodatkowy rok pracy zwiększa emeryturę
@@ -186,10 +203,13 @@ export function RetirementDashboard({ tokenID }: { tokenID: string }) {
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <div className="bg-primary/10 rounded-full p-2">
-                      <Target className="text-primary h-4 w-4" />
+                    <div className="bg-primary/10 flex-shrink-0 rounded-full p-2">
+                      <Target
+                        className="text-primary h-4 w-4"
+                        aria-hidden="true"
+                      />
                     </div>
-                    <div>
+                    <div className="min-w-0">
                       <h4 className="text-sm font-medium">
                         Zredukuj ilość dni chorobowych
                       </h4>
@@ -204,9 +224,9 @@ export function RetirementDashboard({ tokenID }: { tokenID: string }) {
 
             <Card>
               <CardHeader>
-                <div className="flex items-center justify-between">
+                <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
                   <div>
-                    <CardTitle className="text-2xl">
+                    <CardTitle className="text-xl sm:text-2xl">
                       Porównanie Emerytury
                     </CardTitle>
                     <CardDescription className="mt-2">
@@ -216,7 +236,11 @@ export function RetirementDashboard({ tokenID }: { tokenID: string }) {
                   <TooltipProvider>
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <Button variant="ghost" size="icon" className="h-8 w-8">
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          className="h-8 w-8 self-start sm:self-center"
+                        >
                           <Info className="h-4 w-4" />
                           <span className="sr-only">Informacje o wykresie</span>
                         </Button>
@@ -249,9 +273,9 @@ export function RetirementDashboard({ tokenID }: { tokenID: string }) {
           {/* Main Projection Chart */}
           <Card>
             <CardHeader>
-              <div className="flex items-center justify-between">
+              <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
                 <div>
-                  <CardTitle className="text-2xl">
+                  <CardTitle className="text-xl sm:text-2xl">
                     Prognoza Wysokości Emerytury
                   </CardTitle>
                   <CardDescription className="mt-2">
@@ -261,7 +285,11 @@ export function RetirementDashboard({ tokenID }: { tokenID: string }) {
                 <TooltipProvider>
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <Button variant="ghost" size="icon" className="h-8 w-8">
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="h-8 w-8 self-start sm:self-center"
+                      >
                         <Info className="h-4 w-4" />
                         <span className="sr-only">Informacje o wykresie</span>
                       </Button>
@@ -293,14 +321,14 @@ export function RetirementDashboard({ tokenID }: { tokenID: string }) {
           {/* Improvement Scenarios */}
           {improvementScenarios && (
             <div className="space-y-6">
-              <h2 className="text-center text-3xl font-bold">
+              <h2 className="text-center text-2xl font-bold sm:text-3xl">
                 Scenariusze Poprawy Emerytury
               </h2>
               <TipsAndRecommendations></TipsAndRecommendations>
               {/* Salary Increase Chart */}
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-xl">
+                  <CardTitle className="text-lg sm:text-xl">
                     Zwiększenie Wynagrodzenia
                   </CardTitle>
                   <CardDescription>
@@ -317,7 +345,9 @@ export function RetirementDashboard({ tokenID }: { tokenID: string }) {
               {/* Work Longer Chart */}
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-xl">Praca Dłużej</CardTitle>
+                  <CardTitle className="text-lg sm:text-xl">
+                    Praca Dłużej
+                  </CardTitle>
                   <CardDescription>
                     Korzyści z przedłużenia aktywności zawodowej
                   </CardDescription>
@@ -330,7 +360,7 @@ export function RetirementDashboard({ tokenID }: { tokenID: string }) {
               {/* Fewer Sick Days Chart */}
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-xl">
+                  <CardTitle className="text-lg sm:text-xl">
                     Redukcja Dni Chorobowych
                   </CardTitle>
                   <CardDescription>

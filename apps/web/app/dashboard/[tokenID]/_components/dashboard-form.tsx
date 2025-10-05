@@ -25,10 +25,40 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { CircleAlert as AlertCircle, Calculator } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { sendSimulationClient } from "../../../form/_api/send-simulation";
+import type { SimulationConfigDto } from "../_api/client/get-simulation-data";
 import { addScenario } from "../_utils/scenario-storage";
+import {
+  CustomExperienceManager,
+  type CustomExperiencePeriod,
+} from "./controls/custom-experience-manager";
 import { pensionFormSchema, type PensionFormData } from "./schema";
+
+// Transform API config data to form format
+function transformConfigToFormData(
+  config: SimulationConfigDto,
+): Partial<PensionFormData> {
+  // Extract year from workStartDate (format: "YYYY-MM-DD")
+  const workStartYear = new Date(config.workStartDate).getFullYear();
+
+  return {
+    age: config.age,
+    gender: config.sex,
+    contractType: config.contractType,
+    salary: config.grossSalary,
+    startYear: workStartYear,
+    endYear: config.plannedRetirementYear,
+    targetPension: config.expectedPension,
+    postalCode: config.postalCode || undefined,
+    currentFunds: config.currentFunds || undefined,
+    includeSickLeave: config.includeSickLeave,
+    includeWageGrowth: config.includeWageGrowth,
+    includeIndexation: config.includeIndexation,
+    customExperience: config.customExperience || [],
+  };
+}
 
 // Transform form data to API format
 function transformFormDataToApi(
@@ -57,18 +87,37 @@ function transformFormDataToApi(
     apiData.currentFunds = formData.currentFunds;
   }
 
+  // Dodaj customExperience jeśli istnieje
+  if (formData.customExperience && formData.customExperience.length > 0) {
+    apiData.customExperience = formData.customExperience;
+  }
+
   return apiData;
 }
 
 interface DashboardFormProps {
+  config?: SimulationConfigDto;
   initialData?: {
     expectedPension?: number;
-    // Możemy dodać więcej danych z dashboardu jeśli będą potrzebne
   };
 }
 
-export function DashboardForm({ initialData }: DashboardFormProps) {
+export function DashboardForm({ config, initialData }: DashboardFormProps) {
   const router = useRouter();
+  const [customExperience, setCustomExperience] = useState<
+    Array<CustomExperiencePeriod>
+  >([]);
+
+  // Prepare default values from config or initialData
+  const defaultValues = config
+    ? transformConfigToFormData(config)
+    : {
+        targetPension: initialData?.expectedPension,
+        contractType: undefined,
+        includeSickLeave: false,
+        includeWageGrowth: false,
+        includeIndexation: false,
+      };
 
   const {
     register,
@@ -76,20 +125,24 @@ export function DashboardForm({ initialData }: DashboardFormProps) {
     formState: { errors, isSubmitting },
     setValue,
     watch,
+    reset,
   } = useForm<PensionFormData>({
     resolver: zodResolver(pensionFormSchema),
     mode: "onBlur",
     reValidateMode: "onBlur",
-    defaultValues: {
-      targetPension: initialData?.expectedPension,
-      contractType: undefined,
-      includeSickLeave: false,
-      includeWageGrowth: false,
-      includeIndexation: false,
-    },
+    defaultValues,
   });
 
   const watchedValues = watch();
+
+  // Update form when config changes
+  useEffect(() => {
+    if (config) {
+      const formData = transformConfigToFormData(config);
+      reset(formData);
+      setCustomExperience(config.customExperience || []);
+    }
+  }, [config, reset]);
 
   const simulationMutation = useMutation({
     mutationFn: async (
@@ -123,7 +176,12 @@ export function DashboardForm({ initialData }: DashboardFormProps) {
   });
 
   const onSubmit = (data: PensionFormData) => {
-    simulationMutation.mutate(data);
+    // Add customExperience to form data
+    const formDataWithExperience = {
+      ...data,
+      customExperience,
+    };
+    simulationMutation.mutate(formDataWithExperience);
   };
 
   return (
@@ -210,7 +268,7 @@ export function DashboardForm({ initialData }: DashboardFormProps) {
               <Separator className="flex-1" />
             </div>
 
-            <div className="grid gap-4 md:grid-cols-2">
+            <div className="grid gap-4 sm:grid-cols-2">
               {/* Wiek */}
               <div className="space-y-2">
                 <Label htmlFor="age" className="text-sm font-medium">
@@ -272,7 +330,7 @@ export function DashboardForm({ initialData }: DashboardFormProps) {
               <Separator className="flex-1" />
             </div>
 
-            <div className="grid gap-4 md:grid-cols-2">
+            <div className="grid gap-4 sm:grid-cols-2">
               {/* Rodzaj umowy */}
               <div className="space-y-2">
                 <Label htmlFor="contractType" className="text-sm font-medium">
@@ -336,7 +394,7 @@ export function DashboardForm({ initialData }: DashboardFormProps) {
               </div>
             </div>
 
-            <div className="grid gap-4 md:grid-cols-2">
+            <div className="grid gap-4 sm:grid-cols-2">
               {/* Rok rozpoczęcia pracy */}
               <div className="space-y-2">
                 <Label htmlFor="startYear" className="text-sm font-medium">
@@ -392,7 +450,7 @@ export function DashboardForm({ initialData }: DashboardFormProps) {
               <Separator className="flex-1" />
             </div>
 
-            <div className="grid gap-4 md:grid-cols-2">
+            <div className="grid gap-4 sm:grid-cols-2">
               {/* Oczekiwana wysokość emerytury */}
               <div className="space-y-2">
                 <Label htmlFor="targetPension" className="text-sm font-medium">
@@ -534,12 +592,20 @@ export function DashboardForm({ initialData }: DashboardFormProps) {
             </div>
           </div>
 
+          {/* Dodatkowe okresy doświadczenia */}
+          <div className="space-y-6">
+            <CustomExperienceManager
+              value={customExperience}
+              onChange={setCustomExperience}
+            />
+          </div>
+
           {/* Przycisk submit */}
           <div className="flex justify-center pt-4">
             <Button
               type="submit"
               disabled={isSubmitting || simulationMutation.isPending}
-              className="w-full md:w-auto"
+              className="w-full sm:w-auto"
               size="lg"
             >
               {isSubmitting || simulationMutation.isPending
